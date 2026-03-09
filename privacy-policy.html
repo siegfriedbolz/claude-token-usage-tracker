@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy — Claude Token Usage Tracker</title>
+    <style>
+        :root {
+            --bg: #fafafa;
+            --fg: #1a1a1a;
+            --accent: #6366f1;
+            --muted: #64748b;
+            --card: #ffffff;
+            --border: #e2e8f0;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #0f172a;
+                --fg: #e2e8f0;
+                --accent: #818cf8;
+                --muted: #94a3b8;
+                --card: #1e293b;
+                --border: #334155;
+            }
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: var(--bg);
+            color: var(--fg);
+            line-height: 1.7;
+            padding: 2rem 1rem;
+        }
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+        h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+        .subtitle {
+            color: var(--muted);
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+        }
+        h2 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-top: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+        }
+        p, li {
+            font-size: 0.95rem;
+            color: var(--fg);
+            margin-bottom: 0.75rem;
+        }
+        ul {
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        ul li { margin-bottom: 0.35rem; }
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem 1.75rem;
+            margin-bottom: 1rem;
+        }
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        a:hover { text-decoration: underline; }
+        .footer {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+            font-size: 0.85rem;
+            color: var(--muted);
+            text-align: center;
+        }
+        strong { font-weight: 600; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Privacy Policy</h1>
+        <p class="subtitle">Claude Token Usage Tracker for macOS — Last updated: February 26, 2026</p>
+
+        <div class="card">
+            <p><strong>Summary:</strong> Claude Token Usage Tracker does not collect, transmit, or share any personal data. All information is stored locally on your Mac. The app communicates only with the APIs you configure — no third-party analytics, no tracking, no telemetry.</p>
+        </div>
+
+        <h2>1. Data We Collect</h2>
+        <p><strong>None.</strong> The app does not collect any personal information, usage analytics, crash reports, or telemetry data of any kind.</p>
+
+        <h2>2. Data Stored on Your Device</h2>
+        <p>The following data is stored exclusively on your Mac:</p>
+        <ul>
+            <li><strong>Anthropic Admin API Key</strong> — stored securely in the <strong>macOS Keychain</strong>, encrypted by the operating system. Never sent to any party other than Anthropic's own API servers.</li>
+            <li><strong>App preferences</strong> — display settings, selected API key filters, section toggles, and custom API endpoint URLs are stored in macOS UserDefaults within the app's sandbox container.</li>
+            <li><strong>Cached API responses</strong> — token usage data, cost reports, and exchange rates are cached locally to reduce API calls.</li>
+        </ul>
+        <p>All of this data remains on your device and is never transmitted to us or any third party.</p>
+
+        <h2>3. Network Requests</h2>
+        <p>The app makes outbound HTTPS requests <strong>only</strong> to the following services, and <strong>only</strong> when you trigger a data refresh:</p>
+        <ul>
+            <li><strong>Anthropic Admin API</strong> (<code>api.anthropic.com</code>) — to retrieve your organization's token usage, cost reports, and API key information. Authenticated with your Admin API Key.</li>
+            <li><strong>Exchange Rate API</strong> (<code>open.er-api.com</code>) — to fetch current USD exchange rates for currency conversion. No authentication or personal data is sent.</li>
+            <li><strong>GitHub</strong> (<code>raw.githubusercontent.com</code>) — to fetch the latest model pricing data from the LiteLLM open-source project. No authentication or personal data is sent.</li>
+        </ul>
+        <p>You may configure custom API endpoint URLs in the app's settings. If you do, requests will be directed to those endpoints instead.</p>
+        <p>The app does <strong>not</strong> communicate with any advertising networks, analytics platforms, social media services, or any other external services beyond those listed above.</p>
+
+        <h2>4. Third-Party Services</h2>
+        <p>The app relies on the following third-party services for its core functionality:</p>
+        <ul>
+            <li><strong>Anthropic</strong> — subject to <a href="https://www.anthropic.com/privacy" target="_blank" rel="noopener">Anthropic's Privacy Policy</a></li>
+            <li><strong>Exchange Rate API</strong> — subject to <a href="https://www.exchangerate-api.com/terms" target="_blank" rel="noopener">ExchangeRate-API Terms</a></li>
+        </ul>
+        <p>Please review their respective privacy policies for information on how they handle data.</p>
+
+        <h2>5. Children's Privacy</h2>
+        <p>This app is not directed at children under 13 and does not knowingly collect any information from children.</p>
+
+        <h2>6. Data Security</h2>
+        <p>Your API key is stored in the <strong>macOS Keychain</strong>, which provides hardware-backed encryption and is isolated per application. All other app data is stored within the macOS App Sandbox container. Network communication uses HTTPS encryption exclusively. The app does not store data on remote servers.</p>
+
+        <h2>7. Your Rights</h2>
+        <p>Since all data is stored locally on your device, you have full control over it at all times:</p>
+        <ul>
+            <li><strong>View</strong> — all settings are visible in the app's Settings panel.</li>
+            <li><strong>Delete</strong> — remove the app to delete all associated data, or clear individual settings within the app.</li>
+            <li><strong>Export</strong> — use the CSV export feature to obtain your usage data.</li>
+        </ul>
+
+        <h2>8. Changes to This Policy</h2>
+        <p>If we update this privacy policy, the revised version will be posted at this URL with an updated "Last updated" date. Continued use of the app after changes constitutes acceptance of the updated policy.</p>
+
+        <h2>9. Contact</h2>
+        <p>If you have questions about this privacy policy, please contact:</p>
+        <p><strong>Siegfried-Thor Bolz</strong><br>
+        Email: <a href="mailto:privacy@siegfried-bolz.de">privacy@siegfried-bolz.de</a></p>
+
+        <div class="footer">
+            &copy; 2026 Siegfried-Thor Bolz. All rights reserved.<br>
+            Claude Token Usage Tracker is not affiliated with or endorsed by Anthropic.
+        </div>
+    </div>
+</body>
+</html>

@@ -1,2 +1,129 @@
-# claude-token-usage-tracker
-macOS menu bar app to monitor Claude API token usage, costs and rate limits.
+<div align="center">
+
+# Claude Token Usage Tracker
+
+### Know exactly what your Claude API costs — right from your macOS menu bar.
+
+[![macOS](https://img.shields.io/badge/macOS-14.0%2B-blue?logo=apple&logoColor=white)](#requirements)
+[![Swift](https://img.shields.io/badge/Swift-5.9-orange?logo=swift&logoColor=white)](#)
+[![License](https://img.shields.io/badge/license-Proprietary-lightgrey)](#license)
+
+A native macOS menu bar app that connects to the **Anthropic Admin API** and shows your organization's Claude API usage and costs in near real-time — broken down by month, model, workspace, and API key.
+
+[Download on the Mac App Store](#download) · [Privacy Policy](privacy-policy.html) · [Support](#support)
+
+</div>
+
+---
+
+## Screenshots
+
+| Live usage overview | Model cost breakdown |
+|---|---|
+| ![Intraday view](screenshots/Intraday.png) | ![Model view](screenshots/Model.png) |
+
+| Monthly breakdown | Settings |
+|---|---|
+| ![Month view](screenshots/Monat.png) | ![Settings](screenshots/Settings.png) |
+
+| Workspace overview |
+|---|
+| ![Workspace view](screenshots/Workspace.png) |
+
+---
+
+## Why Claude Token Usage Tracker?
+
+If you're running Claude via the API — for coding agents, bots, or internal tools — you need visibility into what you're spending. Anthropic's console gives you some data, but it's not always timely, and it's not on your menu bar.
+
+This app pulls data from the Anthropic Admin API and puts your costs where you can always see them: in your macOS menu bar — or as a detached popover window that stays visible while you work.
+
+---
+
+## Features
+
+### 📊 Near Real-Time Cost Tracking
+See today's estimated API costs via the Intraday tab — updated with a delay of up to ~1 hour. The menu bar always shows your current spend at a glance.
+
+### 📅 Monthly Breakdown
+Full monthly cost history with pagination. See input tokens, output tokens, cache writes, and cache reads — each with their share of the total cost. Monthly data is based on Anthropic's Cost API (~2 day reporting delay).
+
+### 🤖 Per-Model Cost View
+Know exactly how much each Claude model costs you. Opus vs. Sonnet vs. Haiku — broken down into 4 cost categories (input, output, cache write, cache read) with percentage shares.
+
+### 🔑 Per-API-Key Filtering
+Track costs per API key to isolate spending by project, bot, or team member. Select specific keys or view total organization costs.
+
+### 🏢 Workspace Overview
+Compare usage across your Anthropic workspaces (Production, Development, Staging, etc.) at a glance.
+
+### ⚡ Live Rate Limits
+See your current rate limits per model — requests per minute, input tokens, and output tokens — fetched directly from the API.
+
+### 💰 Spend Limit Tracking
+Visual progress bar showing how much of your organization's spend limit has been consumed, with percentage tracking.
+
+### 🔔 Spend Notifications
+Set custom thresholds and get native macOS notifications when your spending crosses them.
+
+### 💱 Multi-Currency Support
+View all costs in USD, EUR, GBP, and more. Exchange rates are fetched daily.
+
+### 📋 CSV Export
+Export all usage data to CSV for reporting, accounting, or further analysis.
+
+### 🌐 Built-in JSON API
+Optional localhost HTTP server exposes your usage data as JSON — perfect for integrating with dashboards, MCP clients, or custom tooling.
+
+### 🔒 Secure by Design
+Your Admin API key is stored in the **macOS Keychain** — never in plain text. Zero third-party dependencies. All Apple system frameworks.
+
+---
+
+## How It Works
+
+1. **Get your Anthropic Admin API key** from the [Anthropic Console](https://console.anthropic.com/) (Organization Settings → API Keys → Admin Key).
+2. **Paste the key** into the app's Settings.
+3. **Done.** The app fetches your usage data and shows costs in the menu bar.
+
+The app queries the Anthropic Admin API for usage reports, API key metadata, workspace info, and rate limits. All data is cached locally to minimize API calls.
+
+---
+
+## Requirements
+
+- **macOS 14.0** (Sonoma) or later
+- An **Anthropic Admin API key** (requires organization admin access)
+- No external dependencies — pure Apple system frameworks
+
+---
+
+## Download
+
+<!-- TODO: Replace with actual Mac App Store link -->
+Coming soon on the **Mac App Store**.
+
+---
+
+## Support
+
+Found a bug or have a feature request?
+Open an issue on [GitHub Issues](https://github.com/siegfriedbolz/claude-token-usage-tracker/issues).
+
+---
+
+## Privacy
+
+Claude Token Usage Tracker does **not** collect, transmit, or store any personal data. Your API key is stored exclusively in the macOS Keychain on your device. All API communication goes directly to Anthropic's servers — no intermediaries, no analytics, no tracking.
+
+Read the full [Privacy Policy](privacy-policy.html).
+
+---
+
+## License
+
+Claude Token Usage Tracker is proprietary software. All rights reserved.
+Distributed exclusively via the Mac App Store under the [Apple Licensed Application End User License Agreement (EULA)](https://www.apple.com/legal/internet-services/itunes/dev/stdeula/).
+
+© 2025–2026 Siegfried-Thor Bolz
+

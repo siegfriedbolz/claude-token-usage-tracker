@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claude Token Usage Tracker — macOS Menu Bar App for Anthropic API Costs</title>
+    <meta name="description" content="A native macOS menu bar app to monitor Anthropic Claude API token usage and costs in near real-time. Track spending by model, workspace, and API key.">
+    <meta name="keywords" content="Claude, Anthropic, API, token usage, cost tracker, macOS, menu bar app, Claude API costs, Claude Opus, Claude Sonnet, Claude Haiku, API monitoring, developer tools, Swift, SwiftUI, Mac App Store, spend tracking, rate limits, Claude Code, Cursor, Windsurf">
+    <meta name="author" content="Siegfried-Thor Bolz">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://siegfriedbolz.github.io/claude-token-usage-tracker/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://siegfriedbolz.github.io/claude-token-usage-tracker/">
+    <meta property="og:title" content="Claude Token Usage Tracker — macOS Menu Bar App">
+    <meta property="og:description" content="Monitor your Anthropic Claude API token usage and costs in near real-time. Track spending by model, workspace, and API key — right from your macOS menu bar.">
+    <meta property="og:image" content="https://raw.githubusercontent.com/siegfriedbolz/claude-token-usage-tracker/main/screenshots/Intraday.png">
+    <meta property="og:image:width" content="1280">
+    <meta property="og:image:height" content="800">
+    <meta property="og:site_name" content="Claude Token Usage Tracker">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Claude Token Usage Tracker — macOS Menu Bar App">
+    <meta name="twitter:description" content="Monitor your Anthropic Claude API token usage and costs in near real-time. Track spending by model, workspace, and API key.">
+    <meta name="twitter:image" content="https://raw.githubusercontent.com/siegfriedbolz/claude-token-usage-tracker/main/screenshots/Intraday.png">
+
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Claude Token Usage Tracker",
+        "operatingSystem": "macOS 14.0+",
+        "applicationCategory": "DeveloperApplication",
+        "description": "A native macOS menu bar app to monitor Anthropic Claude API token usage and costs in near real-time. Breakdowns by model, workspace, month, and API key.",
+        "author": {
+            "@type": "Person",
+            "name": "Siegfried-Thor Bolz"
+        },
+        "offers": {
+            "@type": "Offer",
+            "availability": "https://schema.org/InStock",
+            "category": "Paid"
+        },
+        "screenshot": "https://raw.githubusercontent.com/siegfriedbolz/claude-token-usage-tracker/main/screenshots/Intraday.png",
+        "softwareRequirements": "macOS 14.0 (Sonoma) or later, Anthropic Admin API key",
+        "keywords": "Claude, Anthropic, API, token usage, cost tracker, macOS, menu bar, developer tools"
+    }
+    </script>
+
+    <style>
+        :root { --bg: #1a1a2e; --fg: #e0e0e0; --accent: #f97316; --card: #16213e; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif; background: var(--bg); color: var(--fg); line-height: 1.6; }
+        .container { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+        h1 { font-size: 2.2rem; margin-bottom: 0.5rem; }
+        .tagline { font-size: 1.2rem; color: #aaa; margin-bottom: 2rem; }
+        .hero-img { width: 100%; border-radius: 12px; margin: 1.5rem 0; box-shadow: 0 8px 32px rgba(0,0,0,0.4); }
+        h2 { font-size: 1.4rem; margin-top: 2rem; margin-bottom: 0.8rem; color: var(--accent); }
+        ul { list-style: none; padding: 0; }
+        ul li { padding: 0.3rem 0; }
+        ul li::before { content: "→ "; color: var(--accent); }
+        .cta { display: inline-block; margin-top: 1.5rem; padding: 0.8rem 1.6rem; background: var(--accent); color: #fff; text-decoration: none; border-radius: 8px; font-weight: 600; }
+        .cta:hover { opacity: 0.9; }
+        footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid #333; color: #888; font-size: 0.85rem; }
+        a { color: var(--accent); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Claude Token Usage Tracker</h1>
+        <p class="tagline">Know exactly what your Claude API costs — right from your macOS menu bar.</p>
+
+        <img src="screenshots/Intraday.png" alt="Claude Token Usage Tracker — Intraday cost view showing per-API-key breakdown with live rate limits" class="hero-img" loading="lazy">
+
+        <h2>What It Does</h2>
+        <p>A native macOS menu bar app that connects to the Anthropic Admin API and shows your organization's Claude API usage and costs — broken down by month, model, workspace, and API key.</p>
+
+        <h2>Features</h2>
+        <ul>
+            <li>Near real-time cost tracking via Intraday tab (~1h delay)</li>
+            <li>Monthly cost breakdown with full history</li>
+            <li>Per-model cost view — Claude Opus, Sonnet, Haiku</li>
+            <li>Per-API-key filtering — isolate costs by project or bot</li>
+            <li>Workspace overview — compare across environments</li>
+            <li>Live rate limits per model</li>
+            <li>Spend limit tracking with notifications</li>
+            <li>Multi-currency support (USD, EUR, GBP, and more)</li>
+            <li>CSV export for reporting</li>
+            <li>Built-in JSON API for integrations</li>
+            <li>Detached popover mode</li>
+            <li>Secure — API key in macOS Keychain, zero third-party dependencies</li>
+        </ul>
+
+        <h2>Requirements</h2>
+        <p>macOS 14.0 (Sonoma) or later. Requires an Anthropic Admin API key.</p>
+
+        <!-- TODO: Replace with actual Mac App Store link -->
+        <a class="cta" href="#download">Download on the Mac App Store</a>
+
+        <h2>More Screenshots</h2>
+        <img src="screenshots/Model.png" alt="Claude Token Usage Tracker — Per-model cost breakdown showing Claude Opus and Sonnet with 4 cost categories and rate limits" class="hero-img" loading="lazy">
+        <img src="screenshots/Monat.png" alt="Claude Token Usage Tracker — Monthly cost breakdown with token categories and spend history" class="hero-img" loading="lazy">
+        <img src="screenshots/Workspace.png" alt="Claude Token Usage Tracker — Workspace overview comparing Production, Development, and Staging costs" class="hero-img" loading="lazy">
+        <img src="screenshots/Settings.png" alt="Claude Token Usage Tracker — Settings panel with Admin API key configuration, API key filter, and display options" class="hero-img" loading="lazy">
+
+        <footer>
+            <p>&copy; 2025–2026 Siegfried-Thor Bolz · <a href="privacy-policy.html">Privacy Policy</a> · <a href="https://github.com/siegfriedbolz/claude-token-usage-tracker/issues">Support</a></p>
+        </footer>
+    </div>
+</body>
+</html>

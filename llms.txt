@@ -1,0 +1,48 @@
+# Claude Token Usage Tracker
+
+> A native macOS menu bar app to monitor Anthropic Claude API token usage and costs in near real-time.
+
+## Overview
+
+Claude Token Usage Tracker is a macOS menu bar application for developers and teams using the Anthropic Claude API. It connects to the Anthropic Admin API and displays API costs broken down by month, model, workspace, and API key — directly in the macOS menu bar or as a detached popover window.
+
+## Key Facts
+
+- Platform: macOS 14.0+ (Sonoma)
+- Built with: Swift, SwiftUI, Apple system frameworks only
+- Distribution: Mac App Store
+- Developer: Siegfried-Thor Bolz
+- No third-party dependencies
+- API key stored in macOS Keychain
+
+## Core Features
+
+- Near real-time cost tracking via Intraday tab (~1 hour delay)
+- Monthly cost breakdown with pagination (~2 day delay from Anthropic Cost API)
+- Per-model cost view (Claude Opus, Sonnet, Haiku) with 4 cost categories
+- Per-API-key cost filtering — isolate costs by project, bot, or team
+- Workspace overview — compare usage across workspaces
+- Live rate limits per model (requests/min, input tokens, output tokens)
+- Spend limit tracking with visual progress bar
+- Spend threshold notifications via native macOS notifications
+- Multi-currency support (USD, EUR, GBP, and more)
+- CSV export for reporting and accounting
+- Built-in localhost JSON API for dashboard and MCP integration
+- Detached popover mode — keep the window visible while working
+
+## Use Cases
+
+- Developers tracking Claude API spend for coding agents (Cursor, Windsurf, Claude Code)
+- Teams monitoring per-project API costs
+- Organizations managing multiple API keys and workspaces
+- Budget tracking and spend limit alerting for Anthropic API usage
+
+## Requirements
+
+- macOS 14.0 (Sonoma) or later
+- Anthropic Admin API key (requires organization admin access)
+
+## Links
+
+- Repository: https://github.com/siegfriedbolz/claude-token-usage-tracker
+- Support: https://github.com/siegfriedbolz/claude-token-usage-tracker/issues
