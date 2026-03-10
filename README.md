@@ -12,7 +12,7 @@
 
 A native macOS menu bar app that connects to the **Anthropic Admin API** and shows your organization's Claude API usage and costs in near real-time — broken down by month, model, workspace, and API key.
 
-[Download on the Mac App Store](#download) · [Privacy Policy](privacy-policy.html) · [Support](#support)
+[🌐 Website](https://siegfriedbolz.github.io/claude-token-usage-tracker/) · [⬇️ Download](#download) · [🔒 Privacy Policy](https://siegfriedbolz.github.io/claude-token-usage-tracker/privacy-policy.html) · [🛟 Support](#support)
 
 </div>
 
