@@ -70,7 +70,7 @@
             "https://raw.githubusercontent.com/siegfriedbolz/claude-token-usage-tracker/main/screenshots/Settings2.png"
         ],
         "softwareRequirements": "macOS 14.0 (Sonoma) or later, Anthropic Admin API key",
-        "featureList": "Near real-time intraday cost tracking, Monthly cost breakdown with full history, Per-model cost view (Opus Sonnet Haiku), Per-API-key cost filtering, Workspace cost comparison, Live rate limits per model, Spend limit tracking with macOS notifications, 12-currency support with real-time exchange rates, CSV export, Localhost JSON API and MCP server, Detached popover window mode, macOS Keychain security with zero third-party dependencies",
+        "featureList": "Near real-time intraday cost tracking, Monthly cost breakdown with full history, Per-model cost view (Opus Sonnet Haiku), Per-API-key cost filtering, Workspace cost comparison, Live rate limits per model, Spend limit tracking with macOS notifications, 12-currency support with real-time exchange rates, CSV export, Built-in localhost JSON API, Detached popover window mode, macOS Keychain security with zero third-party dependencies",
         "datePublished": "2025-01-01",
         "url": "https://siegfriedbolz.github.io/claude-token-usage-tracker/",
         "keywords": "Claude, Anthropic, API, token usage, cost tracker, macOS, menu bar, developer tools, Claude Code, Cursor, Windsurf"
@@ -120,7 +120,7 @@
                 "name": "Is there a free version?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Yes. The app includes a 7-day free trial with full Pro access. After the trial, basic features (Monthly and Workspace tabs, CSV export, currency conversion, auto-refresh) remain free. Pro features (Intraday tab, Model tab, API Key breakdowns, rate limits, MCP server, unlimited API keys) require a one-time purchase."
+                    "text": "Yes. The app includes a 7-day free trial with full Pro access. After the trial, basic features (Monthly and Workspace tabs, CSV export, currency conversion, auto-refresh) remain free. Pro features (Intraday tab, Model tab, API Key breakdowns, rate limits, JSON API server, unlimited API keys) require a one-time purchase."
                 }
             },
             {
@@ -671,7 +671,7 @@
 
                     <details class="feature-item">
                         <summary>
-                            <span class="feature-title">Built-in JSON API &amp; MCP Server <span class="feature-teaser">— integrate with dashboards and tools</span></span>
+                            <span class="feature-title">Built-in JSON API <span class="feature-teaser">— integrate with dashboards and tools</span></span>
                         </summary>
                         <div class="feature-body">
                             <p>Enable the built-in <strong>localhost-only HTTP server</strong> (default port 9485) to expose your usage data as JSON. The API provides a full snapshot including monthly costs, per-model breakdowns, workspace totals, intraday data, and spend limit status — all in your selected currency.</p>
@@ -695,7 +695,7 @@
                         </summary>
                         <div class="feature-body">
                             <p>Your Admin API key is stored in the <strong>macOS Keychain</strong> — never in plaintext or UserDefaults. The app communicates only with Anthropic's official API endpoints and an exchange rate service. There is <strong>no analytics, no telemetry, no crash reporting</strong>, and zero data sent to any third party.</p>
-                            <p>The entire app is built on Apple system frameworks only — <strong>zero third-party Swift packages or CocoaPods</strong>. The MCP server is bound to localhost only, preventing any external network access. API keys are masked by default in the Settings panel with a show/hide toggle.</p>
+                            <p>The entire app is built on Apple system frameworks only — <strong>zero third-party Swift packages or CocoaPods</strong>. The JSON API server is bound to localhost only, preventing any external network access. API keys are masked by default in the Settings panel with a show/hide toggle.</p>
                         </div>
                     </details>
 
@@ -791,7 +791,7 @@
 
                 <div class="faq-item">
                     <h3>Is there a free version?</h3>
-                    <p>Yes. The app includes a 7-day free trial with full Pro access. After the trial, basic features (Monthly and Workspace tabs, CSV export, currency conversion, auto-refresh) remain free. Pro features (Intraday tab, Model tab, API Key breakdowns, rate limits, MCP server, unlimited API keys) require a one-time purchase.</p>
+                    <p>Yes. The app includes a 7-day free trial with full Pro access. After the trial, basic features (Monthly and Workspace tabs, CSV export, currency conversion, auto-refresh) remain free. Pro features (Intraday tab, Model tab, API Key breakdowns, rate limits, JSON API server, unlimited API keys) require a one-time purchase.</p>
                 </div>
 
                 <div class="faq-item">
