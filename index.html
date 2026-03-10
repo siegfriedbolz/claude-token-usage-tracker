@@ -227,17 +227,58 @@
         section { margin-top: 2.5rem; }
         h2 { font-size: 1.5rem; margin-bottom: 1rem; color: var(--accent); }
 
-        /* Hero image */
-        .hero-figure { margin: 1.5rem 0; }
-        .hero-img {
+        /* Zoomable image overlay */
+        .zoomable {
+            position: relative;
+            cursor: zoom-in;
+        }
+        .zoomable::after {
+            content: '';
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 36px;
+            height: 36px;
+            background: rgba(0, 0, 0, 0.55);
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.2s;
+            pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cline x1='16' y1='16' x2='22' y2='22'/%3E%3Cline x1='8' y1='11' x2='14' y2='11'/%3E%3Cline x1='11' y1='8' x2='11' y2='14'/%3E%3C/svg%3E");
+            background-size: 20px 20px;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .zoomable:hover::after {
+            opacity: 1;
+        }
+        .zoomable img {
+            display: block;
             width: 100%;
             height: auto;
+        }
+
+        /* Hero image */
+        .hero-figure {
+            margin: 1.5rem 0;
+            background: var(--card);
+            border: 1px solid var(--card-border);
             border-radius: 12px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.4);
-            display: block;
+            overflow: hidden;
+        }
+        .hero-img {
+            border-radius: 0;
+            box-shadow: none;
         }
         .hero-caption {
-            margin-top: 0.5rem;
+            padding: 1rem 1.2rem;
+        }
+        .hero-caption h3 {
+            font-size: 1.05rem;
+            color: var(--accent);
+            margin-bottom: 0.3rem;
+        }
+        .hero-caption p {
             font-size: 0.9rem;
             color: var(--fg-muted);
             line-height: 1.5;
@@ -336,10 +377,9 @@
             border-radius: 12px;
             overflow: hidden;
         }
-        .screenshot-card img {
-            width: 100%;
-            height: auto;
-            display: block;
+        .screenshot-card .zoomable::after {
+            top: 8px;
+            right: 8px;
         }
         .screenshot-caption {
             padding: 1rem 1.2rem;
@@ -398,11 +438,9 @@
             overflow: hidden;
             border: 1px solid var(--card-border);
         }
-        .setup-screenshot a { display: block; }
-        .setup-screenshot img {
-            width: 100%;
-            height: auto;
-            display: block;
+        .setup-screenshot .zoomable::after {
+            top: 8px;
+            right: 8px;
         }
         .setup-screenshot-caption {
             padding: 0.8rem 1rem;
@@ -414,9 +452,10 @@
         /* Collapsible setup guide */
         .setup-details {
             background: var(--card);
-            border: 1px solid var(--card-border);
+            border: 2px solid var(--accent);
             border-radius: 12px;
             overflow: hidden;
+            box-shadow: 0 0 16px rgba(249, 115, 22, 0.15);
         }
         .setup-details summary {
             cursor: pointer;
@@ -424,18 +463,27 @@
             list-style: none;
             display: flex;
             flex-wrap: wrap;
-            align-items: baseline;
-            gap: 0.3rem 1rem;
+            align-items: center;
+            gap: 0.5rem 1rem;
         }
         .setup-details summary::-webkit-details-marker { display: none; }
         .setup-details summary::before {
-            content: '▸';
-            font-size: 1.1rem;
-            color: var(--accent);
-            transition: transform .2s;
-            margin-right: 0.3rem;
+            content: '🔑';
+            font-size: 1.3rem;
+            flex-shrink: 0;
         }
-        .setup-details[open] summary::before { transform: rotate(90deg); }
+        .setup-details summary::after {
+            content: '▾ Click to expand';
+            font-size: 0.78rem;
+            color: var(--accent);
+            margin-left: auto;
+            opacity: 0.8;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+        }
+        .setup-details[open] summary::after {
+            content: '▴ Click to collapse';
+        }
         .setup-details summary h2 {
             display: inline;
             font-size: 1.15rem;
@@ -445,7 +493,7 @@
             width: 100%;
             font-size: 0.9rem;
             color: var(--fg-muted);
-            margin: 0.2rem 0 0 1.4rem;
+            margin: 0.2rem 0 0 2.3rem;
         }
         .setup-details .setup-guide {
             border-top: 1px solid var(--card-border);
@@ -457,6 +505,25 @@
         .faq-item { margin-bottom: 1.5rem; }
         .faq-item h3 { font-size: 1.05rem; margin-bottom: 0.3rem; color: var(--fg); }
         .faq-item p { color: var(--fg-muted); font-size: 0.95rem; }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: rgba(0, 0, 0, 0.92);
+            justify-content: center;
+            align-items: center;
+            cursor: zoom-out;
+        }
+        .lightbox.active { display: flex; }
+        .lightbox img {
+            max-width: 95vw;
+            max-height: 95vh;
+            border-radius: 8px;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
+        }
 
         /* Footer */
         footer {
@@ -487,8 +554,11 @@
             <!-- Hero -->
             <section aria-label="Overview">
                 <figure class="hero-figure">
-                    <img src="screenshots/Intraday.png" alt="Claude Token Usage Tracker showing today's API costs per key in near real-time with per-model breakdown and rate limits" class="hero-img" width="1280" height="800" loading="eager">
-                    <figcaption class="hero-caption">The Intraday tab shows today's API costs per key in near real-time — with per-model breakdown, cost distribution bars, and live rate limits.</figcaption>
+                    <div class="zoomable"><img src="screenshots/Intraday.png" alt="Claude Token Usage Tracker showing today's API costs per key in near real-time with per-model breakdown and rate limits" class="hero-img" width="1280" height="800" loading="eager"></div>
+                    <figcaption class="hero-caption">
+                            <h3>Intraday</h3>
+                            <p>The Intraday tab shows today's API costs per key in near real-time — with per-model breakdown, cost distribution bars, and live rate limits.</p>
+                    </figcaption>
                 </figure>
 
                 <h2>What It Does</h2>
@@ -639,7 +709,7 @@
                 <div class="screenshots-grid">
 
                     <figure class="screenshot-card">
-                        <img src="screenshots/Model.png" alt="Claude Token Usage Tracker — Per-model cost breakdown showing Claude Opus and Sonnet with 4 cost categories and inline rate limits" width="1280" height="800" loading="lazy">
+                        <div class="zoomable"><img src="screenshots/Model.png" alt="Claude Token Usage Tracker — Per-model cost breakdown showing Claude Opus and Sonnet with 4 cost categories and inline rate limits" width="1280" height="800" loading="lazy"></div>
                         <figcaption class="screenshot-caption">
                             <h3>By Model</h3>
                             <p>Every Claude model you've used, sorted by version and tier. Each card shows total cost, a color-coded 4-category breakdown (Input, Cache Write, Cache Read, Output), and inline rate-limit pills when configured.</p>
@@ -647,7 +717,7 @@
                     </figure>
 
                     <figure class="screenshot-card">
-                        <img src="screenshots/Monat.png" alt="Claude Token Usage Tracker — Monthly cost breakdown with paginated month cards, color-coded distribution bars, and token categories" width="1280" height="800" loading="lazy">
+                        <div class="zoomable"><img src="screenshots/Monat.png" alt="Claude Token Usage Tracker — Monthly cost breakdown with paginated month cards, color-coded distribution bars, and token categories" width="1280" height="800" loading="lazy"></div>
                         <figcaption class="screenshot-caption">
                             <h3>By Month</h3>
                             <p>Paginated month cards with finalized costs from Anthropic's Cost API. Each card shows total spend, a proportional cost bar, and per-category stats. Pro users can expand each month for a per-API-key breakdown.</p>
@@ -655,7 +725,7 @@
                     </figure>
 
                     <figure class="screenshot-card">
-                        <img src="screenshots/Workspace.png" alt="Claude Token Usage Tracker — Workspace overview comparing costs across Production, Development, and Staging environments" width="1280" height="800" loading="lazy">
+                        <div class="zoomable"><img src="screenshots/Workspace.png" alt="Claude Token Usage Tracker — Workspace overview comparing costs across Production, Development, and Staging environments" width="1280" height="800" loading="lazy"></div>
                         <figcaption class="screenshot-caption">
                             <h3>By Workspace</h3>
                             <p>Compare API costs across all workspaces in your organization. Each workspace is shown as a card with its name and total cost, plus an organization-wide total at the bottom.</p>
@@ -663,7 +733,7 @@
                     </figure>
 
                     <figure class="screenshot-card">
-                        <img src="screenshots/Settings.png" alt="Claude Token Usage Tracker — Settings panel showing Admin API key configuration, API key filter for multi-project tracking, and display options" width="1280" height="800" loading="lazy">
+                        <div class="zoomable"><img src="screenshots/Settings.png" alt="Claude Token Usage Tracker — Settings panel showing Admin API key configuration, API key filter for multi-project tracking, and display options" width="1280" height="800" loading="lazy"></div>
                         <figcaption class="screenshot-caption">
                             <h3>Settings — API &amp; Display</h3>
                             <p>Configure your Admin API key (stored in macOS Keychain), filter costs by specific API keys, choose which tabs to display, and set the menu bar cost display mode (all-time, current year, current month, or intraday).</p>
@@ -671,7 +741,7 @@
                     </figure>
 
                     <figure class="screenshot-card">
-                        <img src="screenshots/Settings2.png" alt="Claude Token Usage Tracker — Settings panel showing spend limit configuration, notification thresholds, and per-model rate limit table" width="1280" height="800" loading="lazy">
+                        <div class="zoomable"><img src="screenshots/Settings2.png" alt="Claude Token Usage Tracker — Settings panel showing spend limit configuration, notification thresholds, and per-model rate limit table" width="1280" height="800" loading="lazy"></div>
                         <figcaption class="screenshot-caption">
                             <h3>Settings — Spend Limits &amp; Rate Limits</h3>
                             <p>Set a monthly spend limit with a visual budget bar, configure notification thresholds for spend alerts, and view live rate limits (requests/min, input/output tokens) for all Claude models.</p>
@@ -687,15 +757,13 @@
                     <summary><h2>Getting Your Admin API Key</h2><p class="setup-teaser">Need an Admin API key? Here's how to create one in the Anthropic Console in under a minute.</p></summary>
                     <div class="setup-guide">
                         <ol class="setup-steps">
-                            <li>Log in to the <a href="https://platform.claude.com/settings/admin-keys" target="_blank" rel="noopener">Anthropic Console</a> with an account that has <strong>organization admin</strong> access.</li>
-                            <li>Navigate to <strong>Organization Settings → Admin keys</strong> (or go directly to <a href="https://platform.claude.com/settings/admin-keys" target="_blank" rel="noopener">platform.claude.com/settings/admin-keys</a>).</li>
-                            <li>Click <strong>+ Create Admin Key</strong>, give it a name, and copy the key.</li>
-                            <li>Open Claude Token Usage Tracker → <strong>Settings</strong> → paste the key. It's stored securely in the macOS Keychain.</li>
+                            <li><span>Log in to the <a href="https://platform.claude.com/settings/admin-keys" target="_blank" rel="noopener">Anthropic Console</a> with an account that has <strong>organization admin</strong> access.</span></li>
+                            <li><span>Navigate to <strong>Organization Settings → Admin keys</strong> (or go directly to <a href="https://platform.claude.com/settings/admin-keys" target="_blank" rel="noopener">platform.claude.com/settings/admin-keys</a>).</span></li>
+                            <li><span>Click <strong>+ Create Admin Key</strong>, give it a name, and copy the key.</span></li>
+                            <li><span>Open Claude Token Usage Tracker → <strong>Settings</strong> → paste the key. It's stored securely in the macOS Keychain.</span></li>
                         </ol>
                         <div class="setup-screenshot">
-                            <a href="https://platform.claude.com/settings/admin-keys" target="_blank" rel="noopener">
-                                <img src="screenshots/Claude-Console-Admin-Key.png" alt="Anthropic Console showing the Admin keys page at platform.claude.com/settings/admin-keys — where you create the Admin API key needed for Claude Token Usage Tracker" width="1726" height="953" loading="lazy">
-                            </a>
+                            <div class="zoomable"><img src="screenshots/Claude-Console-Admin-Key.png" alt="Anthropic Console showing the Admin keys page at platform.claude.com/settings/admin-keys — where you create the Admin API key needed for Claude Token Usage Tracker" width="1726" height="953" loading="lazy"></div>
                             <p class="setup-screenshot-caption">The Admin keys page in the Anthropic Console — create an Admin key here and paste it into the app's Settings.</p>
                         </div>
                     </div>
@@ -759,5 +827,36 @@
         </footer>
 
     </div>
+
+    <div class="lightbox" id="lightbox" role="dialog" aria-label="Screenshot fullscreen view">
+        <img id="lightbox-img" src="" alt="">
+    </div>
+
+    <script>
+    (function() {
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+
+        document.querySelectorAll('.zoomable img').forEach(function(img) {
+            img.addEventListener('click', function() {
+                lightboxImg.src = this.src;
+                lightboxImg.alt = this.alt;
+                lightbox.classList.add('active');
+            });
+        });
+
+        lightbox.addEventListener('click', function() {
+            lightbox.classList.remove('active');
+            lightboxImg.src = '';
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                lightbox.classList.remove('active');
+                lightboxImg.src = '';
+            }
+        });
+    })();
+    </script>
 </body>
 </html>
