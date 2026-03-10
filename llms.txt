@@ -2,40 +2,76 @@
 
 > A native macOS menu bar app to monitor Anthropic Claude API token usage and costs in near real-time.
 
-## Overview
-
 Claude Token Usage Tracker is a macOS menu bar application for developers and teams using the Anthropic Claude API. It connects to the Anthropic Admin API and displays API costs broken down by month, model, workspace, and API key — directly in the macOS menu bar or as a detached popover window.
 
 ## Key Facts
 
-- Platform: macOS 14.0+ (Sonoma)
-- Built with: Swift, SwiftUI, Apple system frameworks only
+- Platform: macOS 14.0+ (Sonoma), universal binary (Apple Silicon + Intel)
+- Built with: Swift 5.9+, SwiftUI, Apple system frameworks only
 - Distribution: Mac App Store
 - Developer: Siegfried-Thor Bolz
-- No third-party dependencies
+- No third-party dependencies — zero external Swift packages or CocoaPods
 - API key stored in macOS Keychain
+- No analytics, telemetry, or crash reporting
+- Supports English and Spanish
 
 ## Core Features
 
-- Near real-time cost tracking via Intraday tab (~1 hour delay)
-- Monthly cost breakdown with pagination (~2 day delay from Anthropic Cost API)
-- Per-model cost view (Claude Opus, Sonnet, Haiku) with 4 cost categories
+- Near real-time cost tracking via Intraday tab (~1 hour delay from Anthropic Usage API)
+- Monthly cost breakdown with paginated month cards (~2 day delay from Anthropic Cost API)
+- Per-model cost view (Claude Opus, Sonnet, Haiku — all versions) with 4 cost categories (Input, Cache Creation, Cache Read, Output)
 - Per-API-key cost filtering — isolate costs by project, bot, or team
 - Workspace overview — compare usage across workspaces
-- Live rate limits per model (requests/min, input tokens, output tokens)
-- Spend limit tracking with visual progress bar
-- Spend threshold notifications via native macOS notifications
-- Multi-currency support (USD, EUR, GBP, and more)
-- CSV export for reporting and accounting
-- Built-in localhost JSON API for dashboard and MCP integration
+- Live rate limits per model (requests/min, input tokens/min, output tokens/min)
+- Spend limit tracking with visual progress bar (green/orange/red)
+- Spend threshold notifications via native macOS notifications (fires once per month per threshold)
+- 12-currency support (USD, EUR, GBP, JPY, CNY, CHF, CAD, AUD, KRW, INR, BRL, SEK) with real-time exchange rates
+- CSV export per tab — tailored format for Monthly, Model, Workspace, Intraday
+- Built-in localhost JSON API (MCP server) for dashboard and tool integration
 - Detached popover mode — keep the window visible while working
+- Menu bar cost display — optionally show current cost in macOS menu bar text
+- Auto-refresh every 30 minutes (configurable)
+- Demo mode with bundled sample data
+- Dynamic model discovery via Anthropic Models API
+- 4-tier pricing engine: LiteLLM → custom URL → bundled JSON → hardcoded fallback
+
+## Pricing Model
+
+- 7-day free trial with full Pro access
+- Free tier (after trial): By Month tab, By Workspace tab, CSV export, currency conversion, auto-refresh, 1 API key
+- Pro tier (one-time purchase): Intraday tab, By Model tab, per-API-key breakdown in monthly view, unlimited API keys, rate limits display, MCP server
 
 ## Use Cases
 
 - Developers tracking Claude API spend for coding agents (Cursor, Windsurf, Claude Code)
-- Teams monitoring per-project API costs
+- Teams monitoring per-project API costs via API key filtering
 - Organizations managing multiple API keys and workspaces
 - Budget tracking and spend limit alerting for Anthropic API usage
+- Integration with dashboards and monitoring tools via the localhost JSON API
+
+## Data Freshness
+
+- Intraday tab: ~1 hour delay (Anthropic Usage API, token-based estimates)
+- Monthly tab: ~2 day delay (Anthropic Cost API, finalized dollar amounts)
+- Smart gap-fetching: only downloads missing days, not entire history
+- Staleness detection: auto-upgrades to full refresh if cache is >2 days behind
+
+## Security & Privacy
+
+- Admin API key stored in macOS Keychain (never plaintext)
+- HTTPS exclusively for all outbound API calls
+- MCP server bound to 127.0.0.1 only (localhost, no external access)
+- No analytics, telemetry, or crash reporting
+- Zero third-party dependencies
+- API keys masked by default in Settings UI
+
+## Technical Architecture
+
+- MVVM pattern with SwiftUI views and Combine-based reactive data flow
+- Progressive loading: 6 phases (pricing → API keys → monthly/model → workspace → intraday → exchange rates → per-key)
+- Cache files stored in ~/Library/Application Support/ClaudeTokenUsageTracker/
+- Configurable API base URL for proxies/enterprise setups
+- Custom exchange rate endpoint support
 
 ## Requirements
 
@@ -44,5 +80,8 @@ Claude Token Usage Tracker is a macOS menu bar application for developers and te
 
 ## Links
 
+- Website: https://siegfriedbolz.github.io/claude-token-usage-tracker/
 - Repository: https://github.com/siegfriedbolz/claude-token-usage-tracker
 - Support: https://github.com/siegfriedbolz/claude-token-usage-tracker/issues
+- Privacy Policy: https://siegfriedbolz.github.io/claude-token-usage-tracker/privacy-policy.html
+- Full documentation: https://siegfriedbolz.github.io/claude-token-usage-tracker/llms-full.txt

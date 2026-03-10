@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="logo-round.png" alt="Claude Token Usage Tracker icon" width="128" height="128">
+
 # Claude Token Usage Tracker
 
 ### Know exactly what your Claude API costs — right from your macOS menu bar.
@@ -83,11 +85,17 @@ Your Admin API key is stored in the **macOS Keychain** — never in plain text. 
 
 ---
 
-## How It Works
+## Getting Your Admin API Key
 
-1. **Get your Anthropic Admin API key** from the [Anthropic Console](https://console.anthropic.com/) (Organization Settings → API Keys → Admin Key).
-2. **Paste the key** into the app's Settings.
-3. **Done.** The app fetches your usage data and shows costs in the menu bar.
+The app requires an **Anthropic Admin API key** to read your organization's usage and cost data. Here's how to get one:
+
+1. **Log in** to the [Anthropic Console](https://platform.claude.com/settings/admin-keys) with an account that has **organization admin** access.
+2. **Navigate** to **Organization Settings → Admin keys** (or go directly to [platform.claude.com/settings/admin-keys](https://platform.claude.com/settings/admin-keys)).
+3. **Click** `+ Create Admin Key`, give it a name, and copy the key.
+4. **Open** Claude Token Usage Tracker → **Settings** → paste the key. It's stored securely in the macOS Keychain.
+
+[![Anthropic Console — Admin keys page](screenshots/Claude-Console-Admin-Key.png)](https://platform.claude.com/settings/admin-keys)
+*The Admin keys page in the Anthropic Console — create your Admin key here and paste it into the app.*
 
 The app queries the Anthropic Admin API for usage reports, API key metadata, workspace info, and rate limits. All data is cached locally to minimize API calls.
 

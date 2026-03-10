@@ -4,20 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Claude Token Usage Tracker — macOS Menu Bar App for Anthropic API Costs</title>
-    <meta name="description" content="A native macOS menu bar app to monitor Anthropic Claude API token usage and costs in near real-time. Track spending by model, workspace, and API key.">
-    <meta name="keywords" content="Claude, Anthropic, API, token usage, cost tracker, macOS, menu bar app, Claude API costs, Claude Opus, Claude Sonnet, Claude Haiku, API monitoring, developer tools, Swift, SwiftUI, Mac App Store, spend tracking, rate limits, Claude Code, Cursor, Windsurf">
+    <meta name="description" content="A native macOS menu bar app to monitor Anthropic Claude API token usage and costs in near real-time. Track spending by model, workspace, and API key — right from your menu bar.">
+    <meta name="keywords" content="Claude, Anthropic, API, token usage, cost tracker, macOS, menu bar app, Claude API costs, Claude Opus, Claude Sonnet, Claude Haiku, API monitoring, developer tools, Swift, SwiftUI, Mac App Store, spend tracking, rate limits, Claude Code, Cursor, Windsurf, API cost monitoring, token counter, budget alerts">
     <meta name="author" content="Siegfried-Thor Bolz">
-    <meta name="robots" content="index, follow">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
     <link rel="canonical" href="https://siegfriedbolz.github.io/claude-token-usage-tracker/">
+
+    <!-- Additional meta tags -->
+    <meta name="theme-color" content="#1a1a2e">
+    <meta name="color-scheme" content="dark">
+    <meta name="application-name" content="Claude Token Usage Tracker">
+    <meta name="apple-mobile-web-app-title" content="Claude Token Usage Tracker">
+    <meta name="format-detection" content="telephone=no">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://siegfriedbolz.github.io/claude-token-usage-tracker/">
-    <meta property="og:title" content="Claude Token Usage Tracker — macOS Menu Bar App">
-    <meta property="og:description" content="Monitor your Anthropic Claude API token usage and costs in near real-time. Track spending by model, workspace, and API key — right from your macOS menu bar.">
+    <meta property="og:title" content="Claude Token Usage Tracker — macOS Menu Bar App for Anthropic API Costs">
+    <meta property="og:description" content="Monitor your Anthropic Claude API token usage and costs in near real-time. Track spending by model, workspace, and API key — right from your macOS menu bar. Built with Swift, zero third-party dependencies.">
     <meta property="og:image" content="https://raw.githubusercontent.com/siegfriedbolz/claude-token-usage-tracker/main/screenshots/Intraday.png">
     <meta property="og:image:width" content="1280">
     <meta property="og:image:height" content="800">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:alt" content="Claude Token Usage Tracker showing intraday API cost breakdown per key with live rate limits">
     <meta property="og:site_name" content="Claude Token Usage Tracker">
     <meta property="og:locale" content="en_US">
 
@@ -26,94 +35,742 @@
     <meta name="twitter:title" content="Claude Token Usage Tracker — macOS Menu Bar App">
     <meta name="twitter:description" content="Monitor your Anthropic Claude API token usage and costs in near real-time. Track spending by model, workspace, and API key.">
     <meta name="twitter:image" content="https://raw.githubusercontent.com/siegfriedbolz/claude-token-usage-tracker/main/screenshots/Intraday.png">
+    <meta name="twitter:image:alt" content="Claude Token Usage Tracker showing intraday API cost breakdown per key with live rate limits">
 
-    <!-- Schema.org structured data -->
+    <!-- Schema.org structured data — SoftwareApplication -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
         "name": "Claude Token Usage Tracker",
-        "operatingSystem": "macOS 14.0+",
+        "operatingSystem": "macOS 14.0 (Sonoma) or later",
         "applicationCategory": "DeveloperApplication",
-        "description": "A native macOS menu bar app to monitor Anthropic Claude API token usage and costs in near real-time. Breakdowns by model, workspace, month, and API key.",
+        "applicationSubCategory": "API Monitoring",
+        "description": "A native macOS menu bar app to monitor Anthropic Claude API token usage and costs in near real-time. Provides breakdowns by model, workspace, month, and API key. Built with Swift and SwiftUI — zero third-party dependencies.",
         "author": {
             "@type": "Person",
-            "name": "Siegfried-Thor Bolz"
+            "name": "Siegfried-Thor Bolz",
+            "url": "https://github.com/siegfriedbolz"
         },
+        "image": "https://raw.githubusercontent.com/siegfriedbolz/claude-token-usage-tracker/main/logo.png",
         "offers": {
             "@type": "Offer",
             "availability": "https://schema.org/InStock",
-            "category": "Paid"
+            "category": "Paid",
+            "priceCurrency": "USD"
         },
-        "screenshot": "https://raw.githubusercontent.com/siegfriedbolz/claude-token-usage-tracker/main/screenshots/Intraday.png",
+        "screenshot": [
+            "https://raw.githubusercontent.com/siegfriedbolz/claude-token-usage-tracker/main/screenshots/Intraday.png",
+            "https://raw.githubusercontent.com/siegfriedbolz/claude-token-usage-tracker/main/screenshots/Model.png",
+            "https://raw.githubusercontent.com/siegfriedbolz/claude-token-usage-tracker/main/screenshots/Monat.png",
+            "https://raw.githubusercontent.com/siegfriedbolz/claude-token-usage-tracker/main/screenshots/Workspace.png",
+            "https://raw.githubusercontent.com/siegfriedbolz/claude-token-usage-tracker/main/screenshots/Settings.png",
+            "https://raw.githubusercontent.com/siegfriedbolz/claude-token-usage-tracker/main/screenshots/Settings2.png"
+        ],
         "softwareRequirements": "macOS 14.0 (Sonoma) or later, Anthropic Admin API key",
-        "keywords": "Claude, Anthropic, API, token usage, cost tracker, macOS, menu bar, developer tools"
+        "featureList": "Near real-time intraday cost tracking, Monthly cost breakdown with full history, Per-model cost view (Opus Sonnet Haiku), Per-API-key cost filtering, Workspace cost comparison, Live rate limits per model, Spend limit tracking with macOS notifications, 12-currency support with real-time exchange rates, CSV export, Localhost JSON API and MCP server, Detached popover window mode, macOS Keychain security with zero third-party dependencies",
+        "datePublished": "2025-01-01",
+        "url": "https://siegfriedbolz.github.io/claude-token-usage-tracker/",
+        "keywords": "Claude, Anthropic, API, token usage, cost tracker, macOS, menu bar, developer tools, Claude Code, Cursor, Windsurf"
+    }
+    </script>
+
+    <!-- Schema.org structured data — FAQPage -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Why does the app ask for my macOS password?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "On first launch, macOS shows a standard security prompt asking for your account password. This is normal — macOS requires it whenever a new app creates an entry in the system Keychain. The app only stores and reads its own Keychain item (your Anthropic Admin API key). No other passwords, credentials, or Keychain entries are accessed."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What are the system requirements?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "You need macOS 14.0 (Sonoma) or later and an Anthropic Admin API key, which requires organization admin access in your Anthropic Console."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How fresh is the cost data?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The Intraday tab shows near real-time usage with approximately 1 hour delay from Anthropic's Usage API. The Monthly tab uses Anthropic's Cost API which provides finalized dollar amounts with approximately 2 days of reporting lag."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Does the app send my data to third parties?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No. The app communicates only with Anthropic's official API endpoints and an exchange rate service for currency conversion. There is no analytics, no telemetry, no crash reporting, and zero third-party dependencies. Your Admin API key is stored exclusively in the macOS Keychain."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is there a free version?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. The app includes a 7-day free trial with full Pro access. After the trial, basic features (Monthly and Workspace tabs, CSV export, currency conversion, auto-refresh) remain free. Pro features (Intraday tab, Model tab, API Key breakdowns, rate limits, MCP server, unlimited API keys) require a one-time purchase."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Which Claude models are supported?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "All Claude models are supported, including Claude Opus, Claude Sonnet, and Claude Haiku in all versions. The app uses dynamic model discovery via the Anthropic Models API and a multi-tier pricing engine to automatically support new models as soon as they are released."
+                }
+            }
+        ]
+    }
+    </script>
+
+    <!-- Schema.org structured data — HowTo -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        "name": "How to Track Your Claude API Costs with Claude Token Usage Tracker",
+        "description": "Set up Claude Token Usage Tracker on macOS to monitor your Anthropic Claude API token usage and spending in near real-time.",
+        "step": [
+            {
+                "@type": "HowToStep",
+                "position": 1,
+                "name": "Get your Admin API key",
+                "url": "https://platform.claude.com/settings/admin-keys",
+                "text": "Log in to the Anthropic Console with organization admin access. Navigate to Organization Settings → Admin keys and click '+ Create Admin Key'. Copy the key.",
+                "image": "https://siegfriedbolz.github.io/claude-token-usage-tracker/screenshots/Claude-Console-Admin-Key.png"
+            },
+            {
+                "@type": "HowToStep",
+                "position": 2,
+                "name": "Install the app and enter your key",
+                "text": "Download Claude Token Usage Tracker from the Mac App Store. Open Settings and paste your Admin API key. The key is stored securely in the macOS Keychain."
+            },
+            {
+                "@type": "HowToStep",
+                "position": 3,
+                "name": "View your costs",
+                "text": "The app fetches your usage data and shows costs broken down by month, model, workspace, and API key. The Intraday tab shows today's costs in near real-time. Set up spend alerts to get notified when you reach a budget threshold."
+            }
+        ]
+    }
+    </script>
+
+    <!-- Schema.org structured data — WebSite -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Claude Token Usage Tracker",
+        "url": "https://siegfriedbolz.github.io/claude-token-usage-tracker/",
+        "description": "Official website for Claude Token Usage Tracker — a native macOS menu bar app to monitor Anthropic Claude API token usage and costs."
+    }
+    </script>
+
+    <!-- Schema.org structured data — BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://siegfriedbolz.github.io/claude-token-usage-tracker/"
+            }
+        ]
     }
     </script>
 
     <style>
-        :root { --bg: #1a1a2e; --fg: #e0e0e0; --accent: #f97316; --card: #16213e; }
+        :root {
+            --bg: #1a1a2e;
+            --fg: #e0e0e0;
+            --fg-muted: #aaa;
+            --accent: #f97316;
+            --accent-hover: #fb923c;
+            --card: #16213e;
+            --card-border: #1e2d4a;
+            --card-hover: #1a2e4e;
+        }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif; background: var(--bg); color: var(--fg); line-height: 1.6; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
+            background: var(--bg);
+            color: var(--fg);
+            line-height: 1.7;
+        }
         .container { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
-        h1 { font-size: 2.2rem; margin-bottom: 0.5rem; }
-        .tagline { font-size: 1.2rem; color: #aaa; margin-bottom: 2rem; }
-        .hero-img { width: 100%; border-radius: 12px; margin: 1.5rem 0; box-shadow: 0 8px 32px rgba(0,0,0,0.4); }
-        h2 { font-size: 1.4rem; margin-top: 2rem; margin-bottom: 0.8rem; color: var(--accent); }
-        ul { list-style: none; padding: 0; }
-        ul li { padding: 0.3rem 0; }
-        ul li::before { content: "→ "; color: var(--accent); }
-        .cta { display: inline-block; margin-top: 1.5rem; padding: 0.8rem 1.6rem; background: var(--accent); color: #fff; text-decoration: none; border-radius: 8px; font-weight: 600; }
-        .cta:hover { opacity: 0.9; }
-        footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid #333; color: #888; font-size: 0.85rem; }
         a { color: var(--accent); }
+        a:hover { color: var(--accent-hover); }
+
+        /* Header */
+        header { margin-bottom: 2rem; }
+        .header-brand { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.4rem; }
+        .app-logo { width: 64px; height: 64px; flex-shrink: 0; border-radius: 50%; }
+        h1 { font-size: 2.4rem; margin-bottom: 0; letter-spacing: -0.02em; }
+        .tagline { font-size: 1.25rem; color: var(--fg-muted); margin-bottom: 1.5rem; }
+
+        /* Sections */
+        section { margin-top: 2.5rem; }
+        h2 { font-size: 1.5rem; margin-bottom: 1rem; color: var(--accent); }
+
+        /* Hero image */
+        .hero-figure { margin: 1.5rem 0; }
+        .hero-img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+            display: block;
+        }
+        .hero-caption {
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--fg-muted);
+            line-height: 1.5;
+        }
+
+        /* Feature accordion */
+        .features-grid {
+            display: grid;
+            gap: 0.6rem;
+        }
+        .feature-item {
+            background: var(--card);
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: border-color 0.2s;
+        }
+        .feature-item:hover {
+            border-color: var(--accent);
+        }
+        .feature-item[open] {
+            border-color: var(--accent);
+        }
+        .feature-item summary {
+            padding: 0.9rem 1.2rem;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            font-weight: 600;
+            font-size: 1rem;
+            user-select: none;
+        }
+        .feature-item summary::-webkit-details-marker { display: none; }
+        .feature-item summary::before {
+            content: "→";
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 1rem;
+            transition: transform 0.2s;
+            flex-shrink: 0;
+        }
+        .feature-item[open] summary::before {
+            transform: rotate(90deg);
+        }
+        .feature-title { flex: 1; }
+        .feature-teaser {
+            font-weight: 400;
+            color: var(--fg-muted);
+            font-size: 0.88rem;
+        }
+        .feature-body {
+            padding: 0 1.2rem 1rem 2.6rem;
+            color: var(--fg);
+            font-size: 0.92rem;
+            line-height: 1.7;
+        }
+        .feature-body p { margin-bottom: 0.5rem; }
+        .feature-body p:last-child { margin-bottom: 0; }
+
+        /* CTA */
+        .cta-wrapper {
+            text-align: center;
+            margin: 2rem 0;
+        }
+        .cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 1rem 2.2rem;
+            background: linear-gradient(135deg, var(--accent), #e8590c);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1.15rem;
+            letter-spacing: 0.01em;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 20px rgba(249, 115, 22, 0.35);
+        }
+        .cta:hover {
+            background: linear-gradient(135deg, var(--accent-hover), var(--accent));
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 28px rgba(249, 115, 22, 0.5);
+        }
+        .cta svg {
+            width: 22px;
+            height: 22px;
+            fill: #fff;
+            flex-shrink: 0;
+        }
+        .cta-hint {
+            display: block;
+            text-align: center;
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--fg-muted);
+        }
+
+        /* Screenshots section */
+        .screenshots-grid {
+            display: grid;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+        .screenshot-card {
+            background: var(--card);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .screenshot-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .screenshot-caption {
+            padding: 1rem 1.2rem;
+        }
+        .screenshot-caption h3 {
+            font-size: 1.05rem;
+            color: var(--accent);
+            margin-bottom: 0.3rem;
+        }
+        .screenshot-caption p {
+            font-size: 0.9rem;
+            color: var(--fg-muted);
+            line-height: 1.5;
+        }
+
+        /* Setup guide */
+        .setup-guide {
+            background: var(--card);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 1rem;
+        }
+        .setup-steps {
+            list-style: none;
+            counter-reset: step;
+            margin: 1rem 0 0;
+        }
+        .setup-steps li {
+            counter-increment: step;
+            display: flex;
+            gap: 0.8rem;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        .setup-steps li::before {
+            content: counter(step);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 2rem;
+            height: 2rem;
+            background: var(--accent);
+            color: #fff;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+            margin-top: 0.1rem;
+        }
+        .setup-steps li:last-child { margin-bottom: 0; }
+        .setup-screenshot {
+            margin-top: 1.2rem;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid var(--card-border);
+        }
+        .setup-screenshot a { display: block; }
+        .setup-screenshot img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .setup-screenshot-caption {
+            padding: 0.8rem 1rem;
+            background: var(--card);
+            font-size: 0.85rem;
+            color: var(--fg-muted);
+        }
+
+        /* Collapsible setup guide */
+        .setup-details {
+            background: var(--card);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .setup-details summary {
+            cursor: pointer;
+            padding: 1.2rem 1.5rem;
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 0.3rem 1rem;
+        }
+        .setup-details summary::-webkit-details-marker { display: none; }
+        .setup-details summary::before {
+            content: '▸';
+            font-size: 1.1rem;
+            color: var(--accent);
+            transition: transform .2s;
+            margin-right: 0.3rem;
+        }
+        .setup-details[open] summary::before { transform: rotate(90deg); }
+        .setup-details summary h2 {
+            display: inline;
+            font-size: 1.15rem;
+            margin: 0;
+        }
+        .setup-teaser {
+            width: 100%;
+            font-size: 0.9rem;
+            color: var(--fg-muted);
+            margin: 0.2rem 0 0 1.4rem;
+        }
+        .setup-details .setup-guide {
+            border-top: 1px solid var(--card-border);
+            border-radius: 0;
+            margin-top: 0;
+        }
+
+        /* FAQ */
+        .faq-item { margin-bottom: 1.5rem; }
+        .faq-item h3 { font-size: 1.05rem; margin-bottom: 0.3rem; color: var(--fg); }
+        .faq-item p { color: var(--fg-muted); font-size: 0.95rem; }
+
+        /* Footer */
+        footer {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #333;
+            color: #888;
+            font-size: 0.85rem;
+        }
+        footer nav { margin-top: 0.3rem; }
+        footer nav a { margin-right: 1.2rem; }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Claude Token Usage Tracker</h1>
-        <p class="tagline">Know exactly what your Claude API costs — right from your macOS menu bar.</p>
 
-        <img src="screenshots/Intraday.png" alt="Claude Token Usage Tracker — Intraday cost view showing per-API-key breakdown with live rate limits" class="hero-img" loading="lazy">
+        <!-- Header -->
+        <header>
+            <div class="header-brand">
+                <img src="logo.png" alt="Claude Token Usage Tracker icon" class="app-logo" width="64" height="64">
+                <h1>Claude Token Usage Tracker</h1>
+            </div>
+            <p class="tagline">Know exactly what your Claude API costs — right from your macOS menu bar.</p>
+        </header>
 
-        <h2>What It Does</h2>
-        <p>A native macOS menu bar app that connects to the Anthropic Admin API and shows your organization's Claude API usage and costs — broken down by month, model, workspace, and API key.</p>
+        <main>
 
-        <h2>Features</h2>
-        <ul>
-            <li>Near real-time cost tracking via Intraday tab (~1h delay)</li>
-            <li>Monthly cost breakdown with full history</li>
-            <li>Per-model cost view — Claude Opus, Sonnet, Haiku</li>
-            <li>Per-API-key filtering — isolate costs by project or bot</li>
-            <li>Workspace overview — compare across environments</li>
-            <li>Live rate limits per model</li>
-            <li>Spend limit tracking with notifications</li>
-            <li>Multi-currency support (USD, EUR, GBP, and more)</li>
-            <li>CSV export for reporting</li>
-            <li>Built-in JSON API for integrations</li>
-            <li>Detached popover mode</li>
-            <li>Secure — API key in macOS Keychain, zero third-party dependencies</li>
-        </ul>
+            <!-- Hero -->
+            <section aria-label="Overview">
+                <figure class="hero-figure">
+                    <img src="screenshots/Intraday.png" alt="Claude Token Usage Tracker showing today's API costs per key in near real-time with per-model breakdown and rate limits" class="hero-img" width="1280" height="800" loading="eager">
+                    <figcaption class="hero-caption">The Intraday tab shows today's API costs per key in near real-time — with per-model breakdown, cost distribution bars, and live rate limits.</figcaption>
+                </figure>
 
-        <h2>Why does the app ask for my macOS password?</h2>
-        <p>On first launch, macOS shows a standard security prompt asking for your account password. This is normal — macOS requires it whenever a new app creates an entry in the system Keychain. The app only stores and reads its own Keychain item (your Anthropic Admin API key). No other passwords, credentials, or Keychain entries are accessed. See our <a href="privacy-policy.html">Privacy Policy</a> for full details.</p>
+                <h2>What It Does</h2>
+                <p>A native macOS menu bar app that connects to the <strong>Anthropic Admin API</strong> and shows your organization's Claude API usage and costs — broken down by <strong>month</strong>, <strong>model</strong>, <strong>workspace</strong>, and <strong>API key</strong>. Built with Swift and SwiftUI, it runs entirely on Apple system frameworks with zero third-party dependencies. Your Admin API key is stored securely in the macOS Keychain.</p>
+                <p>Whether you're using <strong>Claude Code</strong>, <strong>Cursor</strong>, <strong>Windsurf</strong>, or calling the Anthropic API directly — this app gives you full visibility into what you're spending.</p>
 
-        <h2>Requirements</h2>
-        <p>macOS 14.0 (Sonoma) or later. Requires an Anthropic Admin API key.</p>
+                <div class="cta-wrapper">
+                    <!-- TODO: Replace href with actual Mac App Store link -->
+                    <a class="cta" href="#download"><svg viewBox="0 0 384 512" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184 4 273.5c0 26.2 4.8 53.3 14.4 81.2 12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>Download on the Mac App Store</a>
+                    <span class="cta-hint">Requires macOS 14.0 (Sonoma) &middot; Free 7-day trial</span>
+                </div>
+            </section>
 
-        <!-- TODO: Replace with actual Mac App Store link -->
-        <a class="cta" href="#download">Download on the Mac App Store</a>
+            <!-- Features Accordion -->
+            <section aria-label="Features">
+                <h2>Features</h2>
+                <p style="color: var(--fg-muted); margin-bottom: 1rem; font-size: 0.95rem;">Click any feature to learn more.</p>
 
-        <h2>More Screenshots</h2>
-        <img src="screenshots/Model.png" alt="Claude Token Usage Tracker — Per-model cost breakdown showing Claude Opus and Sonnet with 4 cost categories and rate limits" class="hero-img" loading="lazy">
-        <img src="screenshots/Monat.png" alt="Claude Token Usage Tracker — Monthly cost breakdown with token categories and spend history" class="hero-img" loading="lazy">
-        <img src="screenshots/Workspace.png" alt="Claude Token Usage Tracker — Workspace overview comparing Production, Development, and Staging costs" class="hero-img" loading="lazy">
-        <img src="screenshots/Settings.png" alt="Claude Token Usage Tracker — Settings panel with Admin API key configuration, API key filter, and display options" class="hero-img" loading="lazy">
-        <img src="screenshots/Settings2.png" alt="Claude Token Usage Tracker — Settings panel with spend limit, spend notifications, and rate limits per model" class="hero-img" loading="lazy">
+                <div class="features-grid">
 
+                    <details class="feature-item">
+                        <summary>
+                            <span class="feature-title">Near Real-Time Cost Tracking <span class="feature-teaser">— see today's spend as it happens</span></span>
+                        </summary>
+                        <div class="feature-body">
+                            <p>The <strong>Intraday tab</strong> shows today's API costs per key with approximately 1 hour delay from Anthropic's Usage API. Each API key is displayed as a card with per-model breakdown, color-coded cost distribution bars (Input, Cache Creation, Cache Read, Output), and estimated totals.</p>
+                            <p>A dedicated refresh button lets you pull the latest intraday data independently from the rest of the app. If you've configured a spend limit, a combined progress bar shows your month-to-date cost plus today's estimate against your budget.</p>
+                        </div>
+                    </details>
+
+                    <details class="feature-item">
+                        <summary>
+                            <span class="feature-title">Monthly Cost Breakdown <span class="feature-teaser">— full history with token-level detail</span></span>
+                        </summary>
+                        <div class="feature-body">
+                            <p>The <strong>By Month tab</strong> shows paginated month cards (2 per page) with costs from Anthropic's Cost API — finalized dollar amounts with approximately 2 days of reporting lag. Each month card displays the total cost, a color-coded cost distribution bar, and a 2×2 grid showing per-category costs (Input, Cache Creation, Cache Read, Output) with percentages.</p>
+                            <p>Pro users can expand each month to see a <strong>per-API-key breakdown</strong> — isolating exactly how much each project, bot, or team member spent. An all-time grand total appears at the bottom across all months.</p>
+                        </div>
+                    </details>
+
+                    <details class="feature-item">
+                        <summary>
+                            <span class="feature-title">Per-Model Cost View <span class="feature-teaser">— Opus, Sonnet, Haiku at a glance</span></span>
+                        </summary>
+                        <div class="feature-body">
+                            <p>The <strong>By Model tab</strong> lists every Claude model you've used — Claude Opus, Sonnet, and Haiku in all versions — sorted by version (newest first) and tier. Each model card shows total cost, a color-coded distribution bar, and a stat grid with the 4 cost categories (only those with actual usage).</p>
+                            <p>If you've configured rate limits, each model also displays inline rate limit pills showing requests per minute, input tokens per minute, and output tokens per minute. The app uses <strong>dynamic model discovery</strong> via the Anthropic Models API, so new Claude models are supported automatically.</p>
+                        </div>
+                    </details>
+
+                    <details class="feature-item">
+                        <summary>
+                            <span class="feature-title">Per-API-Key Filtering <span class="feature-teaser">— isolate costs by project, bot, or team</span></span>
+                        </summary>
+                        <div class="feature-body">
+                            <p>In Settings, you can select which API keys to include in cost calculations. This lets you <strong>isolate costs by project</strong> (e.g., only show costs for your production bot) or compare spending across different API keys used by different team members or services.</p>
+                            <p>The filter applies across all tabs — Monthly, Model, Workspace, and Intraday. Free tier supports 1 API key; Pro unlocks unlimited keys.</p>
+                        </div>
+                    </details>
+
+                    <details class="feature-item">
+                        <summary>
+                            <span class="feature-title">Workspace Overview <span class="feature-teaser">— compare costs across environments</span></span>
+                        </summary>
+                        <div class="feature-body">
+                            <p>The <strong>By Workspace tab</strong> shows per-workspace cost breakdowns from Anthropic's Cost API. Each workspace is displayed as a card with its name and total cost, making it easy to compare spending across Production, Development, Staging, or any other workspace in your organization.</p>
+                            <p>An "All Workspaces" total appears at the bottom for a quick organization-wide overview.</p>
+                        </div>
+                    </details>
+
+                    <details class="feature-item">
+                        <summary>
+                            <span class="feature-title">Live Rate Limits <span class="feature-teaser">— requests/min, input &amp; output tokens per model</span></span>
+                        </summary>
+                        <div class="feature-body">
+                            <p>Enter a regular Claude API key in Settings to probe your current rate limits. The app sends a <strong>minimal 1-token request</strong> per model (costing approximately $0.0001) to read the rate limit headers returned by Anthropic. Results show requests per minute, input tokens per minute, and output tokens per minute for each model.</p>
+                            <p>Rate limits are displayed inline on model cards and in a dedicated table in Settings. Results are cached across sessions, and the feature supports all models discovered via the Anthropic Models API.</p>
+                        </div>
+                    </details>
+
+                    <details class="feature-item">
+                        <summary>
+                            <span class="feature-title">Spend Alerts &amp; Limit Tracking <span class="feature-teaser">— get notified before you overspend</span></span>
+                        </summary>
+                        <div class="feature-body">
+                            <p>Set a <strong>monthly spend limit</strong> (in USD) that mirrors your Anthropic Console setting. A visual budget progress bar shows your current spend as a percentage — green below 75%, orange at 75–90%, and red above 90%.</p>
+                            <p>Enable <strong>spend threshold notifications</strong> to receive a native macOS notification when your costs reach a configurable USD amount. Notifications fire once per calendar month (per threshold). You can test the notification from Settings to make sure it's working.</p>
+                        </div>
+                    </details>
+
+                    <details class="feature-item">
+                        <summary>
+                            <span class="feature-title">12-Currency Support <span class="feature-teaser">— USD, EUR, GBP, JPY, and 8 more</span></span>
+                        </summary>
+                        <div class="feature-body">
+                            <p>Switch between <strong>12 currencies</strong> with a single click via the flag-based dropdown in the header: USD, EUR, GBP, JPY, CNY, CHF, CAD, AUD, KRW, INR, BRL, and SEK. Exchange rates are fetched in real-time from an open exchange rate API and cached across sessions.</p>
+                            <p>All views, CSV exports, and the JSON API automatically use the selected currency. You can also configure a custom exchange rate endpoint for enterprise or air-gapped environments.</p>
+                        </div>
+                    </details>
+
+                    <details class="feature-item">
+                        <summary>
+                            <span class="feature-title">CSV Export <span class="feature-teaser">— tab-specific, currency-aware reports</span></span>
+                        </summary>
+                        <div class="feature-body">
+                            <p>Export cost data from any tab with one click. Each tab produces a <strong>tailored CSV format</strong>: Monthly exports include month, token type, tokens, and cost (plus per-key breakdown for Pro). Model exports list model, token type, tokens, and cost. Intraday exports include API key, model, token type, tokens, and estimated cost.</p>
+                            <p>All amounts are exported in your selected currency with proper decimal formatting. A grand total row is appended at the bottom for easy accounting.</p>
+                        </div>
+                    </details>
+
+                    <details class="feature-item">
+                        <summary>
+                            <span class="feature-title">Built-in JSON API &amp; MCP Server <span class="feature-teaser">— integrate with dashboards and tools</span></span>
+                        </summary>
+                        <div class="feature-body">
+                            <p>Enable the built-in <strong>localhost-only HTTP server</strong> (default port 9485) to expose your usage data as JSON. The API provides a full snapshot including monthly costs, per-model breakdowns, workspace totals, intraday data, and spend limit status — all in your selected currency.</p>
+                            <p>The server listens exclusively on 127.0.0.1 (no external network exposure) and supports CORS for browser-based dashboards. Endpoints: <code>GET /</code> or <code>GET /usage</code> for full data, <code>GET /health</code> for status checks. Test with: <code>curl http://localhost:9485</code></p>
+                        </div>
+                    </details>
+
+                    <details class="feature-item">
+                        <summary>
+                            <span class="feature-title">Detached Window Mode <span class="feature-teaser">— keep the window visible while you work</span></span>
+                        </summary>
+                        <div class="feature-body">
+                            <p>By default, the app appears as a <strong>menu bar popover</strong> that closes when you click elsewhere. Pin the window to switch to <strong>detached mode</strong> — a floating window that stays visible while you code, switch apps, or work in the terminal.</p>
+                            <p>Toggle between popover and floating window with the pin button in the header. Your current cost is also optionally displayed directly in the macOS menu bar text.</p>
+                        </div>
+                    </details>
+
+                    <details class="feature-item">
+                        <summary>
+                            <span class="feature-title">Security &amp; Privacy <span class="feature-teaser">— Keychain storage, no telemetry, zero dependencies</span></span>
+                        </summary>
+                        <div class="feature-body">
+                            <p>Your Admin API key is stored in the <strong>macOS Keychain</strong> — never in plaintext or UserDefaults. The app communicates only with Anthropic's official API endpoints and an exchange rate service. There is <strong>no analytics, no telemetry, no crash reporting</strong>, and zero data sent to any third party.</p>
+                            <p>The entire app is built on Apple system frameworks only — <strong>zero third-party Swift packages or CocoaPods</strong>. The MCP server is bound to localhost only, preventing any external network access. API keys are masked by default in the Settings panel with a show/hide toggle.</p>
+                        </div>
+                    </details>
+
+                </div>
+            </section>
+
+            <!-- Screenshots -->
+            <section aria-label="Screenshots">
+                <h2>Screenshots</h2>
+
+                <div class="screenshots-grid">
+
+                    <figure class="screenshot-card">
+                        <img src="screenshots/Model.png" alt="Claude Token Usage Tracker — Per-model cost breakdown showing Claude Opus and Sonnet with 4 cost categories and inline rate limits" width="1280" height="800" loading="lazy">
+                        <figcaption class="screenshot-caption">
+                            <h3>By Model</h3>
+                            <p>Every Claude model you've used, sorted by version and tier. Each card shows total cost, a color-coded 4-category breakdown (Input, Cache Write, Cache Read, Output), and inline rate-limit pills when configured.</p>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="screenshot-card">
+                        <img src="screenshots/Monat.png" alt="Claude Token Usage Tracker — Monthly cost breakdown with paginated month cards, color-coded distribution bars, and token categories" width="1280" height="800" loading="lazy">
+                        <figcaption class="screenshot-caption">
+                            <h3>By Month</h3>
+                            <p>Paginated month cards with finalized costs from Anthropic's Cost API. Each card shows total spend, a proportional cost bar, and per-category stats. Pro users can expand each month for a per-API-key breakdown.</p>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="screenshot-card">
+                        <img src="screenshots/Workspace.png" alt="Claude Token Usage Tracker — Workspace overview comparing costs across Production, Development, and Staging environments" width="1280" height="800" loading="lazy">
+                        <figcaption class="screenshot-caption">
+                            <h3>By Workspace</h3>
+                            <p>Compare API costs across all workspaces in your organization. Each workspace is shown as a card with its name and total cost, plus an organization-wide total at the bottom.</p>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="screenshot-card">
+                        <img src="screenshots/Settings.png" alt="Claude Token Usage Tracker — Settings panel showing Admin API key configuration, API key filter for multi-project tracking, and display options" width="1280" height="800" loading="lazy">
+                        <figcaption class="screenshot-caption">
+                            <h3>Settings — API &amp; Display</h3>
+                            <p>Configure your Admin API key (stored in macOS Keychain), filter costs by specific API keys, choose which tabs to display, and set the menu bar cost display mode (all-time, current year, current month, or intraday).</p>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="screenshot-card">
+                        <img src="screenshots/Settings2.png" alt="Claude Token Usage Tracker — Settings panel showing spend limit configuration, notification thresholds, and per-model rate limit table" width="1280" height="800" loading="lazy">
+                        <figcaption class="screenshot-caption">
+                            <h3>Settings — Spend Limits &amp; Rate Limits</h3>
+                            <p>Set a monthly spend limit with a visual budget bar, configure notification thresholds for spend alerts, and view live rate limits (requests/min, input/output tokens) for all Claude models.</p>
+                        </figcaption>
+                    </figure>
+
+                </div>
+            </section>
+
+            <!-- Setup Guide (collapsible) -->
+            <section aria-label="Getting your Admin API Key">
+                <details class="setup-details">
+                    <summary><h2>Getting Your Admin API Key</h2><p class="setup-teaser">Need an Admin API key? Here's how to create one in the Anthropic Console in under a minute.</p></summary>
+                    <div class="setup-guide">
+                        <ol class="setup-steps">
+                            <li>Log in to the <a href="https://platform.claude.com/settings/admin-keys" target="_blank" rel="noopener">Anthropic Console</a> with an account that has <strong>organization admin</strong> access.</li>
+                            <li>Navigate to <strong>Organization Settings → Admin keys</strong> (or go directly to <a href="https://platform.claude.com/settings/admin-keys" target="_blank" rel="noopener">platform.claude.com/settings/admin-keys</a>).</li>
+                            <li>Click <strong>+ Create Admin Key</strong>, give it a name, and copy the key.</li>
+                            <li>Open Claude Token Usage Tracker → <strong>Settings</strong> → paste the key. It's stored securely in the macOS Keychain.</li>
+                        </ol>
+                        <div class="setup-screenshot">
+                            <a href="https://platform.claude.com/settings/admin-keys" target="_blank" rel="noopener">
+                                <img src="screenshots/Claude-Console-Admin-Key.png" alt="Anthropic Console showing the Admin keys page at platform.claude.com/settings/admin-keys — where you create the Admin API key needed for Claude Token Usage Tracker" width="1726" height="953" loading="lazy">
+                            </a>
+                            <p class="setup-screenshot-caption">The Admin keys page in the Anthropic Console — create an Admin key here and paste it into the app's Settings.</p>
+                        </div>
+                    </div>
+                </details>
+            </section>
+
+            <!-- FAQ -->
+            <section aria-label="Frequently Asked Questions">
+                <h2>FAQ</h2>
+
+                <div class="faq-item">
+                    <h3>Why does the app ask for my macOS password?</h3>
+                    <p>On first launch, macOS shows a standard security prompt asking for your account password. This is normal — macOS requires it whenever a new app creates an entry in the system Keychain. The app only stores and reads its own Keychain item (your Anthropic Admin API key). No other passwords, credentials, or Keychain entries are accessed. See our <a href="privacy-policy.html">Privacy Policy</a> for full details.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>How fresh is the cost data?</h3>
+                    <p>The Intraday tab shows near real-time usage with approximately 1 hour delay from Anthropic's Usage API. The Monthly tab uses Anthropic's Cost API, which provides finalized dollar amounts with approximately 2 days of reporting lag.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Does the app send my data to third parties?</h3>
+                    <p>No. The app communicates only with Anthropic's official API endpoints and an exchange rate service for currency conversion. There is no analytics, no telemetry, no crash reporting, and zero third-party dependencies. Your Admin API key is stored exclusively in the macOS Keychain.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Is there a free version?</h3>
+                    <p>Yes. The app includes a 7-day free trial with full Pro access. After the trial, basic features (Monthly and Workspace tabs, CSV export, currency conversion, auto-refresh) remain free. Pro features (Intraday tab, Model tab, API Key breakdowns, rate limits, MCP server, unlimited API keys) require a one-time purchase.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Which Claude models are supported?</h3>
+                    <p>All Claude models — Opus, Sonnet, and Haiku in all versions. The app uses dynamic model discovery via the Anthropic Models API and a multi-tier pricing engine, so new models are supported automatically as soon as they are released.</p>
+                </div>
+            </section>
+
+            <!-- Requirements -->
+            <section aria-label="Requirements">
+                <h2>Requirements</h2>
+                <p><strong>macOS 14.0 (Sonoma)</strong> or later. Requires an <strong>Anthropic Admin API key</strong>, which you can generate in the Anthropic Console under Organization Settings (requires organization admin access).</p>
+            </section>
+
+            <!-- CTA -->
+            <section aria-label="Download">
+                <div class="cta-wrapper">
+                    <!-- TODO: Replace href with actual Mac App Store link -->
+                    <a class="cta" href="#download"><svg viewBox="0 0 384 512" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184 4 273.5c0 26.2 4.8 53.3 14.4 81.2 12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>Download on the Mac App Store</a>
+                    <span class="cta-hint">Requires macOS 14.0 (Sonoma) &middot; Free 7-day trial</span>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer -->
         <footer>
-            <p>&copy; 2025–2026 Siegfried-Thor Bolz · <a href="privacy-policy.html">Privacy Policy</a> · <a href="https://github.com/siegfriedbolz/claude-token-usage-tracker/issues">Support</a></p>
+            <p>&copy; 2025–2026 Siegfried-Thor Bolz</p>
+            <nav aria-label="Footer navigation">
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="https://github.com/siegfriedbolz/claude-token-usage-tracker/issues">Support</a>
+            </nav>
         </footer>
+
     </div>
 </body>
 </html>

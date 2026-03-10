@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://siegfriedbolz.github.io/claude-token-usage-tracker/sitemap.xml

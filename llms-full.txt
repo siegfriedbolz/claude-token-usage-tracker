@@ -1,0 +1,343 @@
+# Claude Token Usage Tracker — Full Documentation
+
+> Comprehensive documentation for AI crawlers, LLM agents, and developers. For a summary, see llms.txt.
+
+## 1. Product Overview
+
+Claude Token Usage Tracker is a native macOS menu bar application that monitors Anthropic Claude API token usage and costs in near real-time. It connects to the Anthropic Admin API and provides cost breakdowns by month, model, workspace, and API key — directly from the macOS menu bar or as a detached floating window.
+
+The app is built entirely with Swift 5.9+ and SwiftUI on Apple system frameworks. It has zero third-party dependencies — no external Swift packages, no CocoaPods, no analytics SDKs. Your Admin API key is stored securely in the macOS Keychain.
+
+### Key Facts
+
+| Field | Value |
+|---|---|
+| Platform | macOS 14.0+ (Sonoma), universal binary (Apple Silicon + Intel) |
+| Language | Swift 5.9+ |
+| UI Framework | SwiftUI |
+| Distribution | Mac App Store |
+| Developer | Siegfried-Thor Bolz |
+| Third-party dependencies | None |
+| Languages | English, Spanish |
+
+---
+
+## 2. Tabs and Views
+
+### 2.1 By Month (Free)
+
+Paginated month cards (2 per page with Newer/Older navigation). Each month card shows:
+
+- Monthly cost total in the selected currency
+- Color-coded cost distribution bar: Input (blue), Cache Creation (orange), Cache Read (purple), Output (red)
+- 2×2 cost stat tile grid with per-category cost and percentage of monthly total
+- Current month card shows Cost API data coverage dates (e.g., "1 Feb – 23 Feb 2026") with a link to Intraday for today's usage
+
+Pro users can expand each month to see a per-API-key breakdown listing each API key with its estimated cost and model-by-model detail. An all-time grand total footer appears at the bottom across all months.
+
+Data source: Anthropic Cost API (finalized dollar amounts, ~2-day reporting delay).
+
+### 2.2 By Workspace (Free)
+
+Per-workspace cost breakdown from Anthropic's Cost API. Each workspace shown as a card with name and cost. An "All Workspaces" total footer provides the organization-wide total.
+
+Also supports a local/offline mode with per-project breakdown from local file analysis, showing full token breakdown per project (input, cache creation, cache read, output).
+
+Data source: Anthropic Cost API or local file analysis.
+
+### 2.3 By Model (Pro)
+
+Lists all Claude models used, sorted by version (newest first) and tier (Opus > Sonnet > Haiku). Each model card shows:
+
+- Model name and total cost
+- Color-coded cost distribution bar
+- 2×2 cost stat grid (Input, Cache Write, Cache Read, Output) — only categories with usage > 0
+- Inline rate limit pills (if configured): requests/min, input tokens/min, output tokens/min
+
+The app uses dynamic model discovery via the Anthropic Models API, so new Claude models are supported automatically as soon as Anthropic releases them.
+
+Data source: Anthropic Cost API (finalized, ~2-day delay).
+
+### 2.4 Intraday (Pro)
+
+Near real-time usage for today, per API key. Each API key shown as a card with:
+
+- Key name and percentage of total
+- Per-model breakdown with cost distribution bars and stat tiles
+- Model-level rate limits (if configured)
+- Today's date, fetch time, and "~1h delay" indicator
+- Dedicated intraday-only refresh button
+
+If a spend limit is configured, a combined progress bar shows month-to-date cost plus today's estimate against the budget. Filterable by selected API keys (respects API Key Filter from Settings).
+
+Data source: Anthropic Usage API (near real-time, ~5 min token freshness, up to ~1h display delay).
+
+---
+
+## 3. Header and Toolbar
+
+The header contains the app icon, title, and action buttons:
+
+- **CSV Export** — exports current tab data as CSV
+- **Settings** — opens the settings panel
+- **Currency picker** — flag-based dropdown for instant currency switching among 12 currencies
+- **Refresh menu** — "Refresh Current Month" (fast) or "Refresh All" (full, with rate limit warning)
+- **Pin/Unpin** — toggle between menu bar popover and floating window
+- **Close/Quit**
+
+Status pills row shows: data source indicator (API/Local) with green/orange dot (links to Claude Status Page), selected API key count badge, menu bar cost toggle, and auto 30-minute refresh toggle.
+
+---
+
+## 4. Settings
+
+### 4.1 API Configuration
+- Admin API key input with show/hide toggle and validate button
+- Key stored in macOS Keychain (never in UserDefaults or plaintext)
+
+### 4.2 API Key Filter
+- Lists all organization API keys from Admin API
+- Multi-select to filter costs to specific keys
+- Free tier: 1 key; Pro: unlimited keys
+
+### 4.3 Display Settings
+- Total calculation mode: "All time" / "Current year" / "Current month" / "Intraday"
+- Controls which cost value is shown in the macOS menu bar
+
+### 4.4 Spend Limit
+- Monthly spend limit in USD (mirrors Anthropic Console setting)
+- Visual budget progress bar: green (< 75%), orange (75–90%), red (> 90%)
+
+### 4.5 Spend Notifications
+- Toggle to enable native macOS notifications
+- Configurable USD threshold
+- Test notification button
+- Fires once per calendar month when threshold is reached
+- Changing threshold resets deduplication
+
+### 4.6 Rate Limits (Pro)
+- Enter a regular API key to probe rate limits
+- Sends minimal 1-token request per model (~$0.0001 each)
+- Shows table: Model, Requests/min, Input tokens/min, Output tokens/min
+- Results cached in UserDefaults
+- Supports dynamic model discovery via Anthropic Models API
+
+### 4.7 Data Sections Toggle
+- Enable/disable individual tabs: By Month, By Model, By Workspace, Intraday
+- Disabled sections are hidden and their data is not fetched (saves API calls)
+
+### 4.8 API Endpoints
+- Custom Anthropic base URL (for proxies/enterprise setups)
+- Custom API version header
+- Custom exchange rate URL
+- All with validate, save, and reset-to-default buttons
+
+### 4.9 MCP Server (Pro)
+- Enable/disable toggle
+- Configurable port (1024–65535, default 9485)
+- Status indicator (running/stopped/error)
+- Copyable curl command for testing
+
+### 4.10 Pricing Data
+- Shows current pricing source: LiteLLM / custom URL / bundled / hardcoded
+- Optional custom remote pricing URL with validation
+- Displays loaded model count and source
+
+### 4.11 Reset to Defaults
+- Clears Admin Key, API Key Filter, custom URLs, and all cached data
+
+---
+
+## 5. MCP Server / JSON API (Pro)
+
+Localhost-only HTTP server using Apple's Network framework (NWListener). Binds to 127.0.0.1 only — no external network exposure. No authentication (localhost access only). Supports CORS headers.
+
+### Endpoints
+
+- `GET /` or `GET /usage` → full JSON snapshot of all usage data
+- `GET /health` → `{"status":"ok"}`
+
+### JSON Response Structure (MCPDataSnapshot)
+
+```json
+{
+    "currency": "USD",
+    "generatedAt": "2026-03-10T14:30:00Z",
+    "dataSource": "api",
+    "currentMonthCost": 142.50,
+    "totalCostWorkspaces": 1250.00,
+    "lastUpdate": "2026-03-10T14:00:00Z",
+    "spendLimit": {
+        "limit": 500.00,
+        "currentSpend": 142.50,
+        "notificationThreshold": 400.00
+    },
+    "monthly": [
+        {
+            "month": "2026-03",
+            "cost": 142.50,
+            "inputTokens": 5000000,
+            "cacheCreationTokens": 200000,
+            "cacheReadTokens": 1000000,
+            "outputTokens": 800000,
+            "perKey": [...]
+        }
+    ],
+    "models": [
+        {
+            "model": "claude-sonnet-4-20250514",
+            "cost": 95.00,
+            "inputTokens": 3000000,
+            "outputTokens": 500000
+        }
+    ],
+    "workspaces": [
+        {
+            "id": "ws_abc123",
+            "name": "Production",
+            "cost": 120.00
+        }
+    ],
+    "intraday": [
+        {
+            "apiKey": "key_name",
+            "models": [...]
+        }
+    ]
+}
+```
+
+All amounts are currency-converted to the user's selected currency. Test with: `curl http://localhost:9485`
+
+---
+
+## 6. CSV Export
+
+Available from any tab via the export button. Exports data from the currently selected tab with tab-specific formats:
+
+- **Monthly**: Month, Token Type (Input/Cache Creation/Cache Read/Output/TOTAL), Tokens, Cost — plus per-API-key breakdown for Pro
+- **Workspace**: Workspace Name, Cost (API mode) or Project, Token Type, Tokens, Cost (local mode)
+- **Model**: Model, Token Type, Tokens, Cost
+- **Intraday**: API Key, Model, Token Type, Tokens, Estimated Cost
+
+All costs exported in the selected currency with proper decimal formatting. Grand total row appended at bottom. Uses standard NSSavePanel with .csv file type.
+
+---
+
+## 7. Currency Support
+
+12 currencies with real-time exchange rates:
+
+| Currency | Code | Symbol | Flag | Decimal Places |
+|---|---|---|---|---|
+| US Dollar | USD | $ | 🇺🇸 | 2 |
+| Euro | EUR | € | 🇪🇺 | 2 |
+| British Pound | GBP | £ | 🇬🇧 | 2 |
+| Japanese Yen | JPY | ¥ | 🇯🇵 | 0 |
+| Chinese Yuan | CNY | ¥ | 🇨🇳 | 2 |
+| Swiss Franc | CHF | CHF | 🇨🇭 | 2 |
+| Canadian Dollar | CAD | CA$ | 🇨🇦 | 2 |
+| Australian Dollar | AUD | A$ | 🇦🇺 | 2 |
+| South Korean Won | KRW | ₩ | 🇰🇷 | 0 |
+| Indian Rupee | INR | ₹ | 🇮🇳 | 2 |
+| Brazilian Real | BRL | R$ | 🇧🇷 | 2 |
+| Swedish Krona | SEK | kr | 🇸🇪 | 2 |
+
+Exchange rates from open.er-api.com (free API, fetched once per session). Rates cached in UserDefaults across app relaunches. Custom exchange rate endpoint supported for enterprise environments. All views, CSV exports, and JSON API automatically use the selected currency.
+
+---
+
+## 8. Pricing Engine
+
+4-tier fallback chain for model pricing:
+
+1. **LiteLLM** (GitHub raw JSON) — primary source, thousands of models, community-maintained
+2. **Custom remote URL** — user-configurable in Settings for enterprise environments
+3. **Bundled pricing.json** — ships with the app as offline fallback
+4. **Hardcoded fallback** — base Claude Sonnet pricing ($3/$15 per MTok)
+
+Pricing per model includes: input price, output price, cache creation cost, cache read cost (all per 1 million tokens). Model matching: exact match → partial/fuzzy match → default pricing. Pricing refreshed on full reload only (not on auto-refresh). Cached locally in Application Support directory.
+
+---
+
+## 9. Security and Privacy
+
+- **Keychain storage**: Admin API key and rate limit API key stored via SecItemAdd/SecItemCopyMatching (service scoped to bundle ID)
+- **HTTPS only**: All outbound API calls use HTTPS exclusively
+- **No telemetry**: Zero analytics, crash reporting, or third-party data collection
+- **No third-party code**: Built entirely on Apple system frameworks
+- **Localhost MCP server**: Bound to NWEndpoint.hostPort(host: .ipv4(.loopback)) — no external network access possible
+- **Sandboxed cache**: Data stored in ~/Library/Application Support/ClaudeTokenUsageTracker/
+- **API key masking**: Keys shown as dots by default with show/hide toggle
+- **Privacy policy**: Available at https://siegfriedbolz.github.io/claude-token-usage-tracker/privacy-policy.html
+
+---
+
+## 10. Data Freshness and Caching
+
+- **Cost API**: Finalized dollar amounts, ~2-day reporting lag, covers last 12 months
+- **Usage API**: Near real-time token counts (~5 min freshness), costs estimated via pricing engine
+- **Smart gap-fetching**: Only fetches missing days (doesn't re-download entire history)
+- **Progressive loading**: 6 phases — pricing → API keys → monthly/model → workspace → intraday → exchange rates → per-key
+- **Staleness detection**: Auto-upgrades to full refresh if cache is >2 days behind
+- **Month-transition handling**: Detects month boundaries and refreshes per-key cache accordingly
+- **Cache files**: cost_cache.json, monthly_per_key_cache.json, pricing_cache.json
+- **30-second refresh cooldown**: Prevents API rate limit abuse
+
+---
+
+## 11. Pricing Model (Free vs Pro)
+
+### Free Tier (after 7-day trial)
+- By Month tab
+- By Workspace tab
+- CSV export
+- Currency conversion (12 currencies)
+- Auto-refresh (30 min)
+- 1 API key filter
+
+### Pro Tier (one-time purchase)
+- Everything in Free, plus:
+- Intraday tab (near real-time today's costs)
+- By Model tab (per-model cost breakdown)
+- Per-API-key breakdown within monthly view
+- Unlimited API key filter
+- Rate limits display
+- MCP server (localhost JSON API)
+
+### Trial
+- 7-day free trial with full Pro access starts automatically
+- Trial banner shows remaining days and upgrade button
+- Paywall with feature comparison and purchase/restore buttons
+
+---
+
+## 12. FAQ
+
+**Q: Why does the app ask for my macOS password?**
+A: macOS shows a standard Keychain security prompt when a new app creates a Keychain entry. The app only stores its own Keychain item (your Anthropic Admin API key). No other credentials or entries are accessed.
+
+**Q: How fresh is the data?**
+A: Intraday: ~1h delay (Usage API). Monthly: ~2-day delay (Cost API, finalized amounts).
+
+**Q: Does it work with Claude Code, Cursor, Windsurf?**
+A: Yes. The app tracks all API usage regardless of which tool or SDK makes the API calls, as long as the calls go through your organization's API keys.
+
+**Q: Does the app send data to third parties?**
+A: No. Only Anthropic API endpoints and an exchange rate service are contacted. Zero analytics, telemetry, crash reporting, or third-party dependencies.
+
+**Q: Which Claude models are supported?**
+A: All models — Opus, Sonnet, Haiku in all versions. Dynamic model discovery via Anthropic Models API ensures automatic support for new models.
+
+**Q: Is there a free version?**
+A: Yes. 7-day full trial, then basic features remain free (Monthly, Workspace, CSV, currency). Pro features require a one-time purchase.
+
+---
+
+## 13. Links
+
+- Website: https://siegfriedbolz.github.io/claude-token-usage-tracker/
+- Repository: https://github.com/siegfriedbolz/claude-token-usage-tracker
+- Support: https://github.com/siegfriedbolz/claude-token-usage-tracker/issues
+- Privacy Policy: https://siegfriedbolz.github.io/claude-token-usage-tracker/privacy-policy.html
+- Summary: https://siegfriedbolz.github.io/claude-token-usage-tracker/llms.txt
