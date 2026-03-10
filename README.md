@@ -111,8 +111,10 @@ The app queries the Anthropic Admin API for usage reports, API key metadata, wor
 
 ## Download
 
-<!-- TODO: Replace with actual Mac App Store link -->
-Coming soon on the **Mac App Store**.
+<!-- TODO: Replace href with actual Mac App Store link -->
+<a href="#download">
+  <img src="Download_macOS_Store.svg" alt="Download on the Mac App Store" height="48" />
+</a>
 
 ---
 
