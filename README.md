@@ -22,13 +22,13 @@ A native macOS menu bar app that connects to the **Anthropic Admin API** and sho
 |---|---|
 | ![Intraday view](screenshots/Intraday.png) | ![Model view](screenshots/Model.png) |
 
-| Monthly breakdown | Settings |
+| Monthly breakdown | Workspace overview |
 |---|---|
-| ![Month view](screenshots/Monat.png) | ![Settings](screenshots/Settings.png) |
+| ![Month view](screenshots/Monat.png) | ![Workspace view](screenshots/Workspace.png) |
 
-| Workspace overview |
-|---|
-| ![Workspace view](screenshots/Workspace.png) |
+| Settings — API & Filter | Settings — Budget & Rate Limits |
+|---|---|
+| ![Settings](screenshots/Settings.png) | ![Settings 2](screenshots/Settings2.png) |
 
 ---
 
@@ -77,6 +77,9 @@ Optional localhost HTTP server exposes your usage data as JSON — perfect for i
 
 ### 🔒 Secure by Design
 Your Admin API key is stored in the **macOS Keychain** — never in plain text. Zero third-party dependencies. All Apple system frameworks.
+
+> **Why does the app ask for my macOS password on first launch?**
+> macOS requires your account password whenever a new app wants to create or access an entry in the system Keychain. This is a standard macOS security prompt — it means the system is *protecting* your data, not that the app is accessing anything else. The app only stores and reads its own Keychain item (your Anthropic Admin API key). No other passwords, credentials, or Keychain entries are accessed. See our [Privacy Policy](privacy-policy.html) for full details.
 
 ---
 

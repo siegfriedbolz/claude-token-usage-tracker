@@ -88,7 +88,7 @@
 <body>
     <div class="container">
         <h1>Privacy Policy</h1>
-        <p class="subtitle">Claude Token Usage Tracker for macOS — Last updated: February 26, 2026</p>
+        <p class="subtitle">Claude Token Usage Tracker for macOS — Last updated: March 10, 2026</p>
 
         <div class="card">
             <p><strong>Summary:</strong> Claude Token Usage Tracker does not collect, transmit, or share any personal data. All information is stored locally on your Mac. The app communicates only with the APIs you configure — no third-party analytics, no tracking, no telemetry.</p>
@@ -101,19 +101,23 @@
         <p>The following data is stored exclusively on your Mac:</p>
         <ul>
             <li><strong>Anthropic Admin API Key</strong> — stored securely in the <strong>macOS Keychain</strong>, encrypted by the operating system. Never sent to any party other than Anthropic's own API servers.</li>
-            <li><strong>App preferences</strong> — display settings, selected API key filters, section toggles, and custom API endpoint URLs are stored in macOS UserDefaults within the app's sandbox container.</li>
-            <li><strong>Cached API responses</strong> — token usage data, cost reports, and exchange rates are cached locally to reduce API calls.</li>
+            <li><strong>Anthropic API Key (optional)</strong> — if you enable rate limit monitoring, a separate regular API key is also stored in the <strong>macOS Keychain</strong>. Used solely to query current rate limits from Anthropic's API.</li>
+            <li><strong>App preferences</strong> — display settings, selected API key filters, section toggles, currency selection, notification thresholds, and custom API endpoint URLs are stored in macOS UserDefaults within the app's sandbox container.</li>
+            <li><strong>Cached API responses</strong> — token usage data, cost reports, model pricing, and exchange rates are cached as JSON files in the app's Application Support directory and in UserDefaults to reduce API calls.</li>
+            <li><strong>In-app session logs</strong> — diagnostic log entries are kept in memory only (max 500 entries) and are discarded when the app is closed. Logs are never written to disk or transmitted.</li>
         </ul>
         <p>All of this data remains on your device and is never transmitted to us or any third party.</p>
 
         <h2>3. Network Requests</h2>
-        <p>The app makes outbound HTTPS requests <strong>only</strong> to the following services, and <strong>only</strong> when you trigger a data refresh:</p>
+        <p>The app makes outbound HTTPS requests <strong>only</strong> to the following services:</p>
         <ul>
-            <li><strong>Anthropic Admin API</strong> (<code>api.anthropic.com</code>) — to retrieve your organization's token usage, cost reports, and API key information. Authenticated with your Admin API Key.</li>
+            <li><strong>Anthropic Admin API</strong> (<code>api.anthropic.com</code>) — to retrieve your organization's token usage, cost reports, workspace information, and API key metadata. Authenticated with your Admin API Key.</li>
+            <li><strong>Anthropic Messages &amp; Models API</strong> (<code>api.anthropic.com</code>) — if rate limit monitoring is enabled, the app sends a minimal request to determine your current rate limits per model. Authenticated with your regular API key. No meaningful user data is transmitted.</li>
             <li><strong>Exchange Rate API</strong> (<code>open.er-api.com</code>) — to fetch current USD exchange rates for currency conversion. No authentication or personal data is sent.</li>
             <li><strong>GitHub</strong> (<code>raw.githubusercontent.com</code>) — to fetch the latest model pricing data from the LiteLLM open-source project. No authentication or personal data is sent.</li>
+            <li><strong>Anthropic Status Page</strong> (<code>status.claude.com</code>) — opened in your default browser when you click the status link. No data is sent by the app.</li>
         </ul>
-        <p>You may configure custom API endpoint URLs in the app's settings. If you do, requests will be directed to those endpoints instead.</p>
+        <p>You may configure custom endpoint URLs for the Anthropic API, exchange rate service, and model pricing source in the app's Settings. If you do, requests will be directed to those endpoints instead.</p>
         <p>The app does <strong>not</strong> communicate with any advertising networks, analytics platforms, social media services, or any other external services beyond those listed above.</p>
 
         <h2>4. Third-Party Services</h2>
@@ -124,13 +128,28 @@
         </ul>
         <p>Please review their respective privacy policies for information on how they handle data.</p>
 
-        <h2>5. Children's Privacy</h2>
+        <h2>5. Local Network Server (MCP / JSON API)</h2>
+        <p>The app includes an optional localhost HTTP server for integrating with external tools (e.g., MCP clients or dashboards). When enabled:</p>
+        <ul>
+            <li>The server binds exclusively to <strong>127.0.0.1</strong> (IPv4 loopback) — it is <strong>not</strong> accessible from other devices on your network.</li>
+            <li>It exposes aggregated usage statistics (costs, token counts, workspace names, model names) as JSON.</li>
+            <li>It does <strong>not</strong> expose your API keys.</li>
+            <li>The server is disabled by default and requires Pro access to enable.</li>
+        </ul>
+
+        <h2>6. Local Notifications</h2>
+        <p>The app can send <strong>local macOS notifications</strong> (e.g., when your monthly spend exceeds a threshold you set). These are processed entirely on your device by macOS. No push notification service or external server is involved.</p>
+
+        <h2>7. In-App Purchases</h2>
+        <p>The app offers an optional Pro upgrade via the <strong>Mac App Store</strong> using Apple's StoreKit framework. All payment processing, receipt validation, and transaction management are handled entirely by Apple. The app does not operate its own payment server and does not collect any payment or financial information.</p>
+
+        <h2>8. Children's Privacy</h2>
         <p>This app is not directed at children under 13 and does not knowingly collect any information from children.</p>
 
-        <h2>6. Data Security</h2>
-        <p>Your API key is stored in the <strong>macOS Keychain</strong>, which provides hardware-backed encryption and is isolated per application. All other app data is stored within the macOS App Sandbox container. Network communication uses HTTPS encryption exclusively. The app does not store data on remote servers.</p>
+        <h2>9. Data Security</h2>
+        <p>Both your Admin API key and your regular API key (if configured) are stored in the <strong>macOS Keychain</strong>, which provides hardware-backed encryption and is isolated per application. All other app data is stored within the macOS App Sandbox container. Network communication uses HTTPS encryption exclusively. The app does not store data on remote servers.</p>
 
-        <h2>7. Your Rights</h2>
+        <h2>10. Your Rights</h2>
         <p>Since all data is stored locally on your device, you have full control over it at all times:</p>
         <ul>
             <li><strong>View</strong> — all settings are visible in the app's Settings panel.</li>
@@ -138,10 +157,10 @@
             <li><strong>Export</strong> — use the CSV export feature to obtain your usage data.</li>
         </ul>
 
-        <h2>8. Changes to This Policy</h2>
+        <h2>11. Changes to This Policy</h2>
         <p>If we update this privacy policy, the revised version will be posted at this URL with an updated "Last updated" date. Continued use of the app after changes constitutes acceptance of the updated policy.</p>
 
-        <h2>9. Contact</h2>
+        <h2>12. Contact</h2>
         <p>If you have questions about this privacy policy, please contact:</p>
         <p><strong>Siegfried-Thor Bolz</strong><br>
         Email: <a href="mailto:privacy@siegfried-bolz.de">privacy@siegfried-bolz.de</a></p>
