@@ -506,6 +506,15 @@
         .faq-item h3 { font-size: 1.05rem; margin-bottom: 0.3rem; color: var(--fg); }
         .faq-item p { color: var(--fg-muted); font-size: 0.95rem; }
 
+        /* Note callout */
+        .note {
+            font-size: 0.9rem;
+            color: var(--fg-muted);
+            border-left: 3px solid var(--accent);
+            padding-left: 0.8rem;
+            margin-top: 0.8rem;
+        }
+
         /* Lightbox */
         .lightbox {
             display: none;
@@ -564,6 +573,7 @@
                 <h2>What It Does</h2>
                 <p>A native macOS menu bar app that connects to the <strong>Anthropic Admin API</strong> and shows your organization's Claude API usage and costs — broken down by <strong>month</strong>, <strong>model</strong>, <strong>workspace</strong>, and <strong>API key</strong>. Built with Swift and SwiftUI, it runs entirely on Apple system frameworks with zero third-party dependencies. Your Admin API key is stored securely in the macOS Keychain.</p>
                 <p>Whether you're using <strong>Claude Code</strong>, <strong>Cursor</strong>, <strong>Windsurf</strong>, or calling the Anthropic API directly — this app gives you full visibility into what you're spending.</p>
+                <p class="note"><strong>Note:</strong> This app tracks costs for <strong>Anthropic API keys</strong> only. It does not track usage or costs from Claude Desktop, Claude Pro/Team/Enterprise subscriptions, or Claude Code subscription plans.</p>
 
                 <div class="cta-wrapper">
                     <!-- TODO: Replace href with actual Mac App Store link -->

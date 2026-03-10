@@ -40,6 +40,8 @@ If you're running Claude via the API — for coding agents (Cursor, Windsurf, Cl
 
 This app pulls data from the Anthropic Admin API and puts your costs where you can always see them: in your macOS menu bar — or as a detached popover window that stays visible while you work. Auto-refreshes every 30 minutes (configurable) and includes a demo mode with sample data to try before connecting your API key.
 
+> **Note:** This app tracks costs for **Anthropic API keys** only. It does not track usage or costs from Claude Desktop, Claude Pro/Team/Enterprise subscriptions, or Claude Code subscription plans. You need an Anthropic Admin API key with organization admin access.
+
 ---
 
 ## Features
