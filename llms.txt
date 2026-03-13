@@ -1,8 +1,8 @@
-# Claude Token Usage Tracker
+# AI Token Usage Tracker
 
 > A native macOS menu bar app to monitor Anthropic Claude API token usage and costs in near real-time.
 
-Claude Token Usage Tracker is a macOS menu bar application for developers and teams using the Anthropic Claude API. It connects to the Anthropic Admin API and displays API costs broken down by month, model, workspace, and API key — directly in the macOS menu bar or as a detached popover window.
+AI Token Usage Tracker is a macOS menu bar application for developers and teams using the Anthropic Claude API. It connects to the Anthropic Admin API and displays API costs broken down by month, model, workspace, and API key — directly in the macOS menu bar or as a detached popover window.
 
 ## Key Facts
 

@@ -1,8 +1,8 @@
 <div align="center">
 
-<img src="logo-round.png" alt="Claude Token Usage Tracker icon" width="128" height="128">
+<img src="logo-round.png" alt="AI Token Usage Tracker icon" width="128" height="128">
 
-# Claude Token Usage Tracker
+# AI Token Usage Tracker
 
 ### Know exactly what your Claude API costs — right from your macOS menu bar.
 
@@ -34,7 +34,7 @@ A native macOS menu bar app and **Claude API cost tracker** that connects to the
 
 ---
 
-## Why Claude Token Usage Tracker?
+## Why AI Token Usage Tracker?
 
 If you're running Claude via the API — for coding agents (Cursor, Windsurf, Claude Code), bots, or internal tools — you need visibility into what you're spending. Anthropic's console gives you some data, but it's not always timely, and it's not on your menu bar.
 
@@ -100,7 +100,7 @@ The app requires an **Anthropic Admin API key** to read your organization's usag
 1. **Log in** to the [Anthropic Console](https://platform.claude.com/settings/admin-keys) with an account that has **organization admin** access.
 2. **Navigate** to **Organization Settings → Admin keys** (or go directly to [platform.claude.com/settings/admin-keys](https://platform.claude.com/settings/admin-keys)).
 3. **Click** `+ Create Admin Key`, give it a name, and copy the key.
-4. **Open** Claude Token Usage Tracker → **Settings** → paste the key. It's stored securely in the macOS Keychain.
+4. **Open** AI Token Usage Tracker → **Settings** → paste the key. It's stored securely in the macOS Keychain.
 
 [![Anthropic Console — Admin keys page](screenshots/Claude-Console-Admin-Key.png)](https://platform.claude.com/settings/admin-keys)
 *The Admin keys page in the Anthropic Console — create your Admin key here and paste it into the app.*
@@ -135,7 +135,7 @@ Open an issue on [GitHub Issues](https://github.com/siegfriedbolz/claude-token-u
 
 ## Privacy
 
-Claude Token Usage Tracker does **not** collect, transmit, or store any personal data. Your API key is stored exclusively in the macOS Keychain on your device. All API communication goes directly to Anthropic's servers — no intermediaries, no analytics, no tracking.
+AI Token Usage Tracker does **not** collect, transmit, or store any personal data. Your API key is stored exclusively in the macOS Keychain on your device. All API communication goes directly to Anthropic's servers — no intermediaries, no analytics, no tracking.
 
 Read the full [Privacy Policy](https://siegfriedbolz.github.io/claude-token-usage-tracker/privacy-policy.html).
 
@@ -143,13 +143,13 @@ Read the full [Privacy Policy](https://siegfriedbolz.github.io/claude-token-usag
 
 ## License
 
-Claude Token Usage Tracker is proprietary software. All rights reserved.
+AI Token Usage Tracker is proprietary software. All rights reserved.
 Distributed exclusively via the Mac App Store under the [Apple Licensed Application End User License Agreement (EULA)](https://www.apple.com/legal/internet-services/itunes/dev/stdeula/).
 
 ---
 
 <div align="center">
-<sub>Claude Token Usage Tracker — Anthropic API cost monitor · token counter · usage analytics for macOS</sub>
+<sub>AI Token Usage Tracker — Anthropic API cost monitor · token counter · usage analytics for macOS</sub>
 </div>
 
 © 2025–2026 Siegfried-Thor Bolz

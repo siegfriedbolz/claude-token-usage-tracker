@@ -1,10 +1,10 @@
-# Claude Token Usage Tracker — Full Documentation
+# AI Token Usage Tracker — Full Documentation
 
 > Comprehensive documentation for AI crawlers, LLM agents, and developers. For a summary, see llms.txt.
 
 ## 1. Product Overview
 
-Claude Token Usage Tracker is a native macOS menu bar application that monitors Anthropic Claude API token usage and costs in near real-time. It connects to the Anthropic Admin API and provides cost breakdowns by month, model, workspace, and API key — directly from the macOS menu bar or as a detached floating window.
+AI Token Usage Tracker is a native macOS menu bar application that monitors Anthropic Claude API token usage and costs in near real-time. It connects to the Anthropic Admin API and provides cost breakdowns by month, model, workspace, and API key — directly from the macOS menu bar or as a detached floating window.
 
 The app is built entirely with Swift 5.9+ and SwiftUI on Apple system frameworks. It has zero third-party dependencies — no external Swift packages, no CocoaPods, no analytics SDKs. Your Admin API key is stored securely in the macOS Keychain.
 
@@ -132,7 +132,7 @@ Status pills row shows: data source indicator (API/Local) with green/orange dot 
 - Custom exchange rate URL
 - All with validate, save, and reset-to-default buttons
 
-### 4.9 MCP Server (Pro)
+### 4.9 Local API Server (Pro)
 - Enable/disable toggle
 - Configurable port (1024–65535, default 9485)
 - Status indicator (running/stopped/error)
@@ -148,7 +148,7 @@ Status pills row shows: data source indicator (API/Local) with green/orange dot 
 
 ---
 
-## 5. MCP Server / JSON API (Pro)
+## 5. Local API Server / JSON API (Pro)
 
 Localhost-only HTTP server using Apple's Network framework (NWListener). Binds to 127.0.0.1 only — no external network exposure. No authentication (localhost access only). Supports CORS headers.
 
@@ -266,7 +266,7 @@ Pricing per model includes: input price, output price, cache creation cost, cach
 - **HTTPS only**: All outbound API calls use HTTPS exclusively
 - **No telemetry**: Zero analytics, crash reporting, or third-party data collection
 - **No third-party code**: Built entirely on Apple system frameworks
-- **Localhost MCP server**: Bound to NWEndpoint.hostPort(host: .ipv4(.loopback)) — no external network access possible
+- **Localhost API server**: Bound to NWEndpoint.hostPort(host: .ipv4(.loopback)) — no external network access possible
 - **Sandboxed cache**: Data stored in ~/Library/Application Support/ClaudeTokenUsageTracker/
 - **API key masking**: Keys shown as dots by default with show/hide toggle
 - **Privacy policy**: Available at https://siegfriedbolz.github.io/claude-token-usage-tracker/privacy-policy.html
@@ -303,7 +303,7 @@ Pricing per model includes: input price, output price, cache creation cost, cach
 - Per-API-key breakdown within monthly view
 - Unlimited API key filter
 - Rate limits display
-- MCP server (localhost JSON API)
+- Local API server (localhost JSON API)
 
 ### Trial
 - 7-day free trial with full Pro access starts automatically
