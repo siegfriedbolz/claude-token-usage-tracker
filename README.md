@@ -8,11 +8,12 @@
 
 [![macOS](https://img.shields.io/badge/macOS-14.0%2B-blue?logo=apple&logoColor=white)](#requirements)
 [![Swift](https://img.shields.io/badge/Swift-5.9-orange?logo=swift&logoColor=white)](#)
+[![Mac App Store](https://img.shields.io/badge/Mac_App_Store-Available-blue?logo=apple&logoColor=white)](https://apps.apple.com/app/ai-token-usage-tracker/id6760191068)
 [![License](https://img.shields.io/badge/license-Proprietary-lightgrey)](#license)
 
 A native macOS menu bar app and **Claude API cost tracker** that connects to the **Anthropic Admin API** and shows your organization's token usage and costs in near real-time — broken down by month, model, workspace, and API key. Built for developers and teams running Claude via the API for coding agents, bots, or internal tools.
 
-[🌐 Website](https://siegfriedbolz.github.io/claude-token-usage-tracker/) · [⬇️ Download](#download) · [🔒 Privacy Policy](https://siegfriedbolz.github.io/claude-token-usage-tracker/privacy-policy.html) · [🛟 Support](#support) · [🤖 llms.txt](https://siegfriedbolz.github.io/claude-token-usage-tracker/llms.txt)
+[🌐 Website](https://siegfriedbolz.github.io/claude-token-usage-tracker/) · [⬇️ Download on the Mac App Store](https://apps.apple.com/app/ai-token-usage-tracker/id6760191068) · [🔒 Privacy Policy](https://siegfriedbolz.github.io/claude-token-usage-tracker/privacy-policy.html) · [🛟 Support](#support) · [🤖 llms.txt](https://siegfriedbolz.github.io/claude-token-usage-tracker/llms.txt)
 
 </div>
 
@@ -119,8 +120,7 @@ The app queries the Anthropic Admin API for usage reports, API key metadata, wor
 
 ## Download
 
-<!-- TODO: Replace href with actual Mac App Store link -->
-<a href="#download">
+<a href="https://apps.apple.com/app/ai-token-usage-tracker/id6760191068">
   <img src="Download_macOS_Store.svg" alt="Download on the Mac App Store" height="48" />
 </a>
 
