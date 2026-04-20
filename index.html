@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Token Usage Tracker — macOS Menu Bar App for Anthropic API Costs</title>
+    <title>AI Token Usage Tracker — macOS &amp; Apple Vision Pro App for Anthropic API Costs</title>
     <meta name="description" content="A native macOS and Apple Vision Pro app to monitor Anthropic Claude API token usage and costs in near real-time. Track spending by model, workspace, and API key — right from your menu bar or on visionOS.">
     <meta name="keywords" content="Claude, Anthropic, API, token usage, cost tracker, macOS, menu bar app, Claude API costs, Claude Opus, Claude Sonnet, Claude Haiku, API monitoring, developer tools, Swift, SwiftUI, Mac App Store, spend tracking, rate limits, Claude Code, Cursor, Windsurf, API cost monitoring, token counter, budget alerts, Apple Vision Pro, visionOS, spatial computing, Vision Pro app">
     <meta name="author" content="Siegfried-Thor Bolz">
@@ -67,7 +67,12 @@
             "https://raw.githubusercontent.com/siegfriedbolz/claude-token-usage-tracker/main/screenshots/Monat.png",
             "https://raw.githubusercontent.com/siegfriedbolz/claude-token-usage-tracker/main/screenshots/Workspace.png",
             "https://raw.githubusercontent.com/siegfriedbolz/claude-token-usage-tracker/main/screenshots/Settings.png",
-            "https://raw.githubusercontent.com/siegfriedbolz/claude-token-usage-tracker/main/screenshots/Settings2.png"
+            "https://raw.githubusercontent.com/siegfriedbolz/claude-token-usage-tracker/main/screenshots/Settings2.png",
+            "https://raw.githubusercontent.com/siegfriedbolz/claude-token-usage-tracker/main/screenshots/visionpro/Intraday.png",
+            "https://raw.githubusercontent.com/siegfriedbolz/claude-token-usage-tracker/main/screenshots/visionpro/Monat.png",
+            "https://raw.githubusercontent.com/siegfriedbolz/claude-token-usage-tracker/main/screenshots/visionpro/Currency.png",
+            "https://raw.githubusercontent.com/siegfriedbolz/claude-token-usage-tracker/main/screenshots/visionpro/Settings1.png",
+            "https://raw.githubusercontent.com/siegfriedbolz/claude-token-usage-tracker/main/screenshots/visionpro/Settings2.png"
         ],
         "softwareRequirements": "macOS 14.0 (Sonoma) or later or Apple Vision Pro (visionOS 2.0+), Anthropic Admin API key",
         "featureList": "Near real-time intraday cost tracking, Monthly cost breakdown with full history, Per-model cost view (Opus Sonnet Haiku), Per-API-key cost filtering, Workspace cost comparison, Live rate limits per model, Spend limit tracking with macOS notifications, 12-currency support with real-time exchange rates, CSV export, Built-in localhost JSON API, Detached popover window mode, macOS Keychain security with zero third-party dependencies",
@@ -582,6 +587,174 @@
         }
         footer nav { margin-top: 0.3rem; }
         footer nav a { margin-right: 1.2rem; }
+
+        /* --- Liquid Glass tokens & ambient background --- */
+        :root {
+            --glass-bg: rgba(255, 255, 255, 0.06);
+            --glass-bg-strong: rgba(255, 255, 255, 0.10);
+            --glass-border: rgba(255, 255, 255, 0.14);
+            --glass-highlight: rgba(255, 255, 255, 0.18);
+            --glass-blur: 22px;
+        }
+        body {
+            background-image:
+                radial-gradient(900px 600px at 15% -10%, rgba(249, 115, 22, 0.12), transparent 60%),
+                radial-gradient(800px 520px at 110% 10%, rgba(79, 70, 229, 0.14), transparent 65%),
+                radial-gradient(1000px 700px at 50% 120%, rgba(124, 58, 237, 0.10), transparent 60%);
+            background-attachment: fixed;
+        }
+
+        /* --- Platform switcher (segmented Liquid Glass pill) --- */
+        .platform-switcher {
+            display: flex;
+            justify-content: center;
+            margin: 1.5rem 0 1rem;
+        }
+        .platform-switcher[role="tablist"] {
+            display: inline-flex;
+            gap: 0.25rem;
+            padding: 0.3rem;
+            border-radius: 999px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(var(--glass-blur)) saturate(180%);
+            -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(180%);
+            box-shadow:
+                inset 0 1px 0 var(--glass-highlight),
+                0 8px 24px rgba(0, 0, 0, 0.25);
+            margin: 0 auto;
+        }
+        .platform-tab {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            padding: 0.55rem 1.1rem;
+            border: 0;
+            border-radius: 999px;
+            background: transparent;
+            color: var(--fg-muted);
+            font: inherit;
+            font-size: 0.92rem;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+        }
+        .platform-tab:hover:not([aria-disabled="true"]) { color: var(--fg); }
+        .platform-tab[aria-selected="true"] {
+            color: #fff;
+            background: linear-gradient(180deg, rgba(255,255,255,0.16), rgba(255,255,255,0.06));
+            box-shadow:
+                inset 0 1px 0 rgba(255, 255, 255, 0.25),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.18),
+                0 4px 14px rgba(249, 115, 22, 0.25);
+        }
+        .platform-tab[aria-disabled="true"] {
+            cursor: not-allowed;
+            opacity: 0.55;
+        }
+        .platform-tab:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+        .platform-tab .tab-icon { font-size: 1.05rem; line-height: 1; }
+        .platform-tab .tab-badge {
+            display: inline-block;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            padding: 0.1rem 0.42rem;
+            border-radius: 999px;
+            background: rgba(249, 115, 22, 0.18);
+            color: var(--accent);
+            border: 1px solid rgba(249, 115, 22, 0.35);
+        }
+        .platform-tab.new-pulse::after {
+            content: "";
+            position: absolute;
+            top: 6px;
+            right: 6px;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.6);
+            animation: pulseDot 2.2s ease-out infinite;
+        }
+        .platform-tab[aria-selected="true"].new-pulse::after { display: none; }
+        @keyframes pulseDot {
+            0%   { box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.55); }
+            70%  { box-shadow: 0 0 0 10px rgba(249, 115, 22, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(249, 115, 22, 0); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .platform-tab, .platform-tab.new-pulse::after { transition: none; animation: none; }
+        }
+
+        /* --- visionOS differences callout --- */
+        .platform-callout {
+            display: none;
+            margin: 1rem 0 1.5rem;
+            padding: 1rem 1.2rem;
+            border-radius: 14px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(var(--glass-blur)) saturate(160%);
+            -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(160%);
+            box-shadow: inset 0 1px 0 var(--glass-highlight);
+            font-size: 0.93rem;
+            color: var(--fg);
+        }
+        .platform-callout.active { display: block; }
+        .platform-callout strong { color: var(--accent); }
+        .platform-callout .callout-title {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+            color: var(--accent);
+        }
+
+        /* --- Glass upgrade of existing cards --- */
+        .feature-item,
+        .screenshot-card,
+        .hero-figure,
+        .setup-details {
+            background: var(--glass-bg);
+            border-color: var(--glass-border);
+            backdrop-filter: blur(var(--glass-blur)) saturate(160%);
+            -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(160%);
+            box-shadow: inset 0 1px 0 var(--glass-highlight);
+        }
+        .feature-item:hover { border-color: var(--accent); }
+
+        /* --- Feature item platform visibility --- */
+        .feature-item[hidden] { display: none !important; }
+
+        /* --- Empty state for not-yet-available platforms --- */
+        .platform-empty {
+            display: none;
+            text-align: center;
+            padding: 2rem 1.2rem;
+            border-radius: 14px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(var(--glass-blur)) saturate(160%);
+            -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(160%);
+            color: var(--fg-muted);
+            margin: 1.5rem 0;
+        }
+        .platform-empty.active { display: block; }
+        .platform-empty h3 { color: var(--accent); margin-bottom: 0.4rem; }
+
+        /* --- Small-screen switcher --- */
+        @media (max-width: 520px) {
+            .platform-tab { padding: 0.5rem 0.8rem; font-size: 0.85rem; }
+            .platform-tab .tab-badge { font-size: 0.58rem; padding: 0.08rem 0.35rem; }
+        }
     </style>
 </head>
 <body>
@@ -604,30 +777,36 @@
                 <img src="logo.png" alt="AI Token Usage Tracker icon" class="app-logo" width="64" height="64">
                 <h1>AI Token Usage Tracker</h1>
             </div>
-            <p class="tagline">Know exactly what your Claude API costs — right from your macOS menu bar.</p>
+            <p class="tagline" id="tagline">Know exactly what your Claude API costs — right from your macOS menu bar.</p>
+
+            <!-- Platform switcher (Liquid Glass segmented control) -->
+            <div class="platform-switcher">
+                <div role="tablist" aria-label="Choose platform" id="platform-switcher">
+                    <button type="button" role="tab" class="platform-tab" data-platform="macos" aria-selected="true" aria-controls="platform-panel" tabindex="0">
+                        <span class="tab-icon" aria-hidden="true">🖥️</span><span>macOS</span>
+                    </button>
+                    <button type="button" role="tab" class="platform-tab new-pulse" data-platform="visionpro" aria-selected="false" aria-controls="platform-panel" tabindex="-1">
+                        <span class="tab-icon" aria-hidden="true">🥽</span><span>Vision Pro</span>
+                    </button>
+                    <button type="button" role="tab" class="platform-tab" data-platform="ios" aria-selected="false" aria-disabled="true" aria-controls="platform-panel" tabindex="-1">
+                        <span class="tab-icon" aria-hidden="true">📱</span><span>iOS</span><span class="tab-badge">Soon</span>
+                    </button>
+                </div>
+            </div>
         </header>
 
-        <main>
+        <main id="platform-panel">
 
-            <!-- Hero -->
+            <!-- Hero (rendered per platform) -->
             <section aria-label="Overview">
-                <figure class="hero-figure">
-                    <div class="zoomable"><img src="screenshots/Intraday.png" alt="AI Token Usage Tracker showing today's API costs per key in near real-time with per-model breakdown and rate limits" class="hero-img" width="1280" height="800" loading="eager"></div>
-                    <figcaption class="hero-caption">
-                            <h3>Intraday</h3>
-                            <p>The Intraday tab shows today's API costs per key in near real-time — with per-model breakdown, cost distribution bars, and live rate limits.</p>
-                    </figcaption>
-                </figure>
+                <div id="hero-host"></div>
 
                 <h2>What It Does</h2>
-                <p>A native macOS menu bar app that connects to the <strong>Anthropic Admin API</strong> and shows your organization's Claude API usage and costs — broken down by <strong>month</strong>, <strong>model</strong>, <strong>workspace</strong>, and <strong>API key</strong>. Built with Swift and SwiftUI, it runs entirely on Apple system frameworks with zero third-party dependencies. Your Admin API key is stored securely in the macOS Keychain.</p>
+                <p id="overview-lede">A native macOS menu bar app that connects to the <strong>Anthropic Admin API</strong> and shows your organization's Claude API usage and costs — broken down by <strong>month</strong>, <strong>model</strong>, <strong>workspace</strong>, and <strong>API key</strong>. Built with Swift and SwiftUI, it runs entirely on Apple system frameworks with zero third-party dependencies. Your Admin API key is stored securely in the macOS Keychain.</p>
                 <p>Whether you're using <strong>Claude Code</strong>, <strong>Cursor</strong>, <strong>Windsurf</strong>, or calling the Anthropic API directly — this app gives you full visibility into what you're spending.</p>
                 <p class="note"><strong>Note:</strong> This app tracks costs for <strong>Anthropic API keys</strong> only. It does not track usage or costs from Claude Desktop, Claude Pro/Team/Enterprise subscriptions, or Claude Code subscription plans.</p>
 
-                <div class="cta-wrapper">
-                    <a class="cta" href="https://apps.apple.com/app/ai-token-usage-tracker/id6760191068"><img src="Download_macOS_Store.svg" alt="Download on the Mac App Store" /></a>
-                    <span class="cta-hint">Requires macOS 14.0 (Sonoma) &middot; Free 7-day trial</span>
-                </div>
+                <div id="cta-top"></div>
             </section>
 
             <!-- Features Accordion -->
@@ -635,9 +814,15 @@
                 <h2>Features</h2>
                 <p style="color: var(--fg-muted); margin-bottom: 1rem; font-size: 0.95rem;">Click any feature to learn more.</p>
 
+                <!-- visionOS differences callout (shown only when Vision Pro is active) -->
+                <div class="platform-callout" id="vision-callout" role="note">
+                    <div class="callout-title"><span aria-hidden="true">🥽</span> What's different on visionOS</div>
+                    <p>The Vision Pro build is a <strong>spatial window</strong> you can place and pin anywhere in your space — tuned with Apple's Liquid Glass materials and <strong>hover-reactive</strong> controls. It keeps the same API integration and data model as the macOS version. A few macOS-only bits (menu bar cost display, detached popover window, and the localhost JSON API server) don't apply in visionOS, while a dedicated <strong>currency picker</strong> makes switching currencies a one-tap affair.</p>
+                </div>
+
                 <div class="features-grid">
 
-                    <details class="feature-item">
+                    <details class="feature-item" data-platforms="macos,visionpro">
                         <summary>
                             <span class="feature-title">Near Real-Time Cost Tracking <span class="feature-teaser">— see today's spend as it happens</span></span>
                         </summary>
@@ -647,7 +832,7 @@
                         </div>
                     </details>
 
-                    <details class="feature-item">
+                    <details class="feature-item" data-platforms="macos,visionpro">
                         <summary>
                             <span class="feature-title">Monthly Cost Breakdown <span class="feature-teaser">— full history with token-level detail</span></span>
                         </summary>
@@ -657,7 +842,7 @@
                         </div>
                     </details>
 
-                    <details class="feature-item">
+                    <details class="feature-item" data-platforms="macos,visionpro">
                         <summary>
                             <span class="feature-title">Per-Model Cost View <span class="feature-teaser">— Opus, Sonnet, Haiku at a glance</span></span>
                         </summary>
@@ -667,7 +852,7 @@
                         </div>
                     </details>
 
-                    <details class="feature-item">
+                    <details class="feature-item" data-platforms="macos,visionpro">
                         <summary>
                             <span class="feature-title">Per-API-Key Filtering <span class="feature-teaser">— isolate costs by project, bot, or team</span></span>
                         </summary>
@@ -677,7 +862,7 @@
                         </div>
                     </details>
 
-                    <details class="feature-item">
+                    <details class="feature-item" data-platforms="macos,visionpro">
                         <summary>
                             <span class="feature-title">Workspace Overview <span class="feature-teaser">— compare costs across environments</span></span>
                         </summary>
@@ -687,7 +872,7 @@
                         </div>
                     </details>
 
-                    <details class="feature-item">
+                    <details class="feature-item" data-platforms="macos,visionpro">
                         <summary>
                             <span class="feature-title">Live Rate Limits <span class="feature-teaser">— requests/min, input &amp; output tokens per model</span></span>
                         </summary>
@@ -697,7 +882,7 @@
                         </div>
                     </details>
 
-                    <details class="feature-item">
+                    <details class="feature-item" data-platforms="macos,visionpro">
                         <summary>
                             <span class="feature-title">Spend Alerts &amp; Limit Tracking <span class="feature-teaser">— get notified before you overspend</span></span>
                         </summary>
@@ -707,7 +892,7 @@
                         </div>
                     </details>
 
-                    <details class="feature-item">
+                    <details class="feature-item" data-platforms="macos,visionpro">
                         <summary>
                             <span class="feature-title">12-Currency Support <span class="feature-teaser">— USD, EUR, GBP, JPY, and 8 more</span></span>
                         </summary>
@@ -717,7 +902,17 @@
                         </div>
                     </details>
 
-                    <details class="feature-item">
+                    <details class="feature-item" data-platforms="visionpro">
+                        <summary>
+                            <span class="feature-title">Spatial Currency Picker <span class="feature-teaser">— dedicated visionOS currency view</span></span>
+                        </summary>
+                        <div class="feature-body">
+                            <p>On Vision Pro, currency selection gets its own <strong>dedicated spatial view</strong> — a glass panel with flag-based entries for all 12 supported currencies and live exchange rates. Hover-reactive rows and Liquid Glass materials make switching currencies feel native to visionOS.</p>
+                            <p>Your selection syncs across every tab and export instantly, just like on macOS.</p>
+                        </div>
+                    </details>
+
+                    <details class="feature-item" data-platforms="macos,visionpro">
                         <summary>
                             <span class="feature-title">CSV Export <span class="feature-teaser">— tab-specific, currency-aware reports</span></span>
                         </summary>
@@ -727,7 +922,7 @@
                         </div>
                     </details>
 
-                    <details class="feature-item">
+                    <details class="feature-item" data-platforms="macos">
                         <summary>
                             <span class="feature-title">Built-in JSON API <span class="feature-teaser">— integrate with dashboards and tools</span></span>
                         </summary>
@@ -737,7 +932,7 @@
                         </div>
                     </details>
 
-                    <details class="feature-item">
+                    <details class="feature-item" data-platforms="macos">
                         <summary>
                             <span class="feature-title">Detached Window Mode <span class="feature-teaser">— keep the window visible while you work</span></span>
                         </summary>
@@ -747,7 +942,7 @@
                         </div>
                     </details>
 
-                    <details class="feature-item">
+                    <details class="feature-item" data-platforms="macos,visionpro">
                         <summary>
                             <span class="feature-title">Security &amp; Privacy <span class="feature-teaser">— Keychain storage, no telemetry, zero dependencies</span></span>
                         </summary>
@@ -760,52 +955,13 @@
                 </div>
             </section>
 
-            <!-- Screenshots -->
+            <!-- Screenshots (rendered per platform) -->
             <section aria-label="Screenshots">
                 <h2>Screenshots</h2>
-
-                <div class="screenshots-grid">
-
-                    <figure class="screenshot-card">
-                        <div class="zoomable"><img src="screenshots/Model.png" alt="AI Token Usage Tracker — Per-model cost breakdown showing Claude Opus and Sonnet with 4 cost categories and inline rate limits" width="1280" height="800" loading="lazy"></div>
-                        <figcaption class="screenshot-caption">
-                            <h3>By Model</h3>
-                            <p>Every Claude model you've used, sorted by version and tier. Each card shows total cost, a color-coded 4-category breakdown (Input, Cache Write, Cache Read, Output), and inline rate-limit pills when configured.</p>
-                        </figcaption>
-                    </figure>
-
-                    <figure class="screenshot-card">
-                        <div class="zoomable"><img src="screenshots/Monat.png" alt="AI Token Usage Tracker — Monthly cost breakdown with paginated month cards, color-coded distribution bars, and token categories" width="1280" height="800" loading="lazy"></div>
-                        <figcaption class="screenshot-caption">
-                            <h3>By Month</h3>
-                            <p>Paginated month cards with finalized costs from Anthropic's Cost API. Each card shows total spend, a proportional cost bar, and per-category stats. Pro users can expand each month for a per-API-key breakdown.</p>
-                        </figcaption>
-                    </figure>
-
-                    <figure class="screenshot-card">
-                        <div class="zoomable"><img src="screenshots/Workspace.png" alt="AI Token Usage Tracker — Workspace overview comparing costs across Production, Development, and Staging environments" width="1280" height="800" loading="lazy"></div>
-                        <figcaption class="screenshot-caption">
-                            <h3>By Workspace</h3>
-                            <p>Compare API costs across all workspaces in your organization. Each workspace is shown as a card with its name and total cost, plus an organization-wide total at the bottom.</p>
-                        </figcaption>
-                    </figure>
-
-                    <figure class="screenshot-card">
-                        <div class="zoomable"><img src="screenshots/Settings.png" alt="AI Token Usage Tracker — Settings panel showing Admin API key configuration, API key filter for multi-project tracking, and display options" width="1280" height="800" loading="lazy"></div>
-                        <figcaption class="screenshot-caption">
-                            <h3>Settings — API &amp; Display</h3>
-                            <p>Configure your Admin API key (stored in macOS Keychain), filter costs by specific API keys, choose which tabs to display, and set the menu bar cost display mode (all-time, current year, current month, or intraday).</p>
-                        </figcaption>
-                    </figure>
-
-                    <figure class="screenshot-card">
-                        <div class="zoomable"><img src="screenshots/Settings2.png" alt="AI Token Usage Tracker — Settings panel showing spend limit configuration, notification thresholds, and per-model rate limit table" width="1280" height="800" loading="lazy"></div>
-                        <figcaption class="screenshot-caption">
-                            <h3>Settings — Spend Limits &amp; Rate Limits</h3>
-                            <p>Set a monthly spend limit with a visual budget bar, configure notification thresholds for spend alerts, and view live rate limits (requests/min, input/output tokens) for all Claude models.</p>
-                        </figcaption>
-                    </figure>
-
+                <div id="screenshots-host" class="screenshots-grid"></div>
+                <div class="platform-empty" id="platform-empty">
+                    <h3>Coming soon</h3>
+                    <p>Screenshots for this platform aren't available yet. In the meantime, take a look at the <a href="?platform=macos">macOS</a> or <a href="?platform=visionpro">Vision Pro</a> experience.</p>
                 </div>
             </section>
 
@@ -858,18 +1014,15 @@
                 </div>
             </section>
 
-            <!-- Requirements -->
+            <!-- Requirements (rendered per platform) -->
             <section aria-label="Requirements">
                 <h2>Requirements</h2>
-                <p><strong>macOS 14.0 (Sonoma)</strong> or later. Requires an <strong>Anthropic Admin API key</strong>, which you can generate in the Anthropic Console under Organization Settings (requires organization admin access).</p>
+                <p id="requirements-text"><strong>macOS 14.0 (Sonoma)</strong> or later. Requires an <strong>Anthropic Admin API key</strong>, which you can generate in the Anthropic Console under Organization Settings (requires organization admin access).</p>
             </section>
 
-            <!-- CTA -->
+            <!-- CTA (rendered per platform) -->
             <section aria-label="Download">
-                <div class="cta-wrapper">
-                    <a class="cta" href="https://apps.apple.com/app/ai-token-usage-tracker/id6760191068"><img src="Download_macOS_Store.svg" alt="Download on the Mac App Store" /></a>
-                    <span class="cta-hint">Requires macOS 14.0 (Sonoma) &middot; Free 7-day trial</span>
-                </div>
+                <div id="cta-bottom"></div>
             </section>
 
         </main>
@@ -894,16 +1047,214 @@
     </script>
 
     <script>
+    // --- Platform config (data-driven; add iOS entries later by dropping assets + flipping available=true) ---
+    const PLATFORMS = {
+        macos: {
+            label: 'macOS',
+            available: true,
+            tagline: "Know exactly what your Claude API costs — right from your macOS menu bar.",
+            lede: "A native macOS menu bar app that connects to the <strong>Anthropic Admin API</strong> and shows your organization's Claude API usage and costs — broken down by <strong>month</strong>, <strong>model</strong>, <strong>workspace</strong>, and <strong>API key</strong>. Built with Swift and SwiftUI, it runs entirely on Apple system frameworks with zero third-party dependencies. Your Admin API key is stored securely in the macOS Keychain.",
+            hero: {
+                src: 'screenshots/Intraday.png',
+                full: 'screenshots/Intraday.png',
+                alt: "AI Token Usage Tracker showing today's API costs per key in near real-time with per-model breakdown and rate limits",
+                title: 'Intraday',
+                caption: "The Intraday tab shows today's API costs per key in near real-time — with per-model breakdown, cost distribution bars, and live rate limits."
+            },
+            cta: {
+                href: 'https://apps.apple.com/app/ai-token-usage-tracker/id6760191068',
+                img: 'Download_macOS_Store.svg',
+                alt: 'Download on the Mac App Store',
+                hint: 'Requires macOS 14.0 (Sonoma) · Free 7-day trial'
+            },
+            requirements: '<strong>macOS 14.0 (Sonoma)</strong> or later. Requires an <strong>Anthropic Admin API key</strong>, which you can generate in the Anthropic Console under Organization Settings (requires organization admin access).',
+            screenshots: [
+                { src: 'screenshots/Model.png', full: 'screenshots/Model.png', alt: 'AI Token Usage Tracker — Per-model cost breakdown showing Claude Opus and Sonnet with 4 cost categories and inline rate limits', title: 'By Model', caption: "Every Claude model you've used, sorted by version and tier. Each card shows total cost, a color-coded 4-category breakdown (Input, Cache Write, Cache Read, Output), and inline rate-limit pills when configured." },
+                { src: 'screenshots/Monat.png', full: 'screenshots/Monat.png', alt: 'AI Token Usage Tracker — Monthly cost breakdown with paginated month cards, color-coded distribution bars, and token categories', title: 'By Month', caption: "Paginated month cards with finalized costs from Anthropic's Cost API. Each card shows total spend, a proportional cost bar, and per-category stats. Pro users can expand each month for a per-API-key breakdown." },
+                { src: 'screenshots/Workspace.png', full: 'screenshots/Workspace.png', alt: 'AI Token Usage Tracker — Workspace overview comparing costs across Production, Development, and Staging environments', title: 'By Workspace', caption: 'Compare API costs across all workspaces in your organization. Each workspace is shown as a card with its name and total cost, plus an organization-wide total at the bottom.' },
+                { src: 'screenshots/Settings.png', full: 'screenshots/Settings.png', alt: 'AI Token Usage Tracker — Settings panel showing Admin API key configuration, API key filter for multi-project tracking, and display options', title: 'Settings — API & Display', caption: 'Configure your Admin API key (stored in macOS Keychain), filter costs by specific API keys, choose which tabs to display, and set the menu bar cost display mode (all-time, current year, current month, or intraday).' },
+                { src: 'screenshots/Settings2.png', full: 'screenshots/Settings2.png', alt: 'AI Token Usage Tracker — Settings panel showing spend limit configuration, notification thresholds, and per-model rate limit table', title: 'Settings — Spend Limits & Rate Limits', caption: 'Set a monthly spend limit with a visual budget bar, configure notification thresholds for spend alerts, and view live rate limits (requests/min, input/output tokens) for all Claude models.' }
+            ]
+        },
+        visionpro: {
+            label: 'Vision Pro',
+            available: true,
+            tagline: "Know exactly what your Claude API costs — as a spatial window on Apple Vision Pro.",
+            lede: "A native Apple Vision Pro app that connects to the <strong>Anthropic Admin API</strong> and shows your organization's Claude API usage and costs — broken down by <strong>month</strong>, <strong>model</strong>, <strong>workspace</strong>, and <strong>API key</strong>. Built with Swift and SwiftUI on Apple system frameworks, with Liquid Glass materials and hover-reactive controls tuned for visionOS. Your Admin API key is stored securely in the Keychain.",
+            hero: {
+                src: 'screenshots/visionpro/Intraday_small.png',
+                full: 'screenshots/visionpro/Intraday.png',
+                alt: 'AI Token Usage Tracker on Apple Vision Pro — spatial Intraday view with per-key cost breakdown and Liquid Glass materials',
+                title: 'Intraday on visionOS',
+                caption: "Today's API costs per key as a spatial window — tuned with Apple's Liquid Glass materials and hover-reactive controls."
+            },
+            cta: {
+                href: 'https://apps.apple.com/app/ai-token-usage-tracker/id6760191068',
+                img: 'Download_macOS_Store.svg',
+                alt: 'Download on the App Store',
+                hint: 'Requires visionOS 2.0 or later · Free 7-day trial'
+            },
+            requirements: '<strong>visionOS 2.0</strong> or later on Apple Vision Pro. Requires an <strong>Anthropic Admin API key</strong>, which you can generate in the Anthropic Console under Organization Settings (requires organization admin access).',
+            screenshots: [
+                { src: 'screenshots/visionpro/Monat_small.png', full: 'screenshots/visionpro/Monat.png', alt: 'AI Token Usage Tracker on Vision Pro — Monthly cost breakdown in a spatial window with Liquid Glass materials', title: 'By Month', caption: "Paginated month cards with finalized costs from Anthropic's Cost API, rendered on Liquid Glass surfaces. Pro users can expand each month for a per-API-key breakdown." },
+                { src: 'screenshots/visionpro/Currency_small.png', full: 'screenshots/visionpro/Currency.png', alt: 'AI Token Usage Tracker on Vision Pro — Spatial currency picker with flag-based entries for 12 currencies', title: 'Spatial Currency Picker', caption: 'A dedicated visionOS view for switching currencies. Flag-based rows for all 12 supported currencies with live exchange rates, hover-reactive selection, and instant sync across every tab.' },
+                { src: 'screenshots/visionpro/Settings1_small.png', full: 'screenshots/visionpro/Settings1.png', alt: 'AI Token Usage Tracker on Vision Pro — Settings panel for API key and display configuration', title: 'Settings — API & Display', caption: 'Configure your Admin API key, filter costs by specific API keys, and choose which tabs to display — all in a native spatial window.' },
+                { src: 'screenshots/visionpro/Settings2_small.png', full: 'screenshots/visionpro/Settings2.png', alt: 'AI Token Usage Tracker on Vision Pro — Settings panel for spend limits and rate limits', title: 'Settings — Spend Limits & Rate Limits', caption: 'Set a monthly spend limit with a visual budget bar, configure spend alerts, and view live rate limits for every Claude model.' }
+            ]
+        },
+        ios: {
+            label: 'iOS',
+            available: false,
+            tagline: "Know exactly what your Claude API costs — on the go, on iPhone and iPad.",
+            lede: "A native iOS and iPadOS app that connects to the <strong>Anthropic Admin API</strong> and shows your organization's Claude API usage and costs. In development — follow the repository for updates.",
+            cta: null,
+            requirements: 'iOS and iPadOS support is in development. Follow the repository for updates.',
+            screenshots: []
+        }
+    };
+
+    (function() {
+        const VALID = Object.keys(PLATFORMS);
+        const DEFAULT = 'macos';
+        const STORAGE_KEY = 'selectedPlatform';
+
+        function getInitialPlatform() {
+            const params = new URLSearchParams(window.location.search);
+            const qp = params.get('platform');
+            if (qp && VALID.includes(qp)) return qp;
+            try {
+                const saved = localStorage.getItem(STORAGE_KEY);
+                if (saved && VALID.includes(saved)) return saved;
+            } catch (_) { /* storage unavailable */ }
+            return DEFAULT;
+        }
+
+        function escapeHtml(s) {
+            return String(s).replace(/[&<>"']/g, function(c) {
+                return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+            });
+        }
+
+        function renderHero(cfg) {
+            const host = document.getElementById('hero-host');
+            if (!cfg.hero) { host.innerHTML = ''; return; }
+            const h = cfg.hero;
+            host.innerHTML = ''
+                + '<figure class="hero-figure">'
+                + '<div class="zoomable"><img src="' + escapeHtml(h.src) + '" data-full="' + escapeHtml(h.full) + '" alt="' + escapeHtml(h.alt) + '" class="hero-img" loading="eager"></div>'
+                + '<figcaption class="hero-caption"><h3>' + escapeHtml(h.title) + '</h3><p>' + escapeHtml(h.caption) + '</p></figcaption>'
+                + '</figure>';
+        }
+
+        function renderCTA(host, cta) {
+            if (!cta) {
+                host.innerHTML = '<div class="cta-wrapper"><span class="cta-hint">' + escapeHtml(cta ? '' : 'Not yet available — follow the repo for updates.') + '</span></div>';
+                return;
+            }
+            host.innerHTML = ''
+                + '<div class="cta-wrapper">'
+                + '<a class="cta" href="' + escapeHtml(cta.href) + '"><img src="' + escapeHtml(cta.img) + '" alt="' + escapeHtml(cta.alt) + '" /></a>'
+                + '<span class="cta-hint">' + escapeHtml(cta.hint) + '</span>'
+                + '</div>';
+        }
+
+        function renderScreenshots(cfg) {
+            const host = document.getElementById('screenshots-host');
+            const empty = document.getElementById('platform-empty');
+            host.innerHTML = '';
+            if (!cfg.screenshots || cfg.screenshots.length === 0) {
+                empty.classList.add('active');
+                return;
+            }
+            empty.classList.remove('active');
+            cfg.screenshots.forEach(function(s) {
+                const fig = document.createElement('figure');
+                fig.className = 'screenshot-card';
+                fig.innerHTML = ''
+                    + '<div class="zoomable"><img src="' + escapeHtml(s.src) + '" data-full="' + escapeHtml(s.full) + '" alt="' + escapeHtml(s.alt) + '" loading="lazy"></div>'
+                    + '<figcaption class="screenshot-caption"><h3>' + escapeHtml(s.title) + '</h3><p>' + escapeHtml(s.caption) + '</p></figcaption>';
+                host.appendChild(fig);
+            });
+        }
+
+        function updateFeatureVisibility(platform) {
+            document.querySelectorAll('.feature-item[data-platforms]').forEach(function(el) {
+                const allowed = (el.getAttribute('data-platforms') || '').split(',').map(function(s){return s.trim();});
+                el.hidden = !allowed.includes(platform);
+            });
+            const callout = document.getElementById('vision-callout');
+            if (callout) callout.classList.toggle('active', platform === 'visionpro');
+        }
+
+        function updateTabsUI(platform) {
+            document.querySelectorAll('.platform-tab').forEach(function(btn) {
+                const isActive = btn.getAttribute('data-platform') === platform;
+                btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+                btn.setAttribute('tabindex', isActive ? '0' : '-1');
+            });
+        }
+
+        function applyPlatform(platform) {
+            if (!VALID.includes(platform)) platform = DEFAULT;
+            const cfg = PLATFORMS[platform];
+            document.getElementById('tagline').textContent = cfg.tagline;
+            const lede = document.getElementById('overview-lede');
+            if (lede && cfg.lede) lede.innerHTML = cfg.lede;
+            renderHero(cfg);
+            renderCTA(document.getElementById('cta-top'), cfg.cta);
+            renderCTA(document.getElementById('cta-bottom'), cfg.cta);
+            document.getElementById('requirements-text').innerHTML = cfg.requirements;
+            renderScreenshots(cfg);
+            updateFeatureVisibility(platform);
+            updateTabsUI(platform);
+            try { localStorage.setItem(STORAGE_KEY, platform); } catch (_) { /* noop */ }
+        }
+
+        // Click + keyboard navigation for tabs
+        const tabs = Array.from(document.querySelectorAll('.platform-tab'));
+        tabs.forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                if (btn.getAttribute('aria-disabled') === 'true') return;
+                applyPlatform(btn.getAttribute('data-platform'));
+                btn.focus();
+            });
+        });
+        const tablist = document.getElementById('platform-switcher');
+        if (tablist) {
+            tablist.addEventListener('keydown', function(e) {
+                const enabled = tabs.filter(function(t){ return t.getAttribute('aria-disabled') !== 'true'; });
+                const current = document.activeElement;
+                const idx = enabled.indexOf(current);
+                if (idx === -1) return;
+                let next = null;
+                if (e.key === 'ArrowRight' || e.key === 'ArrowDown') next = enabled[(idx + 1) % enabled.length];
+                else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') next = enabled[(idx - 1 + enabled.length) % enabled.length];
+                else if (e.key === 'Home') next = enabled[0];
+                else if (e.key === 'End') next = enabled[enabled.length - 1];
+                if (next) {
+                    e.preventDefault();
+                    next.focus();
+                    applyPlatform(next.getAttribute('data-platform'));
+                }
+            });
+        }
+
+        applyPlatform(getInitialPlatform());
+    })();
+    </script>
+
+    <script>
     (function() {
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
 
-        document.querySelectorAll('.zoomable img').forEach(function(img) {
-            img.addEventListener('click', function() {
-                lightboxImg.src = this.src;
-                lightboxImg.alt = this.alt;
-                lightbox.classList.add('active');
-            });
+        // Event delegation so dynamically-rendered images work too
+        document.addEventListener('click', function(e) {
+            const img = e.target.closest && e.target.closest('.zoomable img');
+            if (!img) return;
+            lightboxImg.src = img.getAttribute('data-full') || img.src;
+            lightboxImg.alt = img.alt;
+            lightbox.classList.add('active');
         });
 
         lightbox.addEventListener('click', function() {
