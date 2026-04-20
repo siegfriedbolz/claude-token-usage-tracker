@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Token Usage Tracker — macOS Menu Bar App for Anthropic API Costs</title>
-    <meta name="description" content="A native macOS menu bar app to monitor Anthropic Claude API token usage and costs in near real-time. Track spending by model, workspace, and API key — right from your menu bar.">
-    <meta name="keywords" content="Claude, Anthropic, API, token usage, cost tracker, macOS, menu bar app, Claude API costs, Claude Opus, Claude Sonnet, Claude Haiku, API monitoring, developer tools, Swift, SwiftUI, Mac App Store, spend tracking, rate limits, Claude Code, Cursor, Windsurf, API cost monitoring, token counter, budget alerts">
+    <meta name="description" content="A native macOS and Apple Vision Pro app to monitor Anthropic Claude API token usage and costs in near real-time. Track spending by model, workspace, and API key — right from your menu bar or on visionOS.">
+    <meta name="keywords" content="Claude, Anthropic, API, token usage, cost tracker, macOS, menu bar app, Claude API costs, Claude Opus, Claude Sonnet, Claude Haiku, API monitoring, developer tools, Swift, SwiftUI, Mac App Store, spend tracking, rate limits, Claude Code, Cursor, Windsurf, API cost monitoring, token counter, budget alerts, Apple Vision Pro, visionOS, spatial computing, Vision Pro app">
     <meta name="author" content="Siegfried-Thor Bolz">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
     <link rel="canonical" href="https://siegfriedbolz.github.io/claude-token-usage-tracker/">
@@ -22,8 +22,8 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://siegfriedbolz.github.io/claude-token-usage-tracker/">
-    <meta property="og:title" content="AI Token Usage Tracker — macOS Menu Bar App for Anthropic API Costs">
-    <meta property="og:description" content="Monitor your Anthropic Claude API token usage and costs in near real-time. Track spending by model, workspace, and API key — right from your macOS menu bar. Built with Swift, zero third-party dependencies.">
+    <meta property="og:title" content="AI Token Usage Tracker — macOS &amp; Apple Vision Pro App for Anthropic API Costs">
+    <meta property="og:description" content="Monitor your Anthropic Claude API token usage and costs in near real-time. Track spending by model, workspace, and API key — on macOS and Apple Vision Pro. Built with Swift, zero third-party dependencies.">
     <meta property="og:image" content="https://raw.githubusercontent.com/siegfriedbolz/claude-token-usage-tracker/main/screenshots/Intraday.png">
     <meta property="og:image:width" content="1280">
     <meta property="og:image:height" content="800">
@@ -34,8 +34,8 @@
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="AI Token Usage Tracker — macOS Menu Bar App">
-    <meta name="twitter:description" content="Monitor your Anthropic Claude API token usage and costs in near real-time. Track spending by model, workspace, and API key.">
+    <meta name="twitter:title" content="AI Token Usage Tracker — macOS &amp; Apple Vision Pro App">
+    <meta name="twitter:description" content="Monitor your Anthropic Claude API token usage and costs in near real-time on macOS and Apple Vision Pro. Track spending by model, workspace, and API key.">
     <meta name="twitter:image" content="https://raw.githubusercontent.com/siegfriedbolz/claude-token-usage-tracker/main/screenshots/Intraday.png">
     <meta name="twitter:image:alt" content="AI Token Usage Tracker showing intraday API cost breakdown per key with live rate limits">
 
@@ -45,7 +45,7 @@
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
         "name": "AI Token Usage Tracker",
-        "operatingSystem": "macOS 14.0 (Sonoma) or later",
+        "operatingSystem": "macOS 14.0 (Sonoma) or later, visionOS 2.0 or later",
         "applicationCategory": "DeveloperApplication",
         "applicationSubCategory": "API Monitoring",
         "description": "A native macOS menu bar app to monitor Anthropic Claude API token usage and costs in near real-time. Provides breakdowns by model, workspace, month, and API key. Built with Swift and SwiftUI — zero third-party dependencies.",
@@ -69,12 +69,12 @@
             "https://raw.githubusercontent.com/siegfriedbolz/claude-token-usage-tracker/main/screenshots/Settings.png",
             "https://raw.githubusercontent.com/siegfriedbolz/claude-token-usage-tracker/main/screenshots/Settings2.png"
         ],
-        "softwareRequirements": "macOS 14.0 (Sonoma) or later, Anthropic Admin API key",
+        "softwareRequirements": "macOS 14.0 (Sonoma) or later or Apple Vision Pro (visionOS 2.0+), Anthropic Admin API key",
         "featureList": "Near real-time intraday cost tracking, Monthly cost breakdown with full history, Per-model cost view (Opus Sonnet Haiku), Per-API-key cost filtering, Workspace cost comparison, Live rate limits per model, Spend limit tracking with macOS notifications, 12-currency support with real-time exchange rates, CSV export, Built-in localhost JSON API, Detached popover window mode, macOS Keychain security with zero third-party dependencies",
         "datePublished": "2025-01-01",
         "installUrl": "https://apps.apple.com/app/ai-token-usage-tracker/id6760191068",
         "url": "https://siegfriedbolz.github.io/claude-token-usage-tracker/",
-        "keywords": "Claude, Anthropic, API, token usage, cost tracker, macOS, menu bar, developer tools, Claude Code, Cursor, Windsurf"
+        "keywords": "Claude, Anthropic, API, token usage, cost tracker, macOS, menu bar, developer tools, Claude Code, Cursor, Windsurf, Apple Vision Pro, visionOS, spatial computing"
     }
     </script>
 
@@ -97,7 +97,7 @@
                 "name": "What are the system requirements?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "You need macOS 14.0 (Sonoma) or later and an Anthropic Admin API key, which requires organization admin access in your Anthropic Console."
+                    "text": "You need macOS 14.0 (Sonoma) or later, or Apple Vision Pro running visionOS 2.0 or later, plus an Anthropic Admin API key which requires organization admin access in your Anthropic Console."
                 }
             },
             {
@@ -535,6 +535,43 @@
             box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
         }
 
+        /* Announcement Banner */
+        .announcement-banner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: linear-gradient(135deg, #6d28d9 0%, #4f46e5 60%, #7c3aed 100%);
+            color: #fff;
+            padding: 0.55rem 1rem;
+            box-shadow: 0 2px 16px rgba(109, 40, 217, 0.45);
+        }
+        .announcement-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            max-width: 900px;
+            margin: 0 auto;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        .announcement-icon {
+            font-size: 1.15rem;
+            flex-shrink: 0;
+        }
+        .announcement-text {
+            flex: 1;
+            text-align: center;
+        }
+        .announcement-text strong {
+            font-weight: 700;
+        }
+        body.has-announcement {
+            padding-top: 2.7rem;
+        }
+
         /* Footer */
         footer {
             margin-top: 3rem;
@@ -548,6 +585,17 @@
     </style>
 </head>
 <body>
+
+    <!-- Announcement Banner -->
+    <div class="announcement-banner" id="announcement-banner" role="banner" aria-label="Version 2.0 announcement">
+        <div class="announcement-content">
+            <span class="announcement-icon"></span>
+            <span class="announcement-text">
+                <strong>Coming Soon: Version 2.0</strong> — 🥽 Apple Vision Pro support, free for all users!
+            </span>
+        </div>
+    </div>
+
     <div class="container">
 
         <!-- Header -->
@@ -840,6 +888,10 @@
     <div class="lightbox" id="lightbox" role="dialog" aria-label="Screenshot fullscreen view">
         <img id="lightbox-img" src="" alt="">
     </div>
+
+    <script>
+    document.body.classList.add('has-announcement');
+    </script>
 
     <script>
     (function() {
