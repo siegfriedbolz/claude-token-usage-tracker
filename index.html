@@ -537,9 +537,8 @@
 
         /* ---------- Screenshots ---------- */
         .screenshots-grid { display: grid; gap: 1.75rem; margin-top: 1rem; }
-        .screenshot-card { transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease; }
+        .screenshot-card { transition: box-shadow 0.25s ease, border-color 0.25s ease; }
         .screenshot-card:hover {
-            transform: translateY(-2px);
             border-color: var(--glass-border-strong);
             box-shadow:
                 inset 0 1px 0 var(--glass-highlight),
@@ -974,10 +973,16 @@
             background: transparent;
             color: var(--fg-muted);
             cursor: pointer;
-            padding: 0.25rem 0.5rem;
+            /* WCAG 2.2 — Target Size (Minimum) 2.5.8: at least 24×24 CSS px */
+            min-width: 32px;
+            min-height: 32px;
+            padding: 0.4rem 0.6rem;
             border-radius: 999px;
             font: inherit;
             font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             transition: color 0.2s ease, background 0.2s ease;
         }
         .vision-detected-hint .vh-close:hover { color: var(--fg); background: var(--glass-bg); }
@@ -1122,6 +1127,60 @@
             box-shadow: var(--focus-ring), 0 8px 24px rgba(0,0,0,0.35);
             color: #fff;
             text-decoration: none;
+        }
+
+        /* ---------- WCAG 2.2: Visually-hidden helper (screen-reader only) ---------- */
+        .sr-only {
+            position: absolute !important;
+            width: 1px; height: 1px;
+            padding: 0; margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* ---------- WCAG 2.2: Forced-colors mode (Windows High Contrast, etc.) ---------- */
+        @media (forced-colors: active) {
+            .glass, .hero-figure, .feature-item, .screenshot-card,
+            .setup-details, .platform-callout, .faq-card, footer, .note,
+            .announcement-banner, .platform-switcher[role="tablist"],
+            .lightbox, .vision-welcome, .vision-detected-hint {
+                border: 1px solid CanvasText;
+                background: Canvas;
+                backdrop-filter: none;
+                -webkit-backdrop-filter: none;
+            }
+            .platform-tab[aria-selected="true"] {
+                background: Highlight;
+                color: HighlightText;
+                forced-color-adjust: none;
+            }
+            .cta, .skip-link, .setup-steps li::before {
+                background: ButtonFace;
+                color: ButtonText;
+                border: 1px solid ButtonText;
+            }
+            a { color: LinkText; }
+            :focus-visible { outline: 2px solid Highlight !important; outline-offset: 2px; }
+        }
+
+        /* ---------- WCAG 2.2 (1.4.6): Higher contrast when user requests it ---------- */
+        @media (prefers-contrast: more) {
+            :root {
+                --fg-muted: #d0d4e1;
+                --fg-subtle: #b0b5c6;
+                --glass-border: rgba(255, 255, 255, 0.35);
+                --glass-border-strong: rgba(255, 255, 255, 0.50);
+            }
+            @media (prefers-color-scheme: light) {
+                :root {
+                    --fg-muted: #2a2f3d;
+                    --fg-subtle: #3a3f4d;
+                    --glass-border: rgba(0, 0, 0, 0.28);
+                    --glass-border-strong: rgba(0, 0, 0, 0.45);
+                }
+            }
         }
     </style>
 </head>
@@ -1409,12 +1468,12 @@
     </div>
 
     <!-- Vision Pro welcome greeting (shown on every page load to detected Vision Pro visitors) -->
-    <div class="vision-welcome" id="vision-welcome" role="dialog" aria-labelledby="vision-welcome-title" hidden>
+    <div class="vision-welcome" id="vision-welcome" role="dialog" aria-modal="true" aria-labelledby="vision-welcome-title" aria-describedby="vision-welcome-desc" hidden>
         <div class="vision-welcome-card">
-            <button type="button" class="vision-welcome-close" id="vision-welcome-close" aria-label="Dismiss welcome message">✕</button>
+            <button type="button" class="vision-welcome-close" id="vision-welcome-close" aria-label="Dismiss welcome message"><span aria-hidden="true">✕</span></button>
             <span class="vision-welcome-icon" aria-hidden="true">🥽</span>
             <h3 id="vision-welcome-title">Welcome, Vision Pro user!</h3>
-            <p>This is the app you need for your wonderful <strong>Apple&nbsp;Vision&nbsp;Pro</strong> — track your Claude API usage and costs right in spatial computing.</p>
+            <p id="vision-welcome-desc">This is the app you need for your wonderful <strong>Apple&nbsp;Vision&nbsp;Pro</strong> — track your Claude API usage and costs right in spatial computing.</p>
             <p>We’ve opened the visionOS version for you automatically.</p>
             <div class="vision-welcome-progress" aria-hidden="true"><span class="vision-welcome-progress-bar" id="vision-welcome-bar"></span></div>
         </div>
@@ -1424,11 +1483,11 @@
     <div class="vision-detected-hint" id="vision-hint" role="status" aria-live="polite" hidden>
         <span class="vh-icon" aria-hidden="true">🥽</span>
         <span class="vh-text">Apple&nbsp;Vision&nbsp;Pro detected — showing the <strong>visionOS</strong> version. <a href="?platform=macos" id="vh-switch-macos">Switch to macOS</a></span>
-        <button type="button" class="vh-close" id="vh-close" aria-label="Dismiss Vision Pro hint">✕</button>
+        <button type="button" class="vh-close" id="vh-close" aria-label="Dismiss Vision Pro hint"><span aria-hidden="true">✕</span></button>
     </div>
 
-    <div class="lightbox" id="lightbox" role="dialog" aria-label="Screenshot fullscreen view">
-        <button type="button" class="lightbox-close" id="lightbox-close" aria-label="Close fullscreen view">✕</button>
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Screenshot fullscreen view">
+        <button type="button" class="lightbox-close" id="lightbox-close" aria-label="Close fullscreen view"><span aria-hidden="true">✕</span></button>
         <img id="lightbox-img" src="" alt="">
     </div>
 
@@ -1791,9 +1850,8 @@
             }
         });
 
-        // Close on backdrop click, but not when clicking the image itself
-        lightbox.addEventListener('click', function(e) {
-            if (e.target === lightboxImg) return;
+        // Close on any click inside the lightbox (backdrop or image)
+        lightbox.addEventListener('click', function() {
             closeLightbox();
         });
 
