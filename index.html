@@ -535,6 +535,38 @@
         .cta img { height: 52px; width: auto; display: block; border-radius: 10px; }
         .cta-hint { display: block; text-align: center; margin-top: 0.65rem; font-size: 0.85rem; color: var(--fg-muted); }
 
+        /* Coming-soon notice (used for Vision Pro until launch) */
+        .cta-coming-soon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.85rem;
+            max-width: 32rem;
+            margin: 0 auto;
+            padding: 1.2rem 1.3rem;
+            border-radius: 18px;
+            background: var(--glass-bg-strong, var(--glass-bg));
+            border: 1px solid var(--accent-ring);
+            box-shadow: var(--glass-shadow), inset 0 1px 0 var(--glass-highlight),
+                        0 0 60px -20px var(--accent-soft);
+            backdrop-filter: blur(22px) saturate(180%);
+            -webkit-backdrop-filter: blur(22px) saturate(180%);
+        }
+        .cta-coming-soon .ccs-icon { font-size: 1.8rem; line-height: 1; }
+        .cta-coming-soon .ccs-text {
+            margin: 0;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: var(--fg);
+            text-align: center;
+        }
+        .cta-coming-soon .cta-secondary { margin-top: 0.2rem; }
+        .cta-coming-soon .cta-fallback-label {
+            font-size: 0.82rem;
+            color: var(--fg-muted);
+            text-align: center;
+        }
+
         /* ---------- Screenshots ---------- */
         .screenshots-grid { display: grid; gap: 1.75rem; margin-top: 1rem; }
         .screenshot-card { transition: box-shadow 0.25s ease, border-color 0.25s ease; }
@@ -769,19 +801,28 @@
 
         /* ---------- Footer ---------- */
         footer {
-            margin-top: 3rem;
-            padding: 1.5rem 1.3rem;
-            border-radius: 18px;
+            margin-top: 2.2rem;
+            padding: 0.7rem 1rem;
+            border-radius: 14px;
             color: var(--fg-muted);
-            font-size: 0.88rem;
+            font-size: 0.82rem;
             background: var(--glass-bg);
             border: 1px solid var(--glass-border);
             backdrop-filter: blur(var(--glass-blur)) saturate(160%);
             -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(160%);
             box-shadow: inset 0 1px 0 var(--glass-highlight);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.4rem 1rem;
         }
-        footer nav { margin-top: 0.4rem; }
-        footer nav a { margin-right: 1.2rem; }
+        footer p { margin: 0; }
+        footer nav { margin: 0; display: inline-flex; gap: 1rem; }
+        footer nav a { margin: 0; }
+        @media (max-width: 520px) {
+            footer { justify-content: flex-start; }
+        }
 
         /* ---------- Platform switcher (Liquid Glass segmented pill) ---------- */
         .platform-switcher {
@@ -1042,8 +1083,30 @@
             cursor: pointer;
         }
 
-        /* Content tailored for visionOS visitors */
-        html.visionos-device .macos-only-note { display: none; }
+        /* Content tailored per active platform tab (works on any device) */
+        body[data-active-platform="visionpro"] .macos-only-note,
+        body[data-active-platform="ios"] .macos-only-note { display: none; }
+
+        /* Inline "macOS only" badge used inside feature copy */
+        .macos-only-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            margin-left: 0.4rem;
+            padding: 0.08rem 0.5rem;
+            border-radius: 999px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            color: var(--fg-muted);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border, rgba(255, 255, 255, 0.2));
+            vertical-align: middle;
+        }
+        @media (prefers-color-scheme: light) {
+            .macos-only-badge { background: rgba(0, 0, 0, 0.04); }
+        }
 
         /* ---------- Vision Pro welcome greeting ---------- */
         .vision-welcome {
@@ -1182,6 +1245,225 @@
                 }
             }
         }
+
+        /* =====================================================
+           Vision Pro–only enhancements (scoped to .visionos-device)
+           Items: 15, 18, 11, 1, 2, 3, 4, 9, 10
+           ===================================================== */
+
+        /* Helper: show elements only on visionOS */
+        .visionos-only { display: none; }
+        body[data-active-platform="visionpro"] .visionos-only { display: inline-flex; }
+        body[data-active-platform="visionpro"] section.visionos-only,
+        body[data-active-platform="visionpro"] div.visionos-only { display: block; }
+
+        /* #18 — "Built for visionOS 2.0" badge */
+        body[data-active-platform="visionpro"] .visionos-badge-row {
+            display: block;
+            margin-top: 0.8rem;
+            text-align: center;
+        }
+        .visionos-badge {
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.32rem 0.75rem;
+            border-radius: 999px;
+            font-size: 0.78rem;
+            font-weight: 500;
+            letter-spacing: 0.01em;
+            color: var(--fg-muted);
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--glass-border, rgba(255, 255, 255, 0.18));
+            box-shadow: inset 0 1px 0 var(--glass-highlight);
+            backdrop-filter: blur(14px) saturate(140%);
+            -webkit-backdrop-filter: blur(14px) saturate(140%);
+        }
+        .visionos-badge .vb-icon { font-size: 0.95rem; line-height: 1; opacity: 0.85; }
+        @media (prefers-color-scheme: light) {
+            .visionos-badge { background: rgba(0, 0, 0, 0.04); }
+        }
+
+        /* #15 — "Why Vision Pro?" three-card block */
+        .why-vision { margin: 2.2rem 0 1.6rem; }
+        .why-vision h2 { margin-bottom: 0.35rem; }
+        .why-vision-lede {
+            color: var(--fg-muted);
+            margin-bottom: 1.1rem;
+            font-size: 0.95rem;
+        }
+        .why-vision-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 0.9rem;
+        }
+        .why-card {
+            padding: 1.1rem 1rem;
+            border-radius: 18px;
+            background: var(--glass-bg-strong, var(--glass-bg));
+            border: 1px solid var(--glass-border-strong, var(--glass-border));
+            box-shadow: var(--glass-shadow), inset 0 1px 0 var(--glass-highlight);
+            backdrop-filter: blur(22px) saturate(180%);
+            -webkit-backdrop-filter: blur(22px) saturate(180%);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+        .why-card:hover {
+            transform: translateY(-3px) scale(1.02);
+            border-color: var(--accent-ring);
+            box-shadow: var(--glass-shadow),
+                        inset 0 1px 0 var(--glass-highlight),
+                        0 0 60px -8px var(--accent-soft);
+        }
+        .why-card .why-icon {
+            font-size: 1.8rem;
+            line-height: 1;
+            margin-bottom: 0.55rem;
+            display: block;
+        }
+        .why-card h3 {
+            font-size: 1.02rem;
+            margin: 0 0 0.35rem;
+        }
+        .why-card p {
+            margin: 0;
+            color: var(--fg-muted);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* #11 — Screenshot cards scale up (replaces translateY to avoid wobble) */
+        html.visionos-device .screenshot-card { transform-origin: center center; }
+        html.visionos-device .screenshot-card:hover {
+            transform: scale(1.035);
+        }
+
+        /* #2 — Depth-layered glass: deeper blur & shadows on hero + cards */
+        html.visionos-device .hero-figure,
+        html.visionos-device .screenshot-card,
+        html.visionos-device .feature-item,
+        html.visionos-device .faq-card {
+            backdrop-filter: blur(32px) saturate(200%);
+            -webkit-backdrop-filter: blur(32px) saturate(200%);
+            box-shadow: var(--glass-shadow),
+                        inset 0 1px 0 var(--glass-highlight),
+                        0 24px 60px -30px rgba(0, 0, 0, 0.45);
+        }
+
+        /* #3 — Gaze-responsive accent glow */
+        html.visionos-device .screenshot-card:hover,
+        html.visionos-device .feature-item:hover,
+        html.visionos-device .faq-card:hover,
+        html.visionos-device .cta:hover,
+        html.visionos-device .platform-tab:hover:not([aria-disabled="true"]):not([aria-selected="true"]) {
+            box-shadow: var(--glass-shadow),
+                        inset 0 1px 0 var(--glass-highlight),
+                        0 0 70px -6px var(--accent-soft),
+                        0 0 0 1px var(--accent-ring);
+            border-color: var(--accent-ring);
+        }
+
+        /* #4 — Animated mesh gradient background (subtle drift) */
+        @keyframes visionMeshDrift {
+            0%   { background-position: 0% 0%, 100% 0%, 50% 100%; }
+            50%  { background-position: 20% 10%, 80% 20%, 40% 90%; }
+            100% { background-position: 0% 0%, 100% 0%, 50% 100%; }
+        }
+        @media (prefers-reduced-motion: no-preference) {
+            html.visionos-device body {
+                background-image:
+                    radial-gradient(60rem 40rem at 12% 8%, rgba(255, 138, 61, 0.10), transparent 60%),
+                    radial-gradient(50rem 35rem at 92% 14%, rgba(120, 160, 255, 0.09), transparent 60%),
+                    radial-gradient(55rem 38rem at 50% 96%, rgba(200, 120, 255, 0.08), transparent 60%);
+                background-size: 140% 140%, 140% 140%, 140% 140%;
+                background-attachment: fixed;
+                animation: visionMeshDrift 28s ease-in-out infinite alternate;
+            }
+        }
+
+        /* #1 — Parallax hero (driven by --px / --py set from JS) */
+        html.visionos-device .hero-figure {
+            perspective: 1200px;
+            --px: 0;
+            --py: 0;
+        }
+        @media (prefers-reduced-motion: no-preference) {
+            html.visionos-device .hero-figure .hero-img {
+                transform: translate3d(
+                    calc(var(--px, 0) * 10px),
+                    calc(var(--py, 0) * 10px),
+                    0
+                )
+                rotateY(calc(var(--px, 0) * 3deg))
+                rotateX(calc(var(--py, 0) * -3deg));
+                transition: transform 0.25s cubic-bezier(0.2, 0.9, 0.3, 1);
+                will-change: transform;
+            }
+        }
+
+        /* #10 — Larger target sizes for gaze/dwell ergonomics */
+        html.visionos-device .platform-tab {
+            min-height: 48px;
+            padding-inline: 1.1rem;
+        }
+        html.visionos-device .feature-item > summary {
+            min-height: 56px;
+            padding-block: 0.9rem;
+        }
+        html.visionos-device .cta { min-height: 48px; }
+        html.visionos-device .footer a,
+        html.visionos-device footer a {
+            min-height: 44px;
+            display: inline-flex;
+            align-items: center;
+        }
+        html.visionos-device .vh-close,
+        html.visionos-device .vw-close {
+            min-width: 48px;
+            min-height: 48px;
+        }
+
+        /* #9 — Hover-sound toggle (floating pill, bottom-right) */
+        .vision-sound-toggle { display: none; }
+        html.visionos-device .vision-sound-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            position: fixed;
+            right: max(1rem, env(safe-area-inset-right));
+            bottom: max(1rem, env(safe-area-inset-bottom));
+            z-index: 90;
+            padding: 0.55rem 0.95rem;
+            min-height: 44px;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--fg);
+            background: var(--glass-bg-strong, var(--glass-bg));
+            border: 1px solid var(--glass-border-strong, var(--glass-border));
+            box-shadow: var(--glass-shadow), inset 0 1px 0 var(--glass-highlight);
+            backdrop-filter: blur(22px) saturate(180%);
+            -webkit-backdrop-filter: blur(22px) saturate(180%);
+            cursor: pointer;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+        }
+        html.visionos-device .vision-sound-toggle:hover {
+            transform: translateY(-2px) scale(1.03);
+            border-color: var(--accent-ring);
+            box-shadow: var(--glass-shadow), inset 0 1px 0 var(--glass-highlight),
+                        0 0 50px -10px var(--accent-soft);
+        }
+        html.visionos-device .vision-sound-toggle[aria-pressed="true"] {
+            background: linear-gradient(135deg, var(--accent-soft), rgba(255, 138, 61, 0.05));
+            border-color: var(--accent-ring);
+            color: var(--fg);
+        }
+        html.visionos-device .vision-sound-toggle:focus-visible {
+            outline: none;
+            box-shadow: var(--focus-ring);
+        }
+        html.visionos-device .vision-sound-toggle .vst-icon {
+            font-size: 1rem;
+            line-height: 1;
+        }
     </style>
 </head>
 <body>
@@ -1236,6 +1518,29 @@
                 <p class="note"><strong>Note:</strong> This app tracks costs for <strong>Anthropic API keys</strong> only. It does not track usage or costs from Claude Desktop, Claude Pro/Team/Enterprise subscriptions, or Claude Code subscription plans.</p>
 
                 <div id="cta-top"></div>
+            </section>
+
+            <!-- #15 — Why Vision Pro? (visionOS only) -->
+            <section class="why-vision visionos-only" aria-label="Why Vision Pro?">
+                <h2>Why Vision Pro?</h2>
+                <p class="why-vision-lede">Three reasons this app feels right at home on visionOS.</p>
+                <div class="why-vision-grid">
+                    <div class="why-card">
+                        <span class="why-icon" aria-hidden="true">👓</span>
+                        <h3>Glanceable in your space</h3>
+                        <p>Pin the window anywhere — your desk, beside your code editor, above your keyboard — and check spend without a context switch.</p>
+                    </div>
+                    <div class="why-card">
+                        <span class="why-icon" aria-hidden="true">📍</span>
+                        <h3>Persistent windows</h3>
+                        <p>Liquid-Glass window stays where you left it across sessions. Your cost dashboard becomes part of your spatial workspace.</p>
+                    </div>
+                    <div class="why-card">
+                        <span class="why-icon" aria-hidden="true">⚡</span>
+                        <h3>No context-switch to Mac</h3>
+                        <p>Hover-reactive controls and a native currency picker let you audit costs in seconds — without reaching for your laptop.</p>
+                    </div>
+                </div>
             </section>
 
             <!-- Features Accordion -->
@@ -1377,7 +1682,8 @@
                         </summary>
                         <div class="feature-body">
                             <p>Your Admin API key is stored in the <strong>macOS Keychain</strong> — never in plaintext or UserDefaults. The app communicates only with Anthropic's official API endpoints and an exchange rate service. There is <strong>no analytics, no telemetry, no crash reporting</strong>, and zero data sent to any third party.</p>
-                            <p>The entire app is built on Apple system frameworks only — <strong>zero third-party Swift packages or CocoaPods</strong>. The JSON API server is bound to localhost only, preventing any external network access. API keys are masked by default in the Settings panel with a show/hide toggle.</p>
+                            <p>The entire app is built on Apple system frameworks only — <strong>zero third-party Swift packages or CocoaPods</strong>. API keys are masked by default in the Settings panel with a show/hide toggle.</p>
+                            <p class="macos-only-note"><span class="macos-only-badge" aria-label="macOS only"><span aria-hidden="true">🖥️</span> macOS only</span> The built-in JSON API server is bound to <strong>localhost</strong> only, preventing any external network access. This feature is exclusive to the macOS version and will not be offered on visionOS or iOS.</p>
                         </div>
                     </details>
 
@@ -1538,12 +1844,17 @@
                 caption: "Today's API costs per key as a spatial window — tuned with Apple's Liquid Glass materials and hover-reactive controls."
             },
             cta: {
-                href: 'https://apps.apple.com/app/ai-token-usage-tracker/id6760191068',
-                img: 'Download_macOS_Store.svg',
-                alt: 'Download on the App Store',
-                hint: 'Requires visionOS 2.0 or later · Free 7-day trial'
+                comingSoon: true,
+                notice: 'The Vision Pro app is <strong>coming soon</strong>. In the meantime, the macOS version is available now and works great alongside your Vision Pro setup.',
+                fallback: {
+                    href: 'https://apps.apple.com/app/ai-token-usage-tracker/id6760191068',
+                    img: 'Download_macOS_Store.svg',
+                    alt: 'Download on the Mac App Store',
+                    label: 'Get the macOS version'
+                },
+                hint: 'visionOS 2.0 · Coming soon'
             },
-            requirements: '<strong>visionOS 2.0</strong> or later on Apple Vision Pro. Requires an <strong>Anthropic Admin API key</strong>, which you can generate in the Anthropic Console under Organization Settings (requires organization admin access).',
+            requirements: 'The Vision Pro app is <strong>coming soon</strong> and will require <strong>visionOS 2.0</strong> or later on Apple Vision Pro. It will use an <strong>Anthropic Admin API key</strong>, which you can generate in the Anthropic Console under Organization Settings (requires organization admin access).',
             screenshots: [
                 { src: 'screenshots/visionpro/Monat_small.png', full: 'screenshots/visionpro/Monat.png', alt: 'AI Token Usage Tracker on Vision Pro — Monthly cost breakdown in a spatial window with Liquid Glass materials', title: 'By Month', caption: "Paginated month cards with finalized costs from Anthropic's Cost API, rendered on Liquid Glass surfaces. Pro users can expand each month for a per-API-key breakdown." },
                 { src: 'screenshots/visionpro/Currency_small.png', full: 'screenshots/visionpro/Currency.png', alt: 'AI Token Usage Tracker on Vision Pro — Spatial currency picker with flag-based entries for 12 currencies', title: 'Spatial Currency Picker', caption: 'A dedicated visionOS view for switching currencies. Flag-based rows for all 12 supported currencies with live exchange rates, hover-reactive selection, and instant sync across every tab.' },
@@ -1597,12 +1908,31 @@
 
         function renderCTA(host, cta) {
             if (!cta) {
-                host.innerHTML = '<div class="cta-wrapper"><span class="cta-hint">' + escapeHtml(cta ? '' : 'Not yet available — follow the repo for updates.') + '</span></div>';
+                host.innerHTML = '<div class="cta-wrapper"><span class="cta-hint">Not yet available — follow the repo for updates.</span></div>';
+                return;
+            }
+            if (cta.comingSoon) {
+                var fb = cta.fallback;
+                var fallbackHtml = fb
+                    ? '<a class="cta cta-secondary" href="' + escapeHtml(fb.href) + '"><img src="' + escapeHtml(fb.img) + '" alt="' + escapeHtml(fb.alt) + '" /></a>'
+                      + (fb.label ? '<span class="cta-fallback-label">' + escapeHtml(fb.label) + '</span>' : '')
+                    : '';
+                host.innerHTML = ''
+                    + '<div class="cta-wrapper">'
+                    + '<div class="cta-coming-soon" role="note">'
+                    + '<span class="ccs-icon" aria-hidden="true">🥽</span>'
+                    + '<p class="ccs-text">' + (cta.notice || '') + '</p>'
+                    + fallbackHtml
+                    + '</div>'
+                    + '<div class="visionos-badge-row visionos-only"><span class="visionos-badge" aria-label="Built for visionOS 2.0"><span class="vb-icon" aria-hidden="true">🥽</span> Built for visionOS 2.0</span></div>'
+                    + '<span class="cta-hint">' + escapeHtml(cta.hint || '') + '</span>'
+                    + '</div>';
                 return;
             }
             host.innerHTML = ''
                 + '<div class="cta-wrapper">'
                 + '<a class="cta" href="' + escapeHtml(cta.href) + '"><img src="' + escapeHtml(cta.img) + '" alt="' + escapeHtml(cta.alt) + '" /></a>'
+                + '<div class="visionos-badge-row visionos-only"><span class="visionos-badge" aria-label="Built for visionOS 2.0"><span class="vb-icon" aria-hidden="true">🥽</span> Built for visionOS 2.0</span></div>'
                 + '<span class="cta-hint">' + escapeHtml(cta.hint) + '</span>'
                 + '</div>';
         }
@@ -1646,6 +1976,7 @@
         function applyPlatform(platform) {
             if (!VALID.includes(platform)) platform = DEFAULT;
             const cfg = PLATFORMS[platform];
+            document.body.setAttribute('data-active-platform', platform);
             document.getElementById('tagline').textContent = cfg.tagline;
             const lede = document.getElementById('overview-lede');
             if (lede && cfg.lede) lede.innerHTML = cfg.lede;
@@ -1758,7 +2089,7 @@
                 closeBtn.addEventListener('click', hide);
                 try { closeBtn.focus({ preventScroll: true }); } catch (_) { closeBtn.focus(); }
             }
-            wrap.addEventListener('click', function(e) { if (e.target === wrap) hide(); });
+            wrap.addEventListener('click', function() { hide(); });
             document.addEventListener('keydown', function onKey(e) {
                 if (e.key === 'Escape') { hide(); document.removeEventListener('keydown', onKey); }
             });
@@ -1867,6 +2198,135 @@
                 closeLightbox();
             }
         });
+    })();
+    </script>
+
+    <!-- #9 Sound-toggle button (visionOS devices only; hidden via CSS otherwise) -->
+    <button type="button" class="vision-sound-toggle" id="vision-sound-toggle"
+            aria-pressed="false" aria-label="Toggle hover sound feedback">
+        <span class="vst-icon" aria-hidden="true">🔇</span>
+        <span class="vst-label">Sound off</span>
+    </button>
+
+    <!-- Vision Pro interactive behaviors: #1 parallax hero + #9 hover sound -->
+    <script>
+    (function() {
+        if (!document.documentElement.classList.contains('visionos-device')) return;
+        var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        // ---------- #1 Parallax hero ----------
+        if (!reduce) {
+            var heroHost = document.getElementById('hero-host');
+            if (heroHost) {
+                var raf = 0, px = 0, py = 0;
+                function apply() {
+                    raf = 0;
+                    var fig = heroHost.querySelector('.hero-figure');
+                    if (!fig) return;
+                    fig.style.setProperty('--px', px.toFixed(3));
+                    fig.style.setProperty('--py', py.toFixed(3));
+                }
+                function schedule() { if (!raf) raf = requestAnimationFrame(apply); }
+
+                function onPointer(e) {
+                    var fig = heroHost.querySelector('.hero-figure');
+                    if (!fig) return;
+                    var r = fig.getBoundingClientRect();
+                    if (r.width === 0) return;
+                    var nx = ((e.clientX - r.left) / r.width) * 2 - 1;
+                    var ny = ((e.clientY - r.top) / r.height) * 2 - 1;
+                    px = Math.max(-1, Math.min(1, nx));
+                    py = Math.max(-1, Math.min(1, ny));
+                    schedule();
+                }
+                function onLeave() { px = 0; py = 0; schedule(); }
+
+                heroHost.addEventListener('pointermove', onPointer, { passive: true });
+                heroHost.addEventListener('pointerleave', onLeave, { passive: true });
+
+                // Device orientation (Vision Pro headset tilt)
+                if (typeof window.DeviceOrientationEvent !== 'undefined') {
+                    window.addEventListener('deviceorientation', function(ev) {
+                        if (ev.gamma == null || ev.beta == null) return;
+                        // gamma: -90..90 (left/right), beta: -180..180 (front/back)
+                        px = Math.max(-1, Math.min(1, ev.gamma / 30));
+                        py = Math.max(-1, Math.min(1, (ev.beta - 45) / 30));
+                        schedule();
+                    }, { passive: true });
+                }
+            }
+        }
+
+        // ---------- #9 Hover sound (opt-in, persisted in sessionStorage) ----------
+        var toggle = document.getElementById('vision-sound-toggle');
+        if (!toggle) return;
+
+        var STORAGE_KEY = 'vision-sound-enabled';
+        var enabled = false;
+        try { enabled = sessionStorage.getItem(STORAGE_KEY) === '1'; } catch (e) {}
+
+        var AudioCtx = window.AudioContext || window.webkitAudioContext;
+        var audioCtx = null;
+        var lastTime = 0;
+
+        function ensureCtx() {
+            if (!AudioCtx) return null;
+            if (!audioCtx) {
+                try { audioCtx = new AudioCtx(); } catch (e) { return null; }
+            }
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume().catch(function() {});
+            }
+            return audioCtx;
+        }
+
+        function playClick() {
+            if (!enabled) return;
+            var now = performance.now();
+            if (now - lastTime < 80) return; // throttle
+            lastTime = now;
+            var ctx = ensureCtx();
+            if (!ctx) return;
+            var t = ctx.currentTime;
+            var osc = ctx.createOscillator();
+            var gain = ctx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(880, t);
+            osc.frequency.exponentialRampToValueAtTime(440, t + 0.08);
+            gain.gain.setValueAtTime(0.0001, t);
+            gain.gain.exponentialRampToValueAtTime(0.08, t + 0.01);
+            gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.12);
+            osc.connect(gain).connect(ctx.destination);
+            osc.start(t);
+            osc.stop(t + 0.14);
+        }
+
+        function updateToggleUI() {
+            toggle.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+            var icon = toggle.querySelector('.vst-icon');
+            var label = toggle.querySelector('.vst-label');
+            if (icon) icon.textContent = enabled ? '🔊' : '🔇';
+            if (label) label.textContent = enabled ? 'Sound on' : 'Sound off';
+            toggle.setAttribute('aria-label',
+                enabled ? 'Disable hover sound feedback' : 'Enable hover sound feedback');
+        }
+
+        toggle.addEventListener('click', function() {
+            enabled = !enabled;
+            try { sessionStorage.setItem(STORAGE_KEY, enabled ? '1' : '0'); } catch (e) {}
+            updateToggleUI();
+            if (enabled) { ensureCtx(); playClick(); }
+        });
+        updateToggleUI();
+
+        // Attach hover listeners to interactive elements
+        var selector = '.platform-tab, .screenshot-card, .feature-item > summary, .faq-card, .cta, .why-card';
+        document.addEventListener('pointerenter', function(e) {
+            var t = e.target;
+            if (t && t.nodeType === 1 && typeof t.matches === 'function' && t.matches(selector)) {
+                playClick();
+            }
+        }, true);
     })();
     </script>
 </body>
