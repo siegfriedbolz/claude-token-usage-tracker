@@ -1099,12 +1099,38 @@
         @media (prefers-reduced-motion: reduce) {
             .vision-welcome, .vision-welcome-card { transition: none; }
         }
+
+        /* ---------- Skip-to-content link (visible on focus) ---------- */
+        .skip-link {
+            position: absolute;
+            top: -100px;
+            left: 1rem;
+            z-index: 10001;
+            padding: 0.6rem 1rem;
+            background: var(--accent);
+            color: #fff;
+            font-weight: 700;
+            border-radius: 10px;
+            text-decoration: none;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+            transition: top 0.2s ease;
+        }
+        .skip-link:focus,
+        .skip-link:focus-visible {
+            top: calc(env(safe-area-inset-top, 0px) + 0.5rem);
+            outline: none;
+            box-shadow: var(--focus-ring), 0 8px 24px rgba(0,0,0,0.35);
+            color: #fff;
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
 
+    <a class="skip-link" href="#platform-panel">Skip to main content</a>
+
     <!-- Announcement Banner -->
-    <div class="announcement-banner" id="announcement-banner" role="banner" aria-label="Version 2.0 announcement">
+    <div class="announcement-banner" id="announcement-banner" aria-label="Version 2.0 announcement">
         <div class="announcement-content">
             <span class="announcement-icon"></span>
             <span class="announcement-text">
@@ -1139,7 +1165,7 @@
             </div>
         </header>
 
-        <main id="platform-panel">
+        <main id="platform-panel" tabindex="-1" aria-label="Product details">
 
             <!-- Hero (rendered per platform) -->
             <section aria-label="Overview">
@@ -1383,7 +1409,7 @@
     </div>
 
     <!-- Vision Pro welcome greeting (shown on every page load to detected Vision Pro visitors) -->
-    <div class="vision-welcome" id="vision-welcome" role="dialog" aria-modal="false" aria-labelledby="vision-welcome-title" hidden>
+    <div class="vision-welcome" id="vision-welcome" role="dialog" aria-labelledby="vision-welcome-title" hidden>
         <div class="vision-welcome-card">
             <button type="button" class="vision-welcome-close" id="vision-welcome-close" aria-label="Dismiss welcome message">✕</button>
             <span class="vision-welcome-icon" aria-hidden="true">🥽</span>
@@ -1634,9 +1660,11 @@
         function showVisionWelcome() {
             var wrap = document.getElementById('vision-welcome');
             if (!wrap) return;
+            var previouslyFocused = document.activeElement;
             // Intentionally NO sessionStorage/localStorage guard here —
             // the greeting should appear on every fresh page load.
             wrap.hidden = false;
+            wrap.setAttribute('aria-modal', 'true');
             void wrap.offsetWidth;
             wrap.classList.add('visible');
             // Drive the progress bar from the same 10s timer that closes the
@@ -1733,19 +1761,34 @@
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
         const lightboxClose = document.getElementById('lightbox-close');
+        let lastTrigger = null;
 
         const closeLightbox = function() {
             lightbox.classList.remove('active');
+            lightbox.removeAttribute('aria-modal');
             lightboxImg.src = '';
+            // Return focus to whatever opened the lightbox
+            if (lastTrigger && typeof lastTrigger.focus === 'function') {
+                try { lastTrigger.focus({ preventScroll: true }); }
+                catch (err) { lastTrigger.focus(); }
+            }
+            lastTrigger = null;
         };
 
         // Event delegation so dynamically-rendered images work too
         document.addEventListener('click', function(e) {
             const img = e.target.closest && e.target.closest('.zoomable img');
             if (!img) return;
-            lightboxImg.src = img.getAttribute('data-full') || img.src;
+            lastTrigger = e.target.closest('.zoomable') || img;
+            lightboxImg.src = img.dataset.full || img.src;
             lightboxImg.alt = img.alt;
             lightbox.classList.add('active');
+            lightbox.setAttribute('aria-modal', 'true');
+            // Move focus into the dialog for screen-reader users
+            if (lightboxClose) {
+                try { lightboxClose.focus({ preventScroll: true }); }
+                catch (err) { lightboxClose.focus(); }
+            }
         });
 
         // Close on backdrop click, but not when clicking the image itself
