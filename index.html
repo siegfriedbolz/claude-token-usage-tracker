@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Token Usage Tracker — macOS &amp; Apple Vision Pro App for Anthropic API Costs</title>
-    <meta name="description" content="A native macOS and Apple Vision Pro app to monitor Anthropic Claude API token usage and costs in near real-time. Track spending by model, workspace, and API key — right from your menu bar or on visionOS.">
-    <meta name="keywords" content="Claude, Anthropic, API, token usage, cost tracker, macOS, menu bar app, Claude API costs, Claude Opus, Claude Sonnet, Claude Haiku, API monitoring, developer tools, Swift, SwiftUI, Mac App Store, spend tracking, rate limits, Claude Code, Cursor, Windsurf, API cost monitoring, token counter, budget alerts, Apple Vision Pro, visionOS, spatial computing, Vision Pro app">
+    <meta name="description" content="Native macOS menu bar and Apple Vision Pro (visionOS) app to monitor Anthropic Claude API token usage and costs in near real-time. Track spending by model, workspace, and API key — on your Mac or in spatial computing on Vision Pro. Built with Swift, zero third-party dependencies.">
+    <meta name="keywords" content="Claude, Anthropic, API, token usage, cost tracker, macOS, menu bar app, Claude API costs, Claude Opus, Claude Sonnet, Claude Haiku, API monitoring, developer tools, Swift, SwiftUI, Mac App Store, spend tracking, rate limits, Claude Code, Cursor, Windsurf, API cost monitoring, token counter, budget alerts, Apple Vision Pro, visionOS, visionOS app, Vision Pro app, Vision Pro developer tools, Vision Pro productivity, spatial computing, spatial API monitor, spatial productivity, Vision Pro AI app, Vision Pro Claude, AI cost tracking, LLM cost tracker, AI token tracker, Anthropic dashboard, Claude dashboard, Claude usage monitor, Apple Intelligence developer">
     <meta name="author" content="Siegfried-Thor Bolz">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
     <link rel="canonical" href="https://siegfriedbolz.github.io/claude-token-usage-tracker/">
@@ -13,8 +13,9 @@
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 
     <!-- Additional meta tags -->
-    <meta name="theme-color" content="#1a1a2e">
-    <meta name="color-scheme" content="dark">
+    <meta name="theme-color" content="#f4f4f7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0b0d17" media="(prefers-color-scheme: dark)">
+    <meta name="color-scheme" content="light dark">
     <meta name="application-name" content="AI Token Usage Tracker">
     <meta name="apple-mobile-web-app-title" content="AI Token Usage Tracker">
     <meta name="format-detection" content="telephone=no">
@@ -29,6 +30,9 @@
     <meta property="og:image:height" content="800">
     <meta property="og:image:type" content="image/png">
     <meta property="og:image:alt" content="AI Token Usage Tracker showing intraday API cost breakdown per key with live rate limits">
+    <meta property="og:image" content="https://raw.githubusercontent.com/siegfriedbolz/claude-token-usage-tracker/main/screenshots/visionpro/Intraday.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:alt" content="AI Token Usage Tracker running on Apple Vision Pro (visionOS) with a spatial glass UI">
     <meta property="og:site_name" content="AI Token Usage Tracker">
     <meta property="og:locale" content="en_US">
 
@@ -45,14 +49,20 @@
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
         "name": "AI Token Usage Tracker",
-        "operatingSystem": "macOS 14.0 (Sonoma) or later, visionOS 2.0 or later",
-        "applicationCategory": "DeveloperApplication",
+        "alternateName": ["Claude Token Usage Tracker", "AI Token Tracker for Vision Pro", "Claude API Cost Tracker"],
+        "operatingSystem": ["macOS 14.0", "macOS Sonoma", "macOS Sequoia", "macOS Tahoe", "visionOS 2.0", "visionOS"],
+        "applicationCategory": ["DeveloperApplication", "ProductivityApplication", "UtilitiesApplication"],
         "applicationSubCategory": "API Monitoring",
-        "description": "A native macOS menu bar app to monitor Anthropic Claude API token usage and costs in near real-time. Provides breakdowns by model, workspace, month, and API key. Built with Swift and SwiftUI — zero third-party dependencies.",
+        "description": "A native macOS menu bar and Apple Vision Pro (visionOS) app to monitor Anthropic Claude API token usage and costs in near real-time. Provides breakdowns by model, workspace, month, and API key, with a spatial interface on Vision Pro. Built with Swift and SwiftUI — zero third-party dependencies.",
+        "availableOnDevice": ["Mac", "Apple Vision Pro"],
         "author": {
             "@type": "Person",
             "name": "Siegfried-Thor Bolz",
-            "url": "https://github.com/siegfriedbolz"
+            "url": "https://github.com/siegfriedbolz",
+            "sameAs": [
+                "https://github.com/siegfriedbolz",
+                "https://apps.apple.com/developer/siegfried-thor-bolz/id1501411447"
+            ]
         },
         "image": "https://raw.githubusercontent.com/siegfriedbolz/claude-token-usage-tracker/main/logo.png",
         "offers": {
@@ -74,12 +84,36 @@
             "https://raw.githubusercontent.com/siegfriedbolz/claude-token-usage-tracker/main/screenshots/visionpro/Settings1.png",
             "https://raw.githubusercontent.com/siegfriedbolz/claude-token-usage-tracker/main/screenshots/visionpro/Settings2.png"
         ],
-        "softwareRequirements": "macOS 14.0 (Sonoma) or later or Apple Vision Pro (visionOS 2.0+), Anthropic Admin API key",
-        "featureList": "Near real-time intraday cost tracking, Monthly cost breakdown with full history, Per-model cost view (Opus Sonnet Haiku), Per-API-key cost filtering, Workspace cost comparison, Live rate limits per model, Spend limit tracking with macOS notifications, 12-currency support with real-time exchange rates, CSV export, Built-in localhost JSON API, Detached popover window mode, macOS Keychain security with zero third-party dependencies",
+        "softwareRequirements": "macOS 14.0 (Sonoma) or later, or Apple Vision Pro running visionOS 2.0 or later; Anthropic Admin API key required",
+        "featureList": [
+            "Native macOS menu bar app",
+            "Native Apple Vision Pro (visionOS) spatial app",
+            "Near real-time intraday cost tracking",
+            "Monthly cost breakdown with full history",
+            "Per-model cost view (Claude Opus, Sonnet, Haiku)",
+            "Per-API-key cost filtering",
+            "Workspace cost comparison",
+            "Live rate limits per model",
+            "Spend limit tracking with macOS notifications",
+            "12-currency support with real-time exchange rates",
+            "Spatial Currency Picker on Vision Pro",
+            "CSV export",
+            "Built-in localhost JSON API (macOS)",
+            "Detached popover window mode (macOS)",
+            "macOS Keychain security",
+            "Apple Liquid Glass design on macOS",
+            "Volumetric glass UI on visionOS",
+            "Zero third-party dependencies"
+        ],
         "datePublished": "2025-01-01",
         "installUrl": "https://apps.apple.com/app/ai-token-usage-tracker/id6760191068",
+        "downloadUrl": "https://apps.apple.com/app/ai-token-usage-tracker/id6760191068",
         "url": "https://siegfriedbolz.github.io/claude-token-usage-tracker/",
-        "keywords": "Claude, Anthropic, API, token usage, cost tracker, macOS, menu bar, developer tools, Claude Code, Cursor, Windsurf, Apple Vision Pro, visionOS, spatial computing"
+        "sameAs": [
+            "https://apps.apple.com/app/ai-token-usage-tracker/id6760191068",
+            "https://github.com/siegfriedbolz/claude-token-usage-tracker"
+        ],
+        "keywords": "Claude, Anthropic, API, token usage, cost tracker, macOS, menu bar, developer tools, Claude Code, Cursor, Windsurf, Apple Vision Pro, visionOS, visionOS app, spatial computing, Vision Pro developer app, Vision Pro productivity, AI cost tracking, LLM monitoring"
     }
     </script>
 
@@ -136,6 +170,22 @@
                     "@type": "Answer",
                     "text": "All Claude models are supported, including Claude Opus, Claude Sonnet, and Claude Haiku in all versions. The app uses dynamic model discovery via the Anthropic Models API and a multi-tier pricing engine to automatically support new models as soon as they are released."
                 }
+            },
+            {
+                "@type": "Question",
+                "name": "Does AI Token Usage Tracker run on Apple Vision Pro?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. AI Token Usage Tracker is a universal app that runs natively on Apple Vision Pro (visionOS 2.0 or later) as a spatial windowed app, and on macOS (14.0 Sonoma or later) as a menu bar app. Both versions share the same data model and connect directly to the Anthropic Admin API. The Vision Pro version uses a volumetric glass UI with eye-tracking hover feedback, and includes a Spatial Currency Picker designed for visionOS."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is different on the Vision Pro (visionOS) version?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The Apple Vision Pro version runs as a resizable spatial window instead of a macOS menu bar app. It uses volumetric glass materials, eye-tracking hover effects, larger tap targets for gaze+pinch interaction, and a Spatial Currency Picker. macOS-only features like the system menu bar icon, native macOS notifications, the detached popover window mode, and the localhost JSON API server are not available on visionOS."
+                }
             }
         ]
     }
@@ -161,7 +211,7 @@
                 "@type": "HowToStep",
                 "position": 2,
                 "name": "Install the app and enter your key",
-                "text": "Download AI Token Usage Tracker from the Mac App Store (https://apps.apple.com/app/ai-token-usage-tracker/id6760191068). Open Settings and paste your Admin API key. The key is stored securely in the macOS Keychain."
+                "text": "Download AI Token Usage Tracker from the App Store on your Mac or Apple Vision Pro (https://apps.apple.com/app/ai-token-usage-tracker/id6760191068). Open Settings and paste your Admin API key. The key is stored securely in the macOS Keychain on Mac, and in the system keychain on visionOS."
             },
             {
                 "@type": "HowToStep",
@@ -180,7 +230,13 @@
         "@type": "WebSite",
         "name": "AI Token Usage Tracker",
         "url": "https://siegfriedbolz.github.io/claude-token-usage-tracker/",
-        "description": "Official website for AI Token Usage Tracker — a native macOS menu bar app to monitor Anthropic Claude API token usage and costs."
+        "description": "Official website for AI Token Usage Tracker — a native macOS menu bar and Apple Vision Pro (visionOS) app to monitor Anthropic Claude API token usage and costs.",
+        "inLanguage": "en",
+        "publisher": {
+            "@type": "Person",
+            "name": "Siegfried-Thor Bolz",
+            "url": "https://github.com/siegfriedbolz"
+        }
     }
     </script>
 
@@ -201,271 +257,359 @@
     </script>
 
     <style>
+        /* =========================================================
+           Apple Liquid Glass Design System (web)
+           - Auto light/dark via prefers-color-scheme
+           - Translucent layered materials + ambient gradients
+           - Capsule controls, hairline borders, inner highlights
+           Reference: developer.apple.com/.../adopting-liquid-glass
+                      developer.apple.com/.../applying-liquid-glass-to-custom-views
+           ========================================================= */
+
+        /* ---------- Tokens: dark (default) ---------- */
         :root {
-            --bg: #1a1a2e;
-            --fg: #e0e0e0;
-            --fg-muted: #aaa;
-            --accent: #f97316;
-            --accent-hover: #fb923c;
-            --card: #16213e;
-            --card-border: #1e2d4a;
-            --card-hover: #1a2e4e;
+            color-scheme: light dark;
+
+            --bg-base: #0b0d17;
+            --bg-elev: #10131f;
+            --fg: #ececf1;
+            --fg-strong: #ffffff;
+            --fg-muted: #a9adbd;
+            --fg-subtle: #7c8196;
+
+            --accent: #ff8a3d;
+            --accent-hover: #ffa366;
+            --accent-soft: rgba(255, 138, 61, 0.18);
+            --accent-ring: rgba(255, 138, 61, 0.35);
+
+            --glass-bg: rgba(255, 255, 255, 0.06);
+            --glass-bg-strong: rgba(255, 255, 255, 0.10);
+            --glass-bg-active: rgba(255, 255, 255, 0.14);
+            --glass-border: rgba(255, 255, 255, 0.14);
+            --glass-border-strong: rgba(255, 255, 255, 0.22);
+            --glass-highlight: rgba(255, 255, 255, 0.18);
+            --glass-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+            --glass-shadow-soft: 0 4px 16px rgba(0, 0, 0, 0.22);
+            --glass-blur: 24px;
+            --glass-blur-strong: 36px;
+
+            --bg-ambient:
+                radial-gradient(900px 600px at 12% -10%, rgba(255, 138, 61, 0.20), transparent 60%),
+                radial-gradient(900px 560px at 110% 8%, rgba(99, 102, 241, 0.22), transparent 65%),
+                radial-gradient(1100px 720px at 50% 120%, rgba(139, 92, 246, 0.18), transparent 60%),
+                radial-gradient(700px 500px at 85% 60%, rgba(236, 72, 153, 0.10), transparent 70%);
+
+            --hairline: rgba(255, 255, 255, 0.08);
+            --focus-ring: 0 0 0 2px var(--accent-ring), 0 0 0 4px rgba(255, 138, 61, 0.18);
         }
+
+        /* ---------- Tokens: light ---------- */
+        @media (prefers-color-scheme: light) {
+            :root {
+                --bg-base: #f4f4f7;
+                --bg-elev: #ffffff;
+                --fg: #1c1d22;
+                --fg-strong: #000000;
+                --fg-muted: #54586a;
+                --fg-subtle: #8a8f9e;
+
+                --accent: #e6601c;
+                --accent-hover: #c04d0f;
+                --accent-soft: rgba(230, 96, 28, 0.14);
+                --accent-ring: rgba(230, 96, 28, 0.30);
+
+                --glass-bg: rgba(255, 255, 255, 0.55);
+                --glass-bg-strong: rgba(255, 255, 255, 0.72);
+                --glass-bg-active: rgba(255, 255, 255, 0.85);
+                --glass-border: rgba(255, 255, 255, 0.85);
+                --glass-border-strong: rgba(255, 255, 255, 1);
+                --glass-highlight: rgba(255, 255, 255, 0.75);
+                --glass-shadow: 0 12px 30px rgba(20, 24, 44, 0.10);
+                --glass-shadow-soft: 0 6px 18px rgba(20, 24, 44, 0.08);
+
+                --bg-ambient:
+                    radial-gradient(900px 600px at 12% -10%, rgba(255, 170, 120, 0.55), transparent 60%),
+                    radial-gradient(900px 560px at 110% 8%, rgba(165, 180, 255, 0.55), transparent 65%),
+                    radial-gradient(1100px 720px at 50% 120%, rgba(200, 170, 255, 0.45), transparent 60%),
+                    radial-gradient(700px 500px at 85% 60%, rgba(255, 180, 220, 0.35), transparent 70%);
+
+                --hairline: rgba(20, 24, 44, 0.08);
+                --focus-ring: 0 0 0 2px var(--accent-ring), 0 0 0 4px rgba(230, 96, 28, 0.14);
+            }
+        }
+
+        /* ---------- Reset + base ---------- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
-            background: var(--bg);
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Helvetica Neue', sans-serif;
             color: var(--fg);
             line-height: 1.7;
+            background-color: var(--bg-base);
+            background-image: var(--bg-ambient);
+            background-attachment: fixed;
+            background-size: 100% 100%;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            min-height: 100vh;
         }
-        .container { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
-        a { color: var(--accent); }
-        a:hover { color: var(--accent-hover); }
+        ::selection { background: var(--accent-soft); color: var(--fg-strong); }
 
-        /* Header */
-        header { margin-bottom: 2rem; }
+        .container { max-width: 960px; margin: 0 auto; padding: 2rem 1.5rem; }
+        a { color: var(--accent); text-decoration: none; transition: color 0.2s ease; }
+        a:hover { color: var(--accent-hover); text-decoration: underline; text-underline-offset: 3px; }
+        a:focus-visible { outline: none; box-shadow: var(--focus-ring); border-radius: 4px; }
+
+        /* ---------- Header ---------- */
+        header { margin-bottom: 1.5rem; }
         .header-brand { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.4rem; }
-        .app-logo { width: 64px; height: 64px; flex-shrink: 0; border-radius: 50%; }
-        h1 { font-size: 2.4rem; margin-bottom: 0; letter-spacing: -0.02em; }
-        .tagline { font-size: 1.25rem; color: var(--fg-muted); margin-bottom: 1.5rem; }
-
-        /* Sections */
-        section { margin-top: 2.5rem; }
-        h2 { font-size: 1.5rem; margin-bottom: 1rem; color: var(--accent); }
-
-        /* Zoomable image overlay */
-        .zoomable {
-            position: relative;
-            cursor: zoom-in;
+        .app-logo {
+            width: 68px; height: 68px; flex-shrink: 0;
+            border-radius: 22%;
+            box-shadow:
+                0 10px 28px rgba(0, 0, 0, 0.35),
+                0 0 0 1px var(--hairline) inset,
+                0 2px 0 rgba(255, 255, 255, 0.35) inset;
         }
+        h1 {
+            font-size: 2.4rem;
+            margin-bottom: 0;
+            letter-spacing: -0.025em;
+            color: var(--fg-strong);
+            font-weight: 700;
+        }
+        .tagline {
+            font-size: 1.2rem;
+            color: var(--fg-muted);
+            margin-bottom: 1rem;
+        }
+
+        /* ---------- Sections + headings ---------- */
+        section { margin-top: 2.75rem; }
+        h2 {
+            font-size: 1.45rem;
+            margin-bottom: 1rem;
+            color: var(--fg-strong);
+            font-weight: 700;
+            letter-spacing: -0.015em;
+        }
+
+        /* ---------- Core Liquid Glass surface ---------- */
+        .glass,
+        .hero-figure,
+        .feature-item,
+        .screenshot-card,
+        .setup-details,
+        .platform-callout,
+        .platform-empty,
+        .faq-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 22px;
+            backdrop-filter: blur(var(--glass-blur)) saturate(180%);
+            -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(180%);
+            box-shadow:
+                inset 0 1px 0 var(--glass-highlight),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.08),
+                var(--glass-shadow-soft);
+            overflow: hidden;
+        }
+
+        /* ---------- Zoomable image overlay ---------- */
+        .zoomable { position: relative; cursor: zoom-in; }
         .zoomable::after {
             content: '';
             position: absolute;
             top: 12px;
             right: 12px;
-            width: 36px;
-            height: 36px;
-            background: rgba(0, 0, 0, 0.55);
+            width: 38px;
+            height: 38px;
+            background: rgba(0, 0, 0, 0.45);
             border-radius: 50%;
             opacity: 0;
-            transition: opacity 0.2s;
+            transition: opacity 0.2s ease;
             pointer-events: none;
+            backdrop-filter: blur(10px) saturate(180%);
+            -webkit-backdrop-filter: blur(10px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.20);
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cline x1='16' y1='16' x2='22' y2='22'/%3E%3Cline x1='8' y1='11' x2='14' y2='11'/%3E%3Cline x1='11' y1='8' x2='11' y2='14'/%3E%3C/svg%3E");
             background-size: 20px 20px;
             background-repeat: no-repeat;
             background-position: center;
         }
-        .zoomable:hover::after {
-            opacity: 1;
-        }
-        .zoomable img {
-            display: block;
-            width: 100%;
-            height: auto;
-        }
+        .zoomable:hover::after { opacity: 1; }
+        .zoomable img { display: block; width: 100%; height: auto; }
 
-        /* Hero image */
-        .hero-figure {
-            margin: 1.5rem 0;
-            background: var(--card);
-            border: 1px solid var(--card-border);
-            border-radius: 12px;
-            overflow: hidden;
-        }
-        .hero-img {
-            border-radius: 0;
-            box-shadow: none;
-        }
-        .hero-caption {
-            padding: 1rem 1.2rem;
-        }
+        /* ---------- Hero ---------- */
+        .hero-figure { margin: 1.5rem 0; }
+        .hero-img { border-radius: 0; box-shadow: none; }
+        .hero-caption { padding: 1.1rem 1.3rem; }
         .hero-caption h3 {
             font-size: 1.05rem;
             color: var(--accent);
             margin-bottom: 0.3rem;
+            font-weight: 700;
         }
-        .hero-caption p {
-            font-size: 0.9rem;
-            color: var(--fg-muted);
-            line-height: 1.5;
-        }
+        .hero-caption p { font-size: 0.92rem; color: var(--fg-muted); line-height: 1.55; }
 
-        /* Feature accordion */
-        .features-grid {
-            display: grid;
-            gap: 0.6rem;
-        }
+        /* ---------- Feature accordion ---------- */
+        .features-grid { display: grid; gap: 0.7rem; }
         .feature-item {
-            background: var(--card);
-            border: 1px solid var(--card-border);
-            border-radius: 10px;
-            overflow: hidden;
-            transition: border-color 0.2s;
+            border-radius: 18px;
+            transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
         }
         .feature-item:hover {
-            border-color: var(--accent);
+            border-color: var(--glass-border-strong);
+            transform: translateY(-1px);
+            box-shadow:
+                inset 0 1px 0 var(--glass-highlight),
+                var(--glass-shadow);
         }
         .feature-item[open] {
-            border-color: var(--accent);
+            border-color: var(--accent-ring);
+            box-shadow:
+                inset 0 1px 0 var(--glass-highlight),
+                0 0 0 1px var(--accent-ring),
+                var(--glass-shadow-soft);
         }
         .feature-item summary {
-            padding: 0.9rem 1.2rem;
+            padding: 1rem 1.25rem;
             cursor: pointer;
             list-style: none;
             display: flex;
             align-items: center;
-            gap: 0.7rem;
+            gap: 0.75rem;
             font-weight: 600;
             font-size: 1rem;
+            color: var(--fg);
             user-select: none;
         }
         .feature-item summary::-webkit-details-marker { display: none; }
         .feature-item summary::before {
-            content: "→";
-            color: var(--accent);
-            font-weight: 700;
-            font-size: 1rem;
-            transition: transform 0.2s;
+            content: "";
+            width: 22px; height: 22px;
             flex-shrink: 0;
+            border-radius: 50%;
+            background:
+                radial-gradient(circle at 30% 30%, rgba(255,255,255,0.35), transparent 60%),
+                var(--accent-soft);
+            border: 1px solid var(--accent-ring);
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ff8a3d' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='9 6 15 12 9 18'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 14px 14px;
+            transition: transform 0.25s ease;
         }
-        .feature-item[open] summary::before {
-            transform: rotate(90deg);
-        }
+        .feature-item[open] summary::before { transform: rotate(90deg); }
         .feature-title { flex: 1; }
-        .feature-teaser {
-            font-weight: 400;
-            color: var(--fg-muted);
-            font-size: 0.88rem;
-        }
+        .feature-teaser { font-weight: 400; color: var(--fg-muted); font-size: 0.88rem; }
         .feature-body {
-            padding: 0 1.2rem 1rem 2.6rem;
+            padding: 0 1.25rem 1.1rem 3rem;
             color: var(--fg);
-            font-size: 0.92rem;
+            font-size: 0.93rem;
             line-height: 1.7;
         }
         .feature-body p { margin-bottom: 0.5rem; }
         .feature-body p:last-child { margin-bottom: 0; }
-
-        /* CTA */
-        .cta-wrapper {
-            text-align: center;
-            margin: 2rem 0;
+        .feature-body code {
+            background: var(--glass-bg-strong);
+            border: 1px solid var(--glass-border);
+            border-radius: 6px;
+            padding: 0.1rem 0.4rem;
+            font-size: 0.85em;
+            font-family: 'SF Mono', ui-monospace, Menlo, Monaco, monospace;
         }
+
+        /* ---------- CTA (glass button) ---------- */
+        .cta-wrapper { text-align: center; margin: 2rem 0; }
         .cta {
             display: inline-block;
-            transition: transform 0.2s, opacity 0.2s;
+            border-radius: 12px;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+            box-shadow:
+                0 10px 28px rgba(0, 0, 0, 0.25),
+                inset 0 1px 0 rgba(255, 255, 255, 0.20);
         }
-        .cta:hover {
+        .cta:hover { transform: translateY(-2px); filter: brightness(1.05); box-shadow: 0 14px 34px rgba(0,0,0,0.30), inset 0 1px 0 rgba(255,255,255,0.22); text-decoration: none; }
+        .cta:focus-visible { outline: none; box-shadow: var(--focus-ring), 0 10px 28px rgba(0,0,0,0.25); }
+        .cta img { height: 52px; width: auto; display: block; border-radius: 10px; }
+        .cta-hint { display: block; text-align: center; margin-top: 0.65rem; font-size: 0.85rem; color: var(--fg-muted); }
+
+        /* ---------- Screenshots ---------- */
+        .screenshots-grid { display: grid; gap: 1.75rem; margin-top: 1rem; }
+        .screenshot-card { transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease; }
+        .screenshot-card:hover {
             transform: translateY(-2px);
-            opacity: 0.85;
+            border-color: var(--glass-border-strong);
+            box-shadow:
+                inset 0 1px 0 var(--glass-highlight),
+                var(--glass-shadow);
         }
-        .cta img {
-            height: 48px;
-            width: auto;
-        }
-        .cta-hint {
-            display: block;
-            text-align: center;
-            margin-top: 0.5rem;
-            font-size: 0.85rem;
-            color: var(--fg-muted);
-        }
+        .screenshot-card .zoomable::after { top: 10px; right: 10px; }
+        .screenshot-caption { padding: 1.1rem 1.3rem; }
+        .screenshot-caption h3 { font-size: 1.05rem; color: var(--accent); margin-bottom: 0.3rem; font-weight: 700; }
+        .screenshot-caption p { font-size: 0.92rem; color: var(--fg-muted); line-height: 1.55; }
 
-        /* Screenshots section */
-        .screenshots-grid {
-            display: grid;
-            gap: 2rem;
-            margin-top: 1rem;
-        }
-        .screenshot-card {
-            background: var(--card);
-            border: 1px solid var(--card-border);
-            border-radius: 12px;
-            overflow: hidden;
-        }
-        .screenshot-card .zoomable::after {
-            top: 8px;
-            right: 8px;
-        }
-        .screenshot-caption {
-            padding: 1rem 1.2rem;
-        }
-        .screenshot-caption h3 {
-            font-size: 1.05rem;
-            color: var(--accent);
-            margin-bottom: 0.3rem;
-        }
-        .screenshot-caption p {
-            font-size: 0.9rem;
-            color: var(--fg-muted);
-            line-height: 1.5;
-        }
-
-        /* Setup guide */
-        .setup-guide {
-            background: var(--card);
-            border: 1px solid var(--card-border);
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin-top: 1rem;
-        }
-        .setup-steps {
-            list-style: none;
-            counter-reset: step;
-            margin: 1rem 0 0;
-        }
+        /* ---------- Setup guide (inside glass <details>) ---------- */
+        .setup-guide { padding: 1.5rem; }
+        .setup-steps { list-style: none; counter-reset: step; margin: 0.5rem 0 0; }
         .setup-steps li {
             counter-increment: step;
             display: flex;
-            gap: 0.8rem;
+            gap: 0.9rem;
             margin-bottom: 1rem;
             font-size: 0.95rem;
             line-height: 1.6;
+            color: var(--fg);
         }
         .setup-steps li::before {
             content: counter(step);
             display: flex;
             align-items: center;
             justify-content: center;
-            min-width: 2rem;
-            height: 2rem;
-            background: var(--accent);
+            min-width: 2.1rem; height: 2.1rem;
+            background:
+                radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.4), transparent 60%),
+                linear-gradient(180deg, var(--accent) 0%, var(--accent-hover) 100%);
             color: #fff;
             border-radius: 50%;
             font-weight: 700;
             font-size: 0.9rem;
             flex-shrink: 0;
             margin-top: 0.1rem;
+            box-shadow:
+                inset 0 1px 0 rgba(255, 255, 255, 0.4),
+                0 4px 10px rgba(0, 0, 0, 0.25);
         }
         .setup-steps li:last-child { margin-bottom: 0; }
         .setup-screenshot {
             margin-top: 1.2rem;
-            border-radius: 10px;
+            border-radius: 14px;
             overflow: hidden;
-            border: 1px solid var(--card-border);
+            border: 1px solid var(--glass-border);
+            background: var(--glass-bg);
+            backdrop-filter: blur(var(--glass-blur)) saturate(180%);
+            -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(180%);
         }
-        .setup-screenshot .zoomable::after {
-            top: 8px;
-            right: 8px;
-        }
+        .setup-screenshot .zoomable::after { top: 10px; right: 10px; }
         .setup-screenshot-caption {
             padding: 0.8rem 1rem;
-            background: var(--card);
             font-size: 0.85rem;
             color: var(--fg-muted);
         }
 
-        /* Collapsible setup guide */
+        /* ---------- Collapsible setup <details> with emphasis ---------- */
         .setup-details {
-            background: var(--card);
-            border: 2px solid var(--accent);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 0 16px rgba(249, 115, 22, 0.15);
+            border: 1px solid var(--accent-ring);
+            box-shadow:
+                inset 0 1px 0 var(--glass-highlight),
+                0 0 0 1px var(--accent-ring),
+                0 10px 34px rgba(255, 138, 61, 0.12),
+                var(--glass-shadow-soft);
         }
         .setup-details summary {
             cursor: pointer;
-            padding: 1.2rem 1.5rem;
+            padding: 1.1rem 1.4rem;
             list-style: none;
             display: flex;
             flex-wrap: wrap;
@@ -475,7 +619,7 @@
         .setup-details summary::-webkit-details-marker { display: none; }
         .setup-details summary::before {
             content: '🔑';
-            font-size: 1.3rem;
+            font-size: 1.25rem;
             flex-shrink: 0;
         }
         .setup-details summary::after {
@@ -483,17 +627,16 @@
             font-size: 0.78rem;
             color: var(--accent);
             margin-left: auto;
-            opacity: 0.8;
-            font-weight: 500;
+            opacity: 0.9;
+            font-weight: 600;
             letter-spacing: 0.02em;
         }
-        .setup-details[open] summary::after {
-            content: '▴ Click to collapse';
-        }
+        .setup-details[open] summary::after { content: '▴ Click to collapse'; }
         .setup-details summary h2 {
             display: inline;
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             margin: 0;
+            color: var(--fg-strong);
         }
         .setup-teaser {
             width: 100%;
@@ -502,32 +645,59 @@
             margin: 0.2rem 0 0 2.3rem;
         }
         .setup-details .setup-guide {
-            border-top: 1px solid var(--card-border);
+            border-top: 1px solid var(--hairline);
             border-radius: 0;
             margin-top: 0;
+            background: transparent;
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+            box-shadow: none;
         }
 
-        /* FAQ */
+        /* ---------- FAQ ---------- */
+        .faq-card {
+            padding: 1.1rem 1.3rem;
+            margin-bottom: 0.75rem;
+            border-radius: 16px;
+            transition: border-color 0.25s ease, box-shadow 0.25s ease;
+        }
+        .faq-card:hover {
+            border-color: var(--glass-border-strong);
+            box-shadow:
+                inset 0 1px 0 var(--glass-highlight),
+                var(--glass-shadow-soft);
+        }
+        .faq-card h3 { font-size: 1rem; margin-bottom: 0.35rem; color: var(--fg-strong); font-weight: 600; }
+        .faq-card p { color: var(--fg-muted); font-size: 0.93rem; }
+
+        /* Backwards-compat: any .faq-item without .faq-card is styled too */
         .faq-item { margin-bottom: 1.5rem; }
         .faq-item h3 { font-size: 1.05rem; margin-bottom: 0.3rem; color: var(--fg); }
         .faq-item p { color: var(--fg-muted); font-size: 0.95rem; }
 
-        /* Note callout */
+        /* ---------- Note callout ---------- */
         .note {
-            font-size: 0.9rem;
+            font-size: 0.92rem;
             color: var(--fg-muted);
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
             border-left: 3px solid var(--accent);
-            padding-left: 0.8rem;
-            margin-top: 0.8rem;
+            border-radius: 12px;
+            padding: 0.8rem 1rem;
+            margin-top: 1rem;
+            backdrop-filter: blur(var(--glass-blur)) saturate(160%);
+            -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(160%);
         }
 
-        /* Lightbox */
+        /* ---------- Lightbox ---------- */
         .lightbox {
             display: none;
             position: fixed;
             inset: 0;
             z-index: 9999;
-            background: rgba(0, 0, 0, 0.92);
+            background: rgba(0, 0, 0, 0.72);
+            backdrop-filter: blur(24px) saturate(180%);
+            -webkit-backdrop-filter: blur(24px) saturate(180%);
             justify-content: center;
             align-items: center;
             cursor: zoom-out;
@@ -536,75 +706,85 @@
         .lightbox img {
             max-width: 95vw;
             max-height: 95vh;
-            border-radius: 8px;
-            box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
+            border-radius: 14px;
+            box-shadow:
+                0 30px 80px rgba(0, 0, 0, 0.55),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15);
         }
+        .lightbox-close {
+            position: fixed;
+            top: calc(env(safe-area-inset-top, 0px) + 1rem);
+            right: calc(env(safe-area-inset-right, 0px) + 1rem);
+            z-index: 10000;
+            width: 44px; height: 44px;
+            border-radius: 50%;
+            border: 1px solid var(--glass-border-strong, rgba(255,255,255,0.22));
+            background: var(--glass-bg-strong, rgba(255,255,255,0.10));
+            color: #fff;
+            cursor: pointer;
+            font-size: 1.05rem;
+            line-height: 1;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255,255,255,0.18);
+            transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+        }
+        .lightbox-close:hover {
+            background: var(--glass-bg-active, rgba(255,255,255,0.18));
+            transform: scale(1.06);
+        }
+        .lightbox-close:focus-visible { outline: none; box-shadow: var(--focus-ring), 0 8px 24px rgba(0,0,0,0.35); }
 
-        /* Announcement Banner */
+        /* ---------- Announcement banner (glass) ---------- */
         .announcement-banner {
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
+            top: 0; left: 0; right: 0;
             z-index: 1000;
-            background: linear-gradient(135deg, #6d28d9 0%, #4f46e5 60%, #7c3aed 100%);
-            color: #fff;
-            padding: 0.55rem 1rem;
-            box-shadow: 0 2px 16px rgba(109, 40, 217, 0.45);
+            padding: 0.6rem 1rem;
+            background: var(--glass-bg-strong);
+            border-bottom: 1px solid var(--glass-border);
+            backdrop-filter: blur(var(--glass-blur-strong)) saturate(180%);
+            -webkit-backdrop-filter: blur(var(--glass-blur-strong)) saturate(180%);
+            color: var(--fg);
+            box-shadow:
+                inset 0 -1px 0 var(--hairline),
+                0 6px 20px rgba(0, 0, 0, 0.18);
         }
         .announcement-content {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 0.6rem;
-            max-width: 900px;
+            max-width: 960px;
             margin: 0 auto;
-            font-size: 0.9rem;
+            font-size: 0.92rem;
             line-height: 1.5;
         }
-        .announcement-icon {
-            font-size: 1.15rem;
-            flex-shrink: 0;
-        }
-        .announcement-text {
-            flex: 1;
-            text-align: center;
-        }
-        .announcement-text strong {
-            font-weight: 700;
-        }
-        body.has-announcement {
-            padding-top: 2.7rem;
-        }
+        .announcement-icon { font-size: 1.15rem; flex-shrink: 0; }
+        .announcement-text { flex: 1; text-align: center; }
+        .announcement-text strong { font-weight: 700; color: var(--accent); }
+        body.has-announcement { padding-top: 2.7rem; }
 
-        /* Footer */
+        /* ---------- Footer ---------- */
         footer {
             margin-top: 3rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid #333;
-            color: #888;
-            font-size: 0.85rem;
+            padding: 1.5rem 1.3rem;
+            border-radius: 18px;
+            color: var(--fg-muted);
+            font-size: 0.88rem;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(var(--glass-blur)) saturate(160%);
+            -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(160%);
+            box-shadow: inset 0 1px 0 var(--glass-highlight);
         }
-        footer nav { margin-top: 0.3rem; }
+        footer nav { margin-top: 0.4rem; }
         footer nav a { margin-right: 1.2rem; }
 
-        /* --- Liquid Glass tokens & ambient background --- */
-        :root {
-            --glass-bg: rgba(255, 255, 255, 0.06);
-            --glass-bg-strong: rgba(255, 255, 255, 0.10);
-            --glass-border: rgba(255, 255, 255, 0.14);
-            --glass-highlight: rgba(255, 255, 255, 0.18);
-            --glass-blur: 22px;
-        }
-        body {
-            background-image:
-                radial-gradient(900px 600px at 15% -10%, rgba(249, 115, 22, 0.12), transparent 60%),
-                radial-gradient(800px 520px at 110% 10%, rgba(79, 70, 229, 0.14), transparent 65%),
-                radial-gradient(1000px 700px at 50% 120%, rgba(124, 58, 237, 0.10), transparent 60%);
-            background-attachment: fixed;
-        }
-
-        /* --- Platform switcher (segmented Liquid Glass pill) --- */
+        /* ---------- Platform switcher (Liquid Glass segmented pill) ---------- */
         .platform-switcher {
             display: flex;
             justify-content: center;
@@ -621,7 +801,8 @@
             -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(180%);
             box-shadow:
                 inset 0 1px 0 var(--glass-highlight),
-                0 8px 24px rgba(0, 0, 0, 0.25);
+                inset 0 -1px 0 rgba(0, 0, 0, 0.08),
+                var(--glass-shadow-soft);
             margin: 0 auto;
         }
         .platform-tab {
@@ -629,7 +810,7 @@
             display: inline-flex;
             align-items: center;
             gap: 0.45rem;
-            padding: 0.55rem 1.1rem;
+            padding: 0.6rem 1.15rem;
             border: 0;
             border-radius: 999px;
             background: transparent;
@@ -641,23 +822,22 @@
             white-space: nowrap;
             transition: color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
         }
-        .platform-tab:hover:not([aria-disabled="true"]) { color: var(--fg); }
+        .platform-tab:hover:not([aria-disabled="true"]):not([aria-selected="true"]) {
+            color: var(--fg);
+            background: var(--glass-bg-strong);
+        }
         .platform-tab[aria-selected="true"] {
-            color: #fff;
-            background: linear-gradient(180deg, rgba(255,255,255,0.16), rgba(255,255,255,0.06));
+            color: var(--fg-strong);
+            background:
+                linear-gradient(180deg, var(--glass-bg-active), var(--glass-bg)) ,
+                radial-gradient(120% 80% at 50% 0%, var(--accent-soft), transparent 70%);
             box-shadow:
-                inset 0 1px 0 rgba(255, 255, 255, 0.25),
-                inset 0 -1px 0 rgba(0, 0, 0, 0.18),
-                0 4px 14px rgba(249, 115, 22, 0.25);
+                inset 0 1px 0 var(--glass-highlight),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.15),
+                0 4px 14px rgba(255, 138, 61, 0.22);
         }
-        .platform-tab[aria-disabled="true"] {
-            cursor: not-allowed;
-            opacity: 0.55;
-        }
-        .platform-tab:focus-visible {
-            outline: 2px solid var(--accent);
-            outline-offset: 2px;
-        }
+        .platform-tab[aria-disabled="true"] { cursor: not-allowed; opacity: 0.5; }
+        .platform-tab:focus-visible { outline: none; box-shadow: var(--focus-ring); }
         .platform-tab .tab-icon { font-size: 1.05rem; line-height: 1; }
         .platform-tab .tab-badge {
             display: inline-block;
@@ -665,47 +845,37 @@
             font-weight: 700;
             letter-spacing: 0.04em;
             text-transform: uppercase;
-            padding: 0.1rem 0.42rem;
+            padding: 0.1rem 0.45rem;
             border-radius: 999px;
-            background: rgba(249, 115, 22, 0.18);
+            background: var(--accent-soft);
             color: var(--accent);
-            border: 1px solid rgba(249, 115, 22, 0.35);
+            border: 1px solid var(--accent-ring);
         }
         .platform-tab.new-pulse::after {
             content: "";
             position: absolute;
-            top: 6px;
-            right: 6px;
-            width: 7px;
-            height: 7px;
+            top: 6px; right: 6px;
+            width: 7px; height: 7px;
             border-radius: 50%;
             background: var(--accent);
-            box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.6);
+            box-shadow: 0 0 0 0 var(--accent-ring);
             animation: pulseDot 2.2s ease-out infinite;
         }
         .platform-tab[aria-selected="true"].new-pulse::after { display: none; }
         @keyframes pulseDot {
-            0%   { box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.55); }
-            70%  { box-shadow: 0 0 0 10px rgba(249, 115, 22, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(249, 115, 22, 0); }
-        }
-        @media (prefers-reduced-motion: reduce) {
-            .platform-tab, .platform-tab.new-pulse::after { transition: none; animation: none; }
+            0%   { box-shadow: 0 0 0 0 var(--accent-ring); }
+            70%  { box-shadow: 0 0 0 10px rgba(255, 138, 61, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 138, 61, 0); }
         }
 
-        /* --- visionOS differences callout --- */
+        /* ---------- visionOS differences callout ---------- */
         .platform-callout {
             display: none;
             margin: 1rem 0 1.5rem;
-            padding: 1rem 1.2rem;
-            border-radius: 14px;
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            backdrop-filter: blur(var(--glass-blur)) saturate(160%);
-            -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(160%);
-            box-shadow: inset 0 1px 0 var(--glass-highlight);
-            font-size: 0.93rem;
+            padding: 1.1rem 1.3rem;
+            font-size: 0.94rem;
             color: var(--fg);
+            border-radius: 16px;
         }
         .platform-callout.active { display: block; }
         .platform-callout strong { color: var(--accent); }
@@ -714,46 +884,220 @@
             align-items: center;
             gap: 0.5rem;
             font-weight: 700;
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.35rem;
             color: var(--accent);
         }
 
-        /* --- Glass upgrade of existing cards --- */
-        .feature-item,
-        .screenshot-card,
-        .hero-figure,
-        .setup-details {
-            background: var(--glass-bg);
-            border-color: var(--glass-border);
-            backdrop-filter: blur(var(--glass-blur)) saturate(160%);
-            -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(160%);
-            box-shadow: inset 0 1px 0 var(--glass-highlight);
-        }
-        .feature-item:hover { border-color: var(--accent); }
-
-        /* --- Feature item platform visibility --- */
+        /* ---------- Feature item platform visibility ---------- */
         .feature-item[hidden] { display: none !important; }
 
-        /* --- Empty state for not-yet-available platforms --- */
+        /* ---------- Empty state ---------- */
         .platform-empty {
             display: none;
             text-align: center;
-            padding: 2rem 1.2rem;
-            border-radius: 14px;
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            backdrop-filter: blur(var(--glass-blur)) saturate(160%);
-            -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(160%);
+            padding: 2rem 1.3rem;
             color: var(--fg-muted);
             margin: 1.5rem 0;
         }
         .platform-empty.active { display: block; }
-        .platform-empty h3 { color: var(--accent); margin-bottom: 0.4rem; }
+        .platform-empty h3 { color: var(--accent); margin-bottom: 0.4rem; font-weight: 700; }
 
-        /* --- Small-screen switcher --- */
-        @media (max-width: 520px) {
+        /* ---------- Responsive ---------- */
+        @media (max-width: 640px) {
+            h1 { font-size: 2rem; }
+            .tagline { font-size: 1.08rem; }
+            h2 { font-size: 1.25rem; }
+            .container { padding: 1.5rem 1rem; }
             .platform-tab { padding: 0.5rem 0.8rem; font-size: 0.85rem; }
             .platform-tab .tab-badge { font-size: 0.58rem; padding: 0.08rem 0.35rem; }
+            .feature-item summary { padding: 0.9rem 1.1rem; font-size: 0.95rem; }
+            .feature-body { padding: 0 1.1rem 1rem 2.8rem; }
+        }
+
+        /* ---------- Reduced motion ---------- */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.001ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.001ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+
+        /* ---------- Reduced transparency (system pref) ---------- */
+        @media (prefers-reduced-transparency: reduce) {
+            .glass, .hero-figure, .feature-item, .screenshot-card, .setup-details,
+            .platform-callout, .platform-empty, .faq-card, footer, .note,
+            .platform-switcher[role="tablist"], .announcement-banner {
+                backdrop-filter: none;
+                -webkit-backdrop-filter: none;
+                background: var(--bg-elev);
+            }
+        }
+
+        /* ---------- Vision Pro auto-detection hint pill ---------- */
+        .vision-detected-hint {
+            position: fixed;
+            left: 50%;
+            bottom: calc(env(safe-area-inset-bottom, 0px) + 1.25rem);
+            transform: translate(-50%, 1rem);
+            z-index: 9000;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
+            max-width: min(92vw, 520px);
+            padding: 0.7rem 0.9rem 0.7rem 1.1rem;
+            border-radius: 999px;
+            background: var(--glass-bg-strong, var(--glass-bg));
+            border: 1px solid var(--glass-border);
+            color: var(--fg);
+            font-size: 0.9rem;
+            line-height: 1.35;
+            backdrop-filter: blur(24px) saturate(180%);
+            -webkit-backdrop-filter: blur(24px) saturate(180%);
+            box-shadow: var(--glass-shadow, 0 12px 32px rgba(0,0,0,0.22)), inset 0 1px 0 var(--glass-highlight);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.35s ease, transform 0.35s ease;
+        }
+        .vision-detected-hint.visible {
+            opacity: 1;
+            transform: translate(-50%, 0);
+            pointer-events: auto;
+        }
+        .vision-detected-hint .vh-icon { font-size: 1.1rem; line-height: 1; }
+        .vision-detected-hint .vh-text { font-weight: 500; }
+        .vision-detected-hint .vh-text strong { color: var(--accent); font-weight: 700; }
+        .vision-detected-hint .vh-close {
+            appearance: none;
+            border: 0;
+            background: transparent;
+            color: var(--fg-muted);
+            cursor: pointer;
+            padding: 0.25rem 0.5rem;
+            border-radius: 999px;
+            font: inherit;
+            font-size: 0.85rem;
+            transition: color 0.2s ease, background 0.2s ease;
+        }
+        .vision-detected-hint .vh-close:hover { color: var(--fg); background: var(--glass-bg); }
+        .vision-detected-hint .vh-close:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+
+        /* ---------- Apple visionOS hover/gaze feedback ----------
+           On visionOS, Safari/Chrome automatically render a system hover
+           highlight when the user gazes at interactive elements. To make
+           that feedback clear and HIG-compliant, every clickable element
+           also needs a strong CSS :hover state. We add enhanced hover
+           affordances for a few controls that previously had none, and
+           opt in to broader effects only on detected visionOS devices. */
+        .platform-tab,
+        .faq-card summary,
+        .feature-item summary,
+        .screenshot-card,
+        .cta,
+        .zoomable,
+        .vh-close,
+        a {
+            -webkit-tap-highlight-color: transparent;
+        }
+        .faq-card summary,
+        .feature-item summary {
+            border-radius: 18px;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+        .faq-card summary:hover,
+        .feature-item summary:hover {
+            background: var(--glass-bg-strong, var(--glass-bg));
+        }
+
+        /* When we detect a visionOS device, amplify hover affordances so the
+           system gaze highlight lines up with obvious visual feedback. */
+        html.visionos-device .platform-tab,
+        html.visionos-device .screenshot-card,
+        html.visionos-device .feature-item,
+        html.visionos-device .faq-card,
+        html.visionos-device .cta,
+        html.visionos-device .zoomable,
+        html.visionos-device a,
+        html.visionos-device button,
+        html.visionos-device summary {
+            transition: transform 0.28s ease, box-shadow 0.28s ease, background 0.28s ease, border-color 0.28s ease, color 0.28s ease;
+        }
+        html.visionos-device .platform-tab:hover:not([aria-disabled="true"]):not([aria-selected="true"]),
+        html.visionos-device .screenshot-card:hover,
+        html.visionos-device .faq-card:hover,
+        html.visionos-device .feature-item:hover,
+        html.visionos-device .cta:hover {
+            transform: translateY(-2px) scale(1.015);
+        }
+        html.visionos-device .platform-tab,
+        html.visionos-device .cta,
+        html.visionos-device .vh-close,
+        html.visionos-device a {
+            cursor: pointer;
+        }
+
+        /* Content tailored for visionOS visitors */
+        html.visionos-device .macos-only-note { display: none; }
+
+        /* ---------- Vision Pro welcome greeting ---------- */
+        .vision-welcome {
+            position: fixed;
+            inset: 0;
+            z-index: 9500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.25rem;
+            background: rgba(0, 0, 0, 0.28);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+        .vision-welcome.visible { opacity: 1; pointer-events: auto; }
+        .vision-welcome-card {
+            position: relative;
+            max-width: min(92vw, 520px);
+            padding: 1.8rem 1.9rem 1.6rem;
+            border-radius: 28px;
+            background: var(--glass-bg-strong, var(--glass-bg));
+            border: 1px solid var(--glass-border);
+            color: var(--fg);
+            text-align: center;
+            backdrop-filter: blur(28px) saturate(180%);
+            -webkit-backdrop-filter: blur(28px) saturate(180%);
+            box-shadow: var(--glass-shadow, 0 18px 48px rgba(0, 0, 0, 0.32)), inset 0 1px 0 var(--glass-highlight);
+            transform: translateY(10px) scale(0.98);
+            transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .vision-welcome.visible .vision-welcome-card { transform: translateY(0) scale(1); }
+        .vision-welcome-icon { font-size: 2.4rem; line-height: 1; margin-bottom: 0.6rem; display: block; }
+        .vision-welcome-card h3 { margin: 0 0 0.5rem; font-size: 1.25rem; font-weight: 700; color: var(--accent); letter-spacing: -0.01em; }
+        .vision-welcome-card p { margin: 0; font-size: 0.98rem; line-height: 1.55; color: var(--fg); }
+        .vision-welcome-card p + p { margin-top: 0.5rem; font-size: 0.88rem; color: var(--fg-muted); }
+        .vision-welcome-close {
+            position: absolute; top: 10px; right: 10px;
+            width: 34px; height: 34px; border-radius: 50%;
+            border: 1px solid var(--glass-border);
+            background: var(--glass-bg); color: var(--fg-muted);
+            cursor: pointer; font-size: 0.95rem; line-height: 1;
+            display: inline-flex; align-items: center; justify-content: center;
+            transition: color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+        }
+        .vision-welcome-close:hover { color: var(--fg); background: var(--glass-bg-strong, var(--glass-bg)); transform: scale(1.05); }
+        .vision-welcome-close:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+        .vision-welcome-progress {
+            position: relative;
+            margin-top: 1.1rem; height: 4px; width: 100%;
+            border-radius: 999px; background: var(--glass-border); overflow: hidden;
+        }
+        .vision-welcome-progress-bar {
+            display: block; height: 100%; width: 100%;
+            background: linear-gradient(90deg, var(--accent), var(--accent-hover, var(--accent)));
+            border-radius: inherit;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .vision-welcome, .vision-welcome-card { transition: none; }
         }
     </style>
 </head>
@@ -988,27 +1332,27 @@
             <section aria-label="Frequently Asked Questions">
                 <h2>FAQ</h2>
 
-                <div class="faq-item">
+                <div class="faq-card">
                     <h3>Why does the app ask for my macOS password?</h3>
                     <p>On first launch, macOS shows a standard security prompt asking for your account password. This is normal — macOS requires it whenever a new app creates an entry in the system Keychain. The app only stores and reads its own Keychain item (your Anthropic Admin API key). No other passwords, credentials, or Keychain entries are accessed. See our <a href="privacy-policy.html">Privacy Policy</a> for full details.</p>
                 </div>
 
-                <div class="faq-item">
+                <div class="faq-card">
                     <h3>How fresh is the cost data?</h3>
                     <p>The Intraday tab shows near real-time usage with approximately 1 hour delay from Anthropic's Usage API. The Monthly tab uses Anthropic's Cost API, which provides finalized dollar amounts with approximately 2 days of reporting lag.</p>
                 </div>
 
-                <div class="faq-item">
+                <div class="faq-card">
                     <h3>Does the app send my data to third parties?</h3>
                     <p>No. The app communicates only with Anthropic's official API endpoints and an exchange rate service for currency conversion. There is no analytics, no telemetry, no crash reporting, and zero third-party dependencies. Your Admin API key is stored exclusively in the macOS Keychain.</p>
                 </div>
 
-                <div class="faq-item">
+                <div class="faq-card">
                     <h3>Is there a free version?</h3>
                     <p>Yes. The app includes a 7-day free trial with full Pro access. After the trial, basic features (Monthly and Workspace tabs, CSV export, currency conversion, auto-refresh) remain free. Pro features (Intraday tab, Model tab, API Key breakdowns, rate limits, JSON API server, unlimited API keys) require a one-time purchase.</p>
                 </div>
 
-                <div class="faq-item">
+                <div class="faq-card">
                     <h3>Which Claude models are supported?</h3>
                     <p>All Claude models — Opus, Sonnet, and Haiku in all versions. The app uses dynamic model discovery via the Anthropic Models API and a multi-tier pricing engine, so new models are supported automatically as soon as they are released.</p>
                 </div>
@@ -1038,7 +1382,27 @@
 
     </div>
 
+    <!-- Vision Pro welcome greeting (shown on every page load to detected Vision Pro visitors) -->
+    <div class="vision-welcome" id="vision-welcome" role="dialog" aria-modal="false" aria-labelledby="vision-welcome-title" hidden>
+        <div class="vision-welcome-card">
+            <button type="button" class="vision-welcome-close" id="vision-welcome-close" aria-label="Dismiss welcome message">✕</button>
+            <span class="vision-welcome-icon" aria-hidden="true">🥽</span>
+            <h3 id="vision-welcome-title">Welcome, Vision Pro user!</h3>
+            <p>This is the app you need for your wonderful <strong>Apple&nbsp;Vision&nbsp;Pro</strong> — track your Claude API usage and costs right in spatial computing.</p>
+            <p>We’ve opened the visionOS version for you automatically.</p>
+            <div class="vision-welcome-progress" aria-hidden="true"><span class="vision-welcome-progress-bar" id="vision-welcome-bar"></span></div>
+        </div>
+    </div>
+
+    <!-- Vision Pro auto-detection hint pill (shown only when we auto-switch to visionOS view) -->
+    <div class="vision-detected-hint" id="vision-hint" role="status" aria-live="polite" hidden>
+        <span class="vh-icon" aria-hidden="true">🥽</span>
+        <span class="vh-text">Apple&nbsp;Vision&nbsp;Pro detected — showing the <strong>visionOS</strong> version. <a href="?platform=macos" id="vh-switch-macos">Switch to macOS</a></span>
+        <button type="button" class="vh-close" id="vh-close" aria-label="Dismiss Vision Pro hint">✕</button>
+    </div>
+
     <div class="lightbox" id="lightbox" role="dialog" aria-label="Screenshot fullscreen view">
+        <button type="button" class="lightbox-close" id="lightbox-close" aria-label="Close fullscreen view">✕</button>
         <img id="lightbox-img" src="" alt="">
     </div>
 
@@ -1116,17 +1480,17 @@
     (function() {
         const VALID = Object.keys(PLATFORMS);
         const DEFAULT = 'macos';
-        const STORAGE_KEY = 'selectedPlatform';
 
-        function getInitialPlatform() {
-            const params = new URLSearchParams(window.location.search);
-            const qp = params.get('platform');
-            if (qp && VALID.includes(qp)) return qp;
+        // Clean up any persisted platform choice from earlier builds —
+        // the page now decides purely from URL param + UA on every load.
+        try { localStorage.removeItem('selectedPlatform'); } catch (_) { /* ignore */ }
+
+        function getUrlPlatform() {
             try {
-                const saved = localStorage.getItem(STORAGE_KEY);
-                if (saved && VALID.includes(saved)) return saved;
-            } catch (_) { /* storage unavailable */ }
-            return DEFAULT;
+                const qp = new URLSearchParams(window.location.search).get('platform');
+                if (qp && VALID.includes(qp)) return qp;
+            } catch (_) { /* ignore */ }
+            return null;
         }
 
         function escapeHtml(s) {
@@ -1207,10 +1571,9 @@
             renderScreenshots(cfg);
             updateFeatureVisibility(platform);
             updateTabsUI(platform);
-            try { localStorage.setItem(STORAGE_KEY, platform); } catch (_) { /* noop */ }
         }
 
-        // Click + keyboard navigation for tabs
+        // Click + keyboard navigation for tabs (in-page only, not persisted)
         const tabs = Array.from(document.querySelectorAll('.platform-tab'));
         tabs.forEach(function(btn) {
             btn.addEventListener('click', function() {
@@ -1239,7 +1602,129 @@
             });
         }
 
-        applyPlatform(getInitialPlatform());
+        // ---------- Vision Pro device detection ----------
+        // The active tab is chosen purely from two signals on every load:
+        //   1. ?platform= URL parameter (highest priority — explicit intent).
+        //   2. User-Agent / WebXR → visionpro tab for Apple Vision Pro visitors.
+        // Everyone else gets the macOS default. Nothing is persisted.
+        function uaLooksLikeVisionPro() {
+            const ua = (navigator.userAgent || '') + ' ' + (navigator.platform || '');
+            return /vision\s?os|xros|\bvision\b/i.test(ua);
+        }
+
+        function detectVisionPro() {
+            // WebXR feature-detect with a short timeout so slow responses
+            // never block first paint. Resolves true/false, never rejects.
+            return new Promise(function(resolve) {
+                var decided = false;
+                var done = function(val) { if (!decided) { decided = true; resolve(val); } };
+                setTimeout(function(){ done(uaLooksLikeVisionPro()); }, 900);
+                try {
+                    if (navigator.xr && typeof navigator.xr.isSessionSupported === 'function') {
+                        navigator.xr.isSessionSupported('immersive-vr')
+                            .then(function(ok){ done(ok === true || uaLooksLikeVisionPro()); })
+                            .catch(function(){ done(uaLooksLikeVisionPro()); });
+                        return;
+                    }
+                } catch (_) { /* continue */ }
+                done(uaLooksLikeVisionPro());
+            });
+        }
+
+        function showVisionWelcome() {
+            var wrap = document.getElementById('vision-welcome');
+            if (!wrap) return;
+            // Intentionally NO sessionStorage/localStorage guard here —
+            // the greeting should appear on every fresh page load.
+            wrap.hidden = false;
+            void wrap.offsetWidth;
+            wrap.classList.add('visible');
+            // Drive the progress bar from the same 10s timer that closes the
+            // dialog — using requestAnimationFrame so it updates every frame.
+            var bar = document.getElementById('vision-welcome-bar');
+            var DURATION = 10000;
+            var startTs = null;
+            var rafId = null;
+            if (bar) {
+                bar.style.transition = 'none';
+                bar.style.width = '100%';
+                var tick = function(ts) {
+                    if (startTs === null) startTs = ts;
+                    var elapsed = ts - startTs;
+                    var remaining = Math.max(0, 1 - elapsed / DURATION);
+                    bar.style.width = (remaining * 100).toFixed(3) + '%';
+                    if (elapsed < DURATION && !closed) {
+                        rafId = requestAnimationFrame(tick);
+                    }
+                };
+                rafId = requestAnimationFrame(tick);
+            }
+            var closed = false;
+            var hide = function() {
+                if (closed) return;
+                closed = true;
+                wrap.classList.remove('visible');
+                setTimeout(function(){ wrap.hidden = true; }, 450);
+            };
+            var closeBtn = document.getElementById('vision-welcome-close');
+            if (closeBtn) {
+                closeBtn.addEventListener('click', hide);
+                try { closeBtn.focus({ preventScroll: true }); } catch (_) { closeBtn.focus(); }
+            }
+            wrap.addEventListener('click', function(e) { if (e.target === wrap) hide(); });
+            document.addEventListener('keydown', function onKey(e) {
+                if (e.key === 'Escape') { hide(); document.removeEventListener('keydown', onKey); }
+            });
+            // Auto-hide after exactly 10 seconds.
+            setTimeout(hide, 10000);
+        }
+
+        function showVisionHint() {
+            var hint = document.getElementById('vision-hint');
+            if (!hint) return;
+            try {
+                if (sessionStorage.getItem('visionHintDismissed') === '1') return;
+            } catch (_) { /* ignore */ }
+            hint.hidden = false;
+            // Force reflow so the transition runs reliably.
+            void hint.offsetWidth;
+            hint.classList.add('visible');
+            var close = document.getElementById('vh-close');
+            var hide = function() {
+                hint.classList.remove('visible');
+                try { sessionStorage.setItem('visionHintDismissed', '1'); } catch (_) { /* ignore */ }
+                setTimeout(function(){ hint.hidden = true; }, 400);
+            };
+            if (close) close.addEventListener('click', hide);
+            setTimeout(function() {
+                if (hint.classList.contains('visible')) hide();
+            }, 9000);
+        }
+
+        // ---------- Initial platform selection ----------
+        var urlPlatform = getUrlPlatform();
+        if (urlPlatform) {
+            // Explicit override via ?platform=… always wins.
+            applyPlatform(urlPlatform);
+            if (urlPlatform === 'visionpro') {
+                document.documentElement.classList.add('visionos-device');
+                showVisionWelcome();
+            }
+        } else {
+            // Paint macOS default immediately, then upgrade to Vision Pro
+            // once UA / WebXR detection resolves (so we don't block paint).
+            applyPlatform(DEFAULT);
+            if (uaLooksLikeVisionPro()) {
+                document.documentElement.classList.add('visionos-device');
+            }
+            detectVisionPro().then(function(isVision) {
+                if (!isVision) return;
+                document.documentElement.classList.add('visionos-device');
+                applyPlatform('visionpro');
+                showVisionHint();
+                showVisionWelcome();
+            });
+        }
     })();
     </script>
 
@@ -1247,6 +1732,12 @@
     (function() {
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxClose = document.getElementById('lightbox-close');
+
+        const closeLightbox = function() {
+            lightbox.classList.remove('active');
+            lightboxImg.src = '';
+        };
 
         // Event delegation so dynamically-rendered images work too
         document.addEventListener('click', function(e) {
@@ -1257,15 +1748,22 @@
             lightbox.classList.add('active');
         });
 
-        lightbox.addEventListener('click', function() {
-            lightbox.classList.remove('active');
-            lightboxImg.src = '';
+        // Close on backdrop click, but not when clicking the image itself
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === lightboxImg) return;
+            closeLightbox();
         });
+
+        if (lightboxClose) {
+            lightboxClose.addEventListener('click', function(e) {
+                e.stopPropagation();
+                closeLightbox();
+            });
+        }
 
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape' && lightbox.classList.contains('active')) {
-                lightbox.classList.remove('active');
-                lightboxImg.src = '';
+                closeLightbox();
             }
         });
     })();
