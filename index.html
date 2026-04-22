@@ -472,20 +472,27 @@
                 0 0 0 1px var(--accent-ring),
                 var(--glass-shadow-soft);
         }
+        /* NOTE: WebKit (Safari / visionOS Safari) has a bug where a <summary>
+           with `display: flex` renders the user-agent default "Details" text
+           instead of the summary's own children. Work around it by keeping
+           <summary> as a normal block and moving the flex layout onto an
+           inner `.summary-inner` wrapper. */
         .feature-item summary {
             padding: 1rem 1.25rem;
             cursor: pointer;
             list-style: none;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
             font-weight: 600;
             font-size: 1rem;
             color: var(--fg);
             user-select: none;
         }
         .feature-item summary::-webkit-details-marker { display: none; }
-        .feature-item summary::before {
+        .feature-item .summary-inner {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .feature-item .summary-inner::before {
             content: "";
             width: 22px; height: 22px;
             flex-shrink: 0;
@@ -500,7 +507,7 @@
             background-size: 14px 14px;
             transition: transform 0.25s ease;
         }
-        .feature-item[open] summary::before { transform: rotate(90deg); }
+        .feature-item[open] .summary-inner::before { transform: rotate(90deg); }
         .feature-title { flex: 1; }
         .feature-teaser { font-weight: 400; color: var(--fg-muted); font-size: 0.88rem; }
         .feature-body {
@@ -638,22 +645,25 @@
                 0 10px 34px rgba(255, 138, 61, 0.12),
                 var(--glass-shadow-soft);
         }
+        /* NOTE: see feature-item summary comment — same WebKit bug applies. */
         .setup-details summary {
             cursor: pointer;
             padding: 1.1rem 1.4rem;
             list-style: none;
+        }
+        .setup-details summary::-webkit-details-marker { display: none; }
+        .setup-details .summary-inner {
             display: flex;
             flex-wrap: wrap;
             align-items: center;
             gap: 0.5rem 1rem;
         }
-        .setup-details summary::-webkit-details-marker { display: none; }
-        .setup-details summary::before {
+        .setup-details .summary-inner::before {
             content: '🔑';
             font-size: 1.25rem;
             flex-shrink: 0;
         }
-        .setup-details summary::after {
+        .setup-details .summary-inner::after {
             content: '▾ Click to expand';
             font-size: 0.78rem;
             color: var(--accent);
@@ -662,7 +672,7 @@
             font-weight: 600;
             letter-spacing: 0.02em;
         }
-        .setup-details[open] summary::after { content: '▴ Click to collapse'; }
+        .setup-details[open] .summary-inner::after { content: '▴ Click to collapse'; }
         .setup-details summary h2 {
             display: inline;
             font-size: 1.1rem;
@@ -1557,9 +1567,9 @@
                 <div class="features-grid">
 
                     <details class="feature-item" data-platforms="macos,visionpro">
-                        <summary>
+                        <summary><div class="summary-inner">
                             <span class="feature-title">Near Real-Time Cost Tracking <span class="feature-teaser">— see today's spend as it happens</span></span>
-                        </summary>
+                        </div>                        </summary>
                         <div class="feature-body">
                             <p>The <strong>Intraday tab</strong> shows today's API costs per key with approximately 1 hour delay from Anthropic's Usage API. Each API key is displayed as a card with per-model breakdown, color-coded cost distribution bars (Input, Cache Creation, Cache Read, Output), and estimated totals.</p>
                             <p>A dedicated refresh button lets you pull the latest intraday data independently from the rest of the app. If you've configured a spend limit, a combined progress bar shows your month-to-date cost plus today's estimate against your budget.</p>
@@ -1567,9 +1577,9 @@
                     </details>
 
                     <details class="feature-item" data-platforms="macos,visionpro">
-                        <summary>
+                        <summary><div class="summary-inner">
                             <span class="feature-title">Monthly Cost Breakdown <span class="feature-teaser">— full history with token-level detail</span></span>
-                        </summary>
+                        </div>                        </summary>
                         <div class="feature-body">
                             <p>The <strong>By Month tab</strong> shows paginated month cards (2 per page) with costs from Anthropic's Cost API — finalized dollar amounts with approximately 2 days of reporting lag. Each month card displays the total cost, a color-coded cost distribution bar, and a 2×2 grid showing per-category costs (Input, Cache Creation, Cache Read, Output) with percentages.</p>
                             <p>Pro users can expand each month to see a <strong>per-API-key breakdown</strong> — isolating exactly how much each project, bot, or team member spent. An all-time grand total appears at the bottom across all months.</p>
@@ -1577,9 +1587,9 @@
                     </details>
 
                     <details class="feature-item" data-platforms="macos,visionpro">
-                        <summary>
+                        <summary><div class="summary-inner">
                             <span class="feature-title">Per-Model Cost View <span class="feature-teaser">— Opus, Sonnet, Haiku at a glance</span></span>
-                        </summary>
+                        </div>                        </summary>
                         <div class="feature-body">
                             <p>The <strong>By Model tab</strong> lists every Claude model you've used — Claude Opus, Sonnet, and Haiku in all versions — sorted by version (newest first) and tier. Each model card shows total cost, a color-coded distribution bar, and a stat grid with the 4 cost categories (only those with actual usage).</p>
                             <p>If you've configured rate limits, each model also displays inline rate limit pills showing requests per minute, input tokens per minute, and output tokens per minute. The app uses <strong>dynamic model discovery</strong> via the Anthropic Models API, so new Claude models are supported automatically.</p>
@@ -1587,9 +1597,9 @@
                     </details>
 
                     <details class="feature-item" data-platforms="macos,visionpro">
-                        <summary>
+                        <summary><div class="summary-inner">
                             <span class="feature-title">Per-API-Key Filtering <span class="feature-teaser">— isolate costs by project, bot, or team</span></span>
-                        </summary>
+                        </div>                        </summary>
                         <div class="feature-body">
                             <p>In Settings, you can select which API keys to include in cost calculations. This lets you <strong>isolate costs by project</strong> (e.g., only show costs for your production bot) or compare spending across different API keys used by different team members or services.</p>
                             <p>The filter applies across all tabs — Monthly, Model, Workspace, and Intraday. Free tier supports 1 API key; Pro unlocks unlimited keys.</p>
@@ -1597,9 +1607,9 @@
                     </details>
 
                     <details class="feature-item" data-platforms="macos,visionpro">
-                        <summary>
+                        <summary><div class="summary-inner">
                             <span class="feature-title">Workspace Overview <span class="feature-teaser">— compare costs across environments</span></span>
-                        </summary>
+                        </div>                        </summary>
                         <div class="feature-body">
                             <p>The <strong>By Workspace tab</strong> shows per-workspace cost breakdowns from Anthropic's Cost API. Each workspace is displayed as a card with its name and total cost, making it easy to compare spending across Production, Development, Staging, or any other workspace in your organization.</p>
                             <p>An "All Workspaces" total appears at the bottom for a quick organization-wide overview.</p>
@@ -1607,9 +1617,9 @@
                     </details>
 
                     <details class="feature-item" data-platforms="macos,visionpro">
-                        <summary>
+                        <summary><div class="summary-inner">
                             <span class="feature-title">Live Rate Limits <span class="feature-teaser">— requests/min, input &amp; output tokens per model</span></span>
-                        </summary>
+                        </div>                        </summary>
                         <div class="feature-body">
                             <p>Enter a regular Claude API key in Settings to probe your current rate limits. The app sends a <strong>minimal 1-token request</strong> per model (costing approximately $0.0001) to read the rate limit headers returned by Anthropic. Results show requests per minute, input tokens per minute, and output tokens per minute for each model.</p>
                             <p>Rate limits are displayed inline on model cards and in a dedicated table in Settings. Results are cached across sessions, and the feature supports all models discovered via the Anthropic Models API.</p>
@@ -1617,9 +1627,9 @@
                     </details>
 
                     <details class="feature-item" data-platforms="macos,visionpro">
-                        <summary>
+                        <summary><div class="summary-inner">
                             <span class="feature-title">Spend Alerts &amp; Limit Tracking <span class="feature-teaser">— get notified before you overspend</span></span>
-                        </summary>
+                        </div>                        </summary>
                         <div class="feature-body">
                             <p>Set a <strong>monthly spend limit</strong> (in USD) that mirrors your Anthropic Console setting. A visual budget progress bar shows your current spend as a percentage — green below 75%, orange at 75–90%, and red above 90%.</p>
                             <p>Enable <strong>spend threshold notifications</strong> to receive a native macOS notification when your costs reach a configurable USD amount. Notifications fire once per calendar month (per threshold). You can test the notification from Settings to make sure it's working.</p>
@@ -1627,9 +1637,9 @@
                     </details>
 
                     <details class="feature-item" data-platforms="macos,visionpro">
-                        <summary>
+                        <summary><div class="summary-inner">
                             <span class="feature-title">12-Currency Support <span class="feature-teaser">— USD, EUR, GBP, JPY, and 8 more</span></span>
-                        </summary>
+                        </div>                        </summary>
                         <div class="feature-body">
                             <p>Switch between <strong>12 currencies</strong> with a single click via the flag-based dropdown in the header: USD, EUR, GBP, JPY, CNY, CHF, CAD, AUD, KRW, INR, BRL, and SEK. Exchange rates are fetched in real-time from an open exchange rate API and cached across sessions.</p>
                             <p>All views, CSV exports, and the JSON API automatically use the selected currency. You can also configure a custom exchange rate endpoint for enterprise or air-gapped environments.</p>
@@ -1637,9 +1647,9 @@
                     </details>
 
                     <details class="feature-item" data-platforms="visionpro">
-                        <summary>
+                        <summary><div class="summary-inner">
                             <span class="feature-title">Spatial Currency Picker <span class="feature-teaser">— dedicated visionOS currency view</span></span>
-                        </summary>
+                        </div>                        </summary>
                         <div class="feature-body">
                             <p>On Vision Pro, currency selection gets its own <strong>dedicated spatial view</strong> — a glass panel with flag-based entries for all 12 supported currencies and live exchange rates. Hover-reactive rows and Liquid Glass materials make switching currencies feel native to visionOS.</p>
                             <p>Your selection syncs across every tab and export instantly, just like on macOS.</p>
@@ -1647,9 +1657,9 @@
                     </details>
 
                     <details class="feature-item" data-platforms="macos,visionpro">
-                        <summary>
+                        <summary><div class="summary-inner">
                             <span class="feature-title">CSV Export <span class="feature-teaser">— tab-specific, currency-aware reports</span></span>
-                        </summary>
+                        </div>                        </summary>
                         <div class="feature-body">
                             <p>Export cost data from any tab with one click. Each tab produces a <strong>tailored CSV format</strong>: Monthly exports include month, token type, tokens, and cost (plus per-key breakdown for Pro). Model exports list model, token type, tokens, and cost. Intraday exports include API key, model, token type, tokens, and estimated cost.</p>
                             <p>All amounts are exported in your selected currency with proper decimal formatting. A grand total row is appended at the bottom for easy accounting.</p>
@@ -1657,9 +1667,9 @@
                     </details>
 
                     <details class="feature-item" data-platforms="macos">
-                        <summary>
+                        <summary><div class="summary-inner">
                             <span class="feature-title">Built-in JSON API <span class="feature-teaser">— integrate with dashboards and tools</span></span>
-                        </summary>
+                        </div>                        </summary>
                         <div class="feature-body">
                             <p>Enable the built-in <strong>localhost-only HTTP server</strong> (default port 9485) to expose your usage data as JSON. The API provides a full snapshot including monthly costs, per-model breakdowns, workspace totals, intraday data, and spend limit status — all in your selected currency.</p>
                             <p>The server listens exclusively on 127.0.0.1 (no external network exposure) and supports CORS for browser-based dashboards. Endpoints: <code>GET /</code> or <code>GET /usage</code> for full data, <code>GET /health</code> for status checks. Test with: <code>curl http://localhost:9485</code></p>
@@ -1667,9 +1677,9 @@
                     </details>
 
                     <details class="feature-item" data-platforms="macos">
-                        <summary>
+                        <summary><div class="summary-inner">
                             <span class="feature-title">Detached Window Mode <span class="feature-teaser">— keep the window visible while you work</span></span>
-                        </summary>
+                        </div>                        </summary>
                         <div class="feature-body">
                             <p>By default, the app appears as a <strong>menu bar popover</strong> that closes when you click elsewhere. Pin the window to switch to <strong>detached mode</strong> — a floating window that stays visible while you code, switch apps, or work in the terminal.</p>
                             <p>Toggle between popover and floating window with the pin button in the header. Your current cost is also optionally displayed directly in the macOS menu bar text.</p>
@@ -1677,9 +1687,9 @@
                     </details>
 
                     <details class="feature-item" data-platforms="macos,visionpro">
-                        <summary>
+                        <summary><div class="summary-inner">
                             <span class="feature-title">Security &amp; Privacy <span class="feature-teaser">— Keychain storage, no telemetry, zero dependencies</span></span>
-                        </summary>
+                        </div>                        </summary>
                         <div class="feature-body">
                             <p>Your Admin API key is stored in the <strong>macOS Keychain</strong> — never in plaintext or UserDefaults. The app communicates only with Anthropic's official API endpoints and an exchange rate service. There is <strong>no analytics, no telemetry, no crash reporting</strong>, and zero data sent to any third party.</p>
                             <p>The entire app is built on Apple system frameworks only — <strong>zero third-party Swift packages or CocoaPods</strong>. API keys are masked by default in the Settings panel with a show/hide toggle.</p>
@@ -1703,7 +1713,7 @@
             <!-- Setup Guide (collapsible) -->
             <section aria-label="Getting your Admin API Key">
                 <details class="setup-details">
-                    <summary><h2>Getting Your Admin API Key</h2><p class="setup-teaser">Need an Admin API key? Here's how to create one in the Anthropic Console in under a minute.</p></summary>
+                    <summary><div class="summary-inner"><h2>Getting Your Admin API Key</h2><p class="setup-teaser">Need an Admin API key? Here's how to create one in the Anthropic Console in under a minute.</p></div></summary>
                     <div class="setup-guide">
                         <ol class="setup-steps">
                             <li><span>Log in to the <a href="https://platform.claude.com/settings/admin-keys" target="_blank" rel="noopener">Anthropic Console</a> with an account that has <strong>organization admin</strong> access.</span></li>
