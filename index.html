@@ -50,7 +50,7 @@
         "@type": "SoftwareApplication",
         "name": "AI Token Usage Tracker",
         "alternateName": ["Claude Token Usage Tracker", "AI Token Tracker for Vision Pro", "Claude API Cost Tracker"],
-        "operatingSystem": ["macOS 14.0", "macOS Sonoma", "macOS Sequoia", "macOS Tahoe", "visionOS 2.0", "visionOS"],
+        "operatingSystem": ["macOS 26", "macOS Tahoe", "macOS Tahoe", "visionOS 2.0", "visionOS"],
         "applicationCategory": ["DeveloperApplication", "ProductivityApplication", "UtilitiesApplication"],
         "applicationSubCategory": "API Monitoring",
         "description": "A native macOS menu bar and Apple Vision Pro (visionOS) app to monitor Anthropic Claude API token usage and costs in near real-time. Provides breakdowns by model, workspace, month, and API key, with a spatial interface on Vision Pro. Built with Swift and SwiftUI — zero third-party dependencies.",
@@ -84,7 +84,7 @@
             "https://raw.githubusercontent.com/siegfriedbolz/claude-token-usage-tracker/main/screenshots/visionpro/Settings1.png",
             "https://raw.githubusercontent.com/siegfriedbolz/claude-token-usage-tracker/main/screenshots/visionpro/Settings2.png"
         ],
-        "softwareRequirements": "macOS 14.0 (Sonoma) or later, or Apple Vision Pro running visionOS 2.0 or later; Anthropic Admin API key required",
+        "softwareRequirements": "macOS 26 (Tahoe) or later, or Apple Vision Pro running visionOS 2.0 or later; Anthropic Admin API key required",
         "featureList": [
             "Native macOS menu bar app",
             "Native Apple Vision Pro (visionOS) spatial app",
@@ -136,7 +136,7 @@
                 "name": "What are the system requirements?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "You need macOS 14.0 (Sonoma) or later, or Apple Vision Pro running visionOS 2.0 or later, plus an Anthropic Admin API key which requires organization admin access in your Anthropic Console."
+                    "text": "You need macOS 26 (Tahoe) or later, or Apple Vision Pro running visionOS 2.0 or later, plus an Anthropic Admin API key which requires organization admin access in your Anthropic Console."
                 }
             },
             {
@@ -176,7 +176,7 @@
                 "name": "Does AI Token Usage Tracker run on Apple Vision Pro?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Yes. AI Token Usage Tracker is a universal app that runs natively on Apple Vision Pro (visionOS 2.0 or later) as a spatial windowed app, and on macOS (14.0 Sonoma or later) as a menu bar app. Both versions share the same data model and connect directly to the Anthropic Admin API. The Vision Pro version uses a volumetric glass UI with eye-tracking hover feedback, and includes a Spatial Currency Picker designed for visionOS."
+                    "text": "Yes. AI Token Usage Tracker is a universal app that runs natively on Apple Vision Pro (visionOS 2.0 or later) as a spatial windowed app, and on macOS (26 Tahoe or later) as a menu bar app. Both versions share the same data model and connect directly to the Anthropic Admin API. The Vision Pro version uses a volumetric glass UI with eye-tracking hover feedback, and includes a Spatial Currency Picker designed for visionOS."
                 }
             },
             {
@@ -1481,11 +1481,12 @@
     <a class="skip-link" href="#platform-panel">Skip to main content</a>
 
     <!-- Announcement Banner -->
+
     <div class="announcement-banner" id="announcement-banner" aria-label="Version 2.0 announcement">
         <div class="announcement-content">
             <span class="announcement-icon"></span>
             <span class="announcement-text">
-                <strong>Coming Soon: Version 2.0</strong> — 🥽 Apple Vision Pro support, free for all users!
+                <strong>Now available: Version 2.0</strong> on the App Store — 🥽 Apple Vision Pro support added!
             </span>
         </div>
     </div>
@@ -1762,7 +1763,7 @@
             <!-- Requirements (rendered per platform) -->
             <section aria-label="Requirements">
                 <h2>Requirements</h2>
-                <p id="requirements-text"><strong>macOS 14.0 (Sonoma)</strong> or later. Requires an <strong>Anthropic Admin API key</strong>, which you can generate in the Anthropic Console under Organization Settings (requires organization admin access).</p>
+                <p id="requirements-text"><strong>macOS 26 (Tahoe)</strong> or later. Requires an <strong>Anthropic Admin API key</strong>, which you can generate in the Anthropic Console under Organization Settings (requires organization admin access).</p>
             </section>
 
             <!-- CTA (rendered per platform) -->
@@ -1830,9 +1831,9 @@
                 href: 'https://apps.apple.com/app/ai-token-usage-tracker/id6760191068',
                 img: 'Download_macOS_Store.svg',
                 alt: 'Download on the Mac App Store',
-                hint: 'Requires macOS 14.0 (Sonoma) · Free 7-day trial'
+                hint: 'Requires macOS 26 (Tahoe) · Free 7-day trial'
             },
-            requirements: '<strong>macOS 14.0 (Sonoma)</strong> or later. Requires an <strong>Anthropic Admin API key</strong>, which you can generate in the Anthropic Console under Organization Settings (requires organization admin access).',
+            requirements: '<strong>macOS 26 (Tahoe)</strong> or later. Requires an <strong>Anthropic Admin API key</strong>, which you can generate in the Anthropic Console under Organization Settings (requires organization admin access).',
             screenshots: [
                 { src: 'screenshots/Model.png', full: 'screenshots/Model.png', alt: 'AI Token Usage Tracker — Per-model cost breakdown showing Claude Opus and Sonnet with 4 cost categories and inline rate limits', title: 'By Model', caption: "Every Claude model you've used, sorted by version and tier. Each card shows total cost, a color-coded 4-category breakdown (Input, Cache Write, Cache Read, Output), and inline rate-limit pills when configured." },
                 { src: 'screenshots/Monat.png', full: 'screenshots/Monat.png', alt: 'AI Token Usage Tracker — Monthly cost breakdown with paginated month cards, color-coded distribution bars, and token categories', title: 'By Month', caption: "Paginated month cards with finalized costs from Anthropic's Cost API. Each card shows total spend, a proportional cost bar, and per-category stats. Pro users can expand each month for a per-API-key breakdown." },
@@ -1854,17 +1855,12 @@
                 caption: "Today's API costs per key as a spatial window — tuned with Apple's Liquid Glass materials and hover-reactive controls."
             },
             cta: {
-                comingSoon: true,
-                notice: 'The Vision Pro app is <strong>coming soon</strong>. In the meantime, the macOS version is available now and works great alongside your Vision Pro setup.',
-                fallback: {
-                    href: 'https://apps.apple.com/app/ai-token-usage-tracker/id6760191068',
-                    img: 'Download_macOS_Store.svg',
-                    alt: 'Download on the Mac App Store',
-                    label: 'Get the macOS version'
-                },
-                hint: 'visionOS 2.0 · Coming soon'
+                href: 'https://apps.apple.com/app/ai-token-usage-tracker/id6760191068',
+                img: 'Download_macOS_Store.svg',
+                alt: 'Download on the Mac App Store',
+                hint: 'Requires visionOS 2.0 or later'
             },
-            requirements: 'The Vision Pro app is <strong>coming soon</strong> and will require <strong>visionOS 2.0</strong> or later on Apple Vision Pro. It will use an <strong>Anthropic Admin API key</strong>, which you can generate in the Anthropic Console under Organization Settings (requires organization admin access).',
+            requirements: '<strong>visionOS 2.0</strong> or later on Apple Vision Pro. Requires an <strong>Anthropic Admin API key</strong>, which you can generate in the Anthropic Console under Organization Settings (requires organization admin access).',
             screenshots: [
                 { src: 'screenshots/visionpro/Monat_small.png', full: 'screenshots/visionpro/Monat.png', alt: 'AI Token Usage Tracker on Vision Pro — Monthly cost breakdown in a spatial window with Liquid Glass materials', title: 'By Month', caption: "Paginated month cards with finalized costs from Anthropic's Cost API, rendered on Liquid Glass surfaces. Pro users can expand each month for a per-API-key breakdown." },
                 { src: 'screenshots/visionpro/Currency_small.png', full: 'screenshots/visionpro/Currency.png', alt: 'AI Token Usage Tracker on Vision Pro — Spatial currency picker with flag-based entries for 12 currencies', title: 'Spatial Currency Picker', caption: 'A dedicated visionOS view for switching currencies. Flag-based rows for all 12 supported currencies with live exchange rates, hover-reactive selection, and instant sync across every tab.' },
