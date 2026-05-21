@@ -1,19 +1,21 @@
 # AI Token Usage Tracker
 
-> A native macOS menu bar app to monitor Anthropic Claude API token usage and costs in near real-time.
+> A native macOS menu bar, iOS/iPadOS, and Apple Vision Pro (visionOS) app to monitor Anthropic Claude API token usage and costs in near real-time.
 
-AI Token Usage Tracker is a macOS menu bar application for developers and teams using the Anthropic Claude API. It connects to the Anthropic Admin API and displays API costs broken down by month, model, workspace, and API key — directly in the macOS menu bar or as a detached popover window.
+AI Token Usage Tracker is a universal Apple-platforms application for developers and teams using the Anthropic Claude API. It connects to the Anthropic Admin API and displays API costs broken down by month, model, workspace, and API key — in the macOS menu bar, on iPhone and iPad with Apple's Liquid Glass design, or as a spatial window on Apple Vision Pro.
 
 ## Key Facts
 
-- Platform: macOS 14.0+ (Sonoma), universal binary (Apple Silicon + Intel)
-- Built with: Swift 5.9+, SwiftUI, Apple system frameworks only
-- Distribution: Mac App Store
+- Platforms: macOS 26 (Tahoe) or later, iOS 26 or later (iPhone), iPadOS 26 or later (iPad), visionOS 2.0 or later (Apple Vision Pro)
+- Built with: Swift 5.9+, SwiftUI, WidgetKit, Apple system frameworks only
+- Distribution: App Store (Mac App Store, iOS App Store, visionOS App Store)
 - Developer: Siegfried-Thor Bolz
 - No third-party dependencies — zero external Swift packages or CocoaPods
-- API key stored in macOS Keychain
+- API key stored in the system Keychain (macOS Keychain on Mac, iOS Keychain on iPhone/iPad)
 - No analytics, telemetry, or crash reporting
-- Supports English and Spanish
+- Apple Liquid Glass design on macOS 26 and iOS / iPadOS 26
+- Volumetric glass UI on visionOS
+- Home Screen and Lock Screen widget on iOS / iPadOS
 
 ## Core Features
 
@@ -75,7 +77,7 @@ AI Token Usage Tracker is a macOS menu bar application for developers and teams 
 
 ## Requirements
 
-- macOS 14.0 (Sonoma) or later
+- macOS 26 (Tahoe) or later, iOS 26 or later, iPadOS 26 or later, or visionOS 2.0 or later
 - Anthropic Admin API key (requires organization admin access)
 
 ## Links

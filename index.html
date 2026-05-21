@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Token Usage Tracker — macOS &amp; Apple Vision Pro App for Anthropic API Costs</title>
-    <meta name="description" content="Native macOS menu bar and Apple Vision Pro (visionOS) app to monitor Anthropic Claude API token usage and costs in near real-time. Track spending by model, workspace, and API key — on your Mac or in spatial computing on Vision Pro. Built with Swift, zero third-party dependencies.">
-    <meta name="keywords" content="Claude, Anthropic, API, token usage, cost tracker, macOS, menu bar app, Claude API costs, Claude Opus, Claude Sonnet, Claude Haiku, API monitoring, developer tools, Swift, SwiftUI, Mac App Store, spend tracking, rate limits, Claude Code, Cursor, Windsurf, API cost monitoring, token counter, budget alerts, Apple Vision Pro, visionOS, visionOS app, Vision Pro app, Vision Pro developer tools, Vision Pro productivity, spatial computing, spatial API monitor, spatial productivity, Vision Pro AI app, Vision Pro Claude, AI cost tracking, LLM cost tracker, AI token tracker, Anthropic dashboard, Claude dashboard, Claude usage monitor, Apple Intelligence developer">
+    <title>AI Token Usage Tracker — macOS, iOS &amp; Apple Vision Pro App for Anthropic API Costs</title>
+    <meta name="description" content="Native macOS menu bar, iOS/iPadOS, and Apple Vision Pro (visionOS) app to monitor Anthropic Claude API token usage and costs in near real-time. Track spending by model, workspace, and API key — on your Mac, iPhone, iPad, or in spatial computing on Vision Pro. Android version coming soon. Built with Swift and Liquid Glass, zero third-party dependencies.">
+    <meta name="keywords" content="Claude, Anthropic, API, token usage, cost tracker, macOS, iOS, iPadOS, iPhone app, iPad app, iOS 26, iPadOS 26, Liquid Glass, menu bar app, Claude API costs, Claude Opus, Claude Sonnet, Claude Haiku, API monitoring, developer tools, Swift, SwiftUI, WidgetKit, iOS widget, Home Screen widget, Lock Screen widget, App Store, Mac App Store, Google Play, spend tracking, rate limits, Claude Code, Cursor, Windsurf, API cost monitoring, token counter, budget alerts, Apple Vision Pro, visionOS, visionOS app, Vision Pro app, Vision Pro developer tools, Vision Pro productivity, spatial computing, spatial API monitor, spatial productivity, Vision Pro AI app, Vision Pro Claude, AI cost tracking, LLM cost tracker, AI token tracker, Anthropic dashboard, Claude dashboard, Claude usage monitor, Apple Intelligence developer, Android, Android app, Android coming soon, Claude Android app, Anthropic Android">
     <meta name="author" content="Siegfried-Thor Bolz">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
     <link rel="canonical" href="https://siegfriedbolz.github.io/claude-token-usage-tracker/">
@@ -23,8 +23,8 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://siegfriedbolz.github.io/claude-token-usage-tracker/">
-    <meta property="og:title" content="AI Token Usage Tracker — macOS &amp; Apple Vision Pro App for Anthropic API Costs">
-    <meta property="og:description" content="Monitor your Anthropic Claude API token usage and costs in near real-time. Track spending by model, workspace, and API key — on macOS and Apple Vision Pro. Built with Swift, zero third-party dependencies.">
+    <meta property="og:title" content="AI Token Usage Tracker — macOS, iOS &amp; Apple Vision Pro App for Anthropic API Costs">
+    <meta property="og:description" content="Monitor your Anthropic Claude API token usage and costs in near real-time. Track spending by model, workspace, and API key — on macOS, iPhone, iPad, and Apple Vision Pro. Android version coming soon. Built with Swift and Liquid Glass, zero third-party dependencies.">
     <meta property="og:image" content="https://raw.githubusercontent.com/siegfriedbolz/claude-token-usage-tracker/main/screenshots/Intraday.png">
     <meta property="og:image:width" content="1280">
     <meta property="og:image:height" content="800">
@@ -33,13 +33,16 @@
     <meta property="og:image" content="https://raw.githubusercontent.com/siegfriedbolz/claude-token-usage-tracker/main/screenshots/visionpro/Intraday.png">
     <meta property="og:image:type" content="image/png">
     <meta property="og:image:alt" content="AI Token Usage Tracker running on Apple Vision Pro (visionOS) with a spatial glass UI">
+    <meta property="og:image" content="https://raw.githubusercontent.com/siegfriedbolz/claude-token-usage-tracker/main/screenshots/ios/Intraday.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:alt" content="AI Token Usage Tracker on iPhone (iOS 26) with Liquid Glass design showing intraday Claude API costs">
     <meta property="og:site_name" content="AI Token Usage Tracker">
     <meta property="og:locale" content="en_US">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="AI Token Usage Tracker — macOS &amp; Apple Vision Pro App">
-    <meta name="twitter:description" content="Monitor your Anthropic Claude API token usage and costs in near real-time on macOS and Apple Vision Pro. Track spending by model, workspace, and API key.">
+    <meta name="twitter:title" content="AI Token Usage Tracker — macOS, iOS &amp; Apple Vision Pro App">
+    <meta name="twitter:description" content="Monitor your Anthropic Claude API token usage and costs in near real-time on macOS, iPhone, iPad, and Apple Vision Pro. Android version coming soon. Track spending by model, workspace, and API key.">
     <meta name="twitter:image" content="https://raw.githubusercontent.com/siegfriedbolz/claude-token-usage-tracker/main/screenshots/Intraday.png">
     <meta name="twitter:image:alt" content="AI Token Usage Tracker showing intraday API cost breakdown per key with live rate limits">
 
@@ -49,12 +52,12 @@
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
         "name": "AI Token Usage Tracker",
-        "alternateName": ["Claude Token Usage Tracker", "AI Token Tracker for Vision Pro", "Claude API Cost Tracker"],
-        "operatingSystem": ["macOS 26", "macOS Tahoe", "macOS Tahoe", "visionOS 2.0", "visionOS"],
+        "alternateName": ["Claude Token Usage Tracker", "AI Token Tracker for iPhone", "AI Token Tracker for Vision Pro", "AI Token Tracker for Android", "Claude API Cost Tracker"],
+        "operatingSystem": ["macOS 26", "macOS Tahoe", "iOS 26", "iPadOS 26", "visionOS 2.0", "visionOS"],
         "applicationCategory": ["DeveloperApplication", "ProductivityApplication", "UtilitiesApplication"],
         "applicationSubCategory": "API Monitoring",
-        "description": "A native macOS menu bar and Apple Vision Pro (visionOS) app to monitor Anthropic Claude API token usage and costs in near real-time. Provides breakdowns by model, workspace, month, and API key, with a spatial interface on Vision Pro. Built with Swift and SwiftUI — zero third-party dependencies.",
-        "availableOnDevice": ["Mac", "Apple Vision Pro"],
+        "description": "A native macOS menu bar, iOS/iPadOS, and Apple Vision Pro (visionOS) app to monitor Anthropic Claude API token usage and costs in near real-time. Provides breakdowns by model, workspace, month, and API key, with a Liquid Glass interface on iOS 26 and a spatial volumetric interface on Vision Pro. A native Android app is coming soon. Built with Swift, SwiftUI, and WidgetKit — zero third-party dependencies.",
+        "availableOnDevice": ["Mac", "iPhone", "iPad", "Apple Vision Pro"],
         "author": {
             "@type": "Person",
             "name": "Siegfried-Thor Bolz",
@@ -78,16 +81,24 @@
             "https://raw.githubusercontent.com/siegfriedbolz/claude-token-usage-tracker/main/screenshots/Workspace.png",
             "https://raw.githubusercontent.com/siegfriedbolz/claude-token-usage-tracker/main/screenshots/Settings.png",
             "https://raw.githubusercontent.com/siegfriedbolz/claude-token-usage-tracker/main/screenshots/Settings2.png",
+            "https://raw.githubusercontent.com/siegfriedbolz/claude-token-usage-tracker/main/screenshots/ios/Intraday.png",
+            "https://raw.githubusercontent.com/siegfriedbolz/claude-token-usage-tracker/main/screenshots/ios/Monat.png",
+            "https://raw.githubusercontent.com/siegfriedbolz/claude-token-usage-tracker/main/screenshots/ios/Models.png",
+            "https://raw.githubusercontent.com/siegfriedbolz/claude-token-usage-tracker/main/screenshots/ios/Settings1.png",
+            "https://raw.githubusercontent.com/siegfriedbolz/claude-token-usage-tracker/main/screenshots/ios/Settings2.png",
+            "https://raw.githubusercontent.com/siegfriedbolz/claude-token-usage-tracker/main/screenshots/ios/Widget.png",
             "https://raw.githubusercontent.com/siegfriedbolz/claude-token-usage-tracker/main/screenshots/visionpro/Intraday.png",
             "https://raw.githubusercontent.com/siegfriedbolz/claude-token-usage-tracker/main/screenshots/visionpro/Monat.png",
             "https://raw.githubusercontent.com/siegfriedbolz/claude-token-usage-tracker/main/screenshots/visionpro/Currency.png",
             "https://raw.githubusercontent.com/siegfriedbolz/claude-token-usage-tracker/main/screenshots/visionpro/Settings1.png",
             "https://raw.githubusercontent.com/siegfriedbolz/claude-token-usage-tracker/main/screenshots/visionpro/Settings2.png"
         ],
-        "softwareRequirements": "macOS 26 (Tahoe) or later, or Apple Vision Pro running visionOS 2.0 or later; Anthropic Admin API key required",
+        "softwareRequirements": "macOS 26 (Tahoe) or later, iOS 26 or later on iPhone, iPadOS 26 or later on iPad, or Apple Vision Pro running visionOS 2.0 or later; Anthropic Admin API key required",
         "featureList": [
             "Native macOS menu bar app",
+            "Native iOS and iPadOS app with Liquid Glass design",
             "Native Apple Vision Pro (visionOS) spatial app",
+            "Home Screen and Lock Screen widget on iOS",
             "Near real-time intraday cost tracking",
             "Monthly cost breakdown with full history",
             "Per-model cost view (Claude Opus, Sonnet, Haiku)",
@@ -100,8 +111,8 @@
             "CSV export",
             "Built-in localhost JSON API (macOS)",
             "Detached popover window mode (macOS)",
-            "macOS Keychain security",
-            "Apple Liquid Glass design on macOS",
+            "iOS Keychain and macOS Keychain security",
+            "Apple Liquid Glass design on macOS and iOS 26",
             "Volumetric glass UI on visionOS",
             "Zero third-party dependencies"
         ],
@@ -113,7 +124,7 @@
             "https://apps.apple.com/app/ai-token-usage-tracker/id6760191068",
             "https://github.com/siegfriedbolz/claude-token-usage-tracker"
         ],
-        "keywords": "Claude, Anthropic, API, token usage, cost tracker, macOS, menu bar, developer tools, Claude Code, Cursor, Windsurf, Apple Vision Pro, visionOS, visionOS app, spatial computing, Vision Pro developer app, Vision Pro productivity, AI cost tracking, LLM monitoring"
+        "keywords": "Claude, Anthropic, API, token usage, cost tracker, macOS, iOS, iPadOS, iPhone app, iPad app, iOS 26, Liquid Glass, Home Screen widget, menu bar, developer tools, Claude Code, Cursor, Windsurf, Apple Vision Pro, visionOS, visionOS app, spatial computing, Vision Pro developer app, Vision Pro productivity, AI cost tracking, LLM monitoring, Android, Android app coming soon, Claude Android, Google Play"
     }
     </script>
 
@@ -136,7 +147,7 @@
                 "name": "What are the system requirements?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "You need macOS 26 (Tahoe) or later, or Apple Vision Pro running visionOS 2.0 or later, plus an Anthropic Admin API key which requires organization admin access in your Anthropic Console."
+                    "text": "You need one of the following: macOS 26 (Tahoe) or later, iOS 26 or later on iPhone, iPadOS 26 or later on iPad, or Apple Vision Pro running visionOS 2.0 or later. The iOS, iPadOS, and macOS 26 versions use Apple's Liquid Glass design. You also need an Anthropic Admin API key, which requires organization admin access in your Anthropic Console."
                 }
             },
             {
@@ -173,10 +184,18 @@
             },
             {
                 "@type": "Question",
-                "name": "Does AI Token Usage Tracker run on Apple Vision Pro?",
+                "name": "Does AI Token Usage Tracker run on iPhone, iPad, or Apple Vision Pro?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Yes. AI Token Usage Tracker is a universal app that runs natively on Apple Vision Pro (visionOS 2.0 or later) as a spatial windowed app, and on macOS (26 Tahoe or later) as a menu bar app. Both versions share the same data model and connect directly to the Anthropic Admin API. The Vision Pro version uses a volumetric glass UI with eye-tracking hover feedback, and includes a Spatial Currency Picker designed for visionOS."
+                    "text": "Yes. AI Token Usage Tracker is a universal app that runs natively on iPhone (iOS 26 or later), iPad (iPadOS 26 or later), Apple Vision Pro (visionOS 2.0 or later) as a spatial windowed app, and on macOS (26 Tahoe or later) as a menu bar app. All versions share the same data model and connect directly to the Anthropic Admin API. The iOS and iPadOS versions adopt Apple's Liquid Glass design and include a Home Screen / Lock Screen widget. The Vision Pro version uses a volumetric glass UI with eye-tracking hover feedback and a Spatial Currency Picker designed for visionOS."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is there an iPhone or iPad version?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. AI Token Usage Tracker has a native iOS and iPadOS app that requires iOS 26 (or iPadOS 26) or later because it uses Apple's Liquid Glass design system. It includes a Home Screen and Lock Screen widget that shows your current month-to-date Anthropic Claude API spend, and supports the same Intraday, Monthly, Model, Workspace, and Settings tabs as the macOS version. The API key is stored in the iOS Keychain."
                 }
             },
             {
@@ -185,6 +204,14 @@
                 "acceptedAnswer": {
                     "@type": "Answer",
                     "text": "The Apple Vision Pro version runs as a resizable spatial window instead of a macOS menu bar app. It uses volumetric glass materials, eye-tracking hover effects, larger tap targets for gaze+pinch interaction, and a Spatial Currency Picker. macOS-only features like the system menu bar icon, native macOS notifications, the detached popover window mode, and the localhost JSON API server are not available on visionOS."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is there an Android version of AI Token Usage Tracker?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "A native Android app is in development and coming soon to Google Play. It will offer the same Anthropic Claude API token usage and cost tracking as the iOS, iPadOS, macOS, and Apple Vision Pro versions — including Intraday, Monthly, Model, Workspace, and API Key breakdowns, plus a Home Screen widget. Your Admin API key will be stored securely in the Android Keystore. Follow the project on GitHub to be notified when it launches."
                 }
             }
         ]
@@ -197,7 +224,7 @@
         "@context": "https://schema.org",
         "@type": "HowTo",
         "name": "How to Track Your Claude API Costs with AI Token Usage Tracker",
-        "description": "Set up AI Token Usage Tracker on macOS to monitor your Anthropic Claude API token usage and spending in near real-time.",
+        "description": "Set up AI Token Usage Tracker on macOS, iPhone, iPad, or Apple Vision Pro to monitor your Anthropic Claude API token usage and spending in near real-time.",
         "step": [
             {
                 "@type": "HowToStep",
@@ -211,7 +238,7 @@
                 "@type": "HowToStep",
                 "position": 2,
                 "name": "Install the app and enter your key",
-                "text": "Download AI Token Usage Tracker from the App Store on your Mac or Apple Vision Pro (https://apps.apple.com/app/ai-token-usage-tracker/id6760191068). Open Settings and paste your Admin API key. The key is stored securely in the macOS Keychain on Mac, and in the system keychain on visionOS."
+                "text": "Download AI Token Usage Tracker from the App Store on your Mac, iPhone, iPad, or Apple Vision Pro (https://apps.apple.com/app/ai-token-usage-tracker/id6760191068). Open Settings and paste your Admin API key. The key is stored securely in the macOS Keychain on Mac, in the iOS Keychain on iPhone and iPad, and in the system keychain on visionOS."
             },
             {
                 "@type": "HowToStep",
@@ -230,7 +257,7 @@
         "@type": "WebSite",
         "name": "AI Token Usage Tracker",
         "url": "https://siegfriedbolz.github.io/claude-token-usage-tracker/",
-        "description": "Official website for AI Token Usage Tracker — a native macOS menu bar and Apple Vision Pro (visionOS) app to monitor Anthropic Claude API token usage and costs.",
+        "description": "Official website for AI Token Usage Tracker — a native macOS menu bar, iOS/iPadOS, and Apple Vision Pro (visionOS) app to monitor Anthropic Claude API token usage and costs.",
         "inLanguage": "en",
         "publisher": {
             "@type": "Person",
@@ -1097,6 +1124,19 @@
         body[data-active-platform="visionpro"] .macos-only-note,
         body[data-active-platform="ios"] .macos-only-note { display: none; }
 
+        /* iOS: portrait hero image — cap width so it looks like an iPhone preview */
+        body[data-active-platform="ios"] .hero-figure {
+            max-width: 320px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* iOS portrait screenshots — display in a centred multi-column grid */
+        body[data-active-platform="ios"] .screenshots-grid {
+            grid-template-columns: repeat(auto-fill, minmax(200px, 260px));
+            justify-content: center;
+        }
+
         /* Inline "macOS only" badge used inside feature copy */
         .macos-only-badge {
             display: inline-flex;
@@ -1486,7 +1526,7 @@
         <div class="announcement-content">
             <span class="announcement-icon"></span>
             <span class="announcement-text">
-                <strong>Now available: Version 2.0</strong> on the App Store — 🥽 Apple Vision Pro support added!
+                <strong>Now available: Version 2.1</strong> on the App Store — 🥽 Apple Vision Pro and 📱 iOS support added!
             </span>
         </div>
     </div>
@@ -1507,11 +1547,14 @@
                     <button type="button" role="tab" class="platform-tab" data-platform="macos" aria-selected="true" aria-controls="platform-panel" tabindex="0">
                         <span class="tab-icon" aria-hidden="true">🖥️</span><span>macOS</span>
                     </button>
-                    <button type="button" role="tab" class="platform-tab new-pulse" data-platform="visionpro" aria-selected="false" aria-controls="platform-panel" tabindex="-1">
+                    <button type="button" role="tab" class="platform-tab" data-platform="visionpro" aria-selected="false" aria-controls="platform-panel" tabindex="-1">
                         <span class="tab-icon" aria-hidden="true">🥽</span><span>Vision Pro</span>
                     </button>
-                    <button type="button" role="tab" class="platform-tab" data-platform="ios" aria-selected="false" aria-disabled="true" aria-controls="platform-panel" tabindex="-1">
-                        <span class="tab-icon" aria-hidden="true">📱</span><span>iOS</span><span class="tab-badge">Soon</span>
+                    <button type="button" role="tab" class="platform-tab" data-platform="ios" aria-selected="false" aria-controls="platform-panel" tabindex="-1">
+                        <span class="tab-icon" aria-hidden="true">📱</span><span>iOS</span><span class="tab-badge">New</span>
+                    </button>
+                    <button type="button" role="tab" class="platform-tab" data-platform="android" aria-selected="false" aria-disabled="true" aria-controls="platform-panel" tabindex="-1">
+                        <span class="tab-icon" aria-hidden="true">🤖</span><span>Android</span><span class="tab-badge">Soon</span>
                     </button>
                 </div>
             </div>
@@ -1565,9 +1608,15 @@
                     <p>The Vision Pro build is a <strong>spatial window</strong> you can place and pin anywhere in your space — tuned with Apple's Liquid Glass materials and <strong>hover-reactive</strong> controls. It keeps the same API integration and data model as the macOS version. A few macOS-only bits (menu bar cost display, detached popover window, and the localhost JSON API server) don't apply in visionOS, while a dedicated <strong>currency picker</strong> makes switching currencies a one-tap affair.</p>
                 </div>
 
+                <!-- iOS differences callout (shown only when iOS is active) -->
+                <div class="platform-callout" id="ios-callout" role="note">
+                    <div class="callout-title"><span aria-hidden="true">📱</span> What's different on iOS &amp; iPadOS</div>
+                    <p>The iPhone and iPad build uses the same <strong>Anthropic Admin API integration</strong> and data model as macOS. <strong>Home Screen and Lock Screen widgets</strong> let you check your current month's cost without opening the app. macOS-specific features (menu bar icon, detached window, JSON API server, and rate limit probing) are not available on iOS. The free tier includes Monthly and Workspace breakdowns, CSV export, multi-currency, spend alerts, auto-refresh, and <strong>Dashboard Widgets</strong>. Pro adds Intraday analysis, per-model costs, and per-API-key breakdowns.</p>
+                </div>
+
                 <div class="features-grid">
 
-                    <details class="feature-item" data-platforms="macos,visionpro">
+                    <details class="feature-item" data-platforms="macos,visionpro,ios">
                         <summary><div class="summary-inner">
                             <span class="feature-title">Near Real-Time Cost Tracking <span class="feature-teaser">— see today's spend as it happens</span></span>
                         </div>                        </summary>
@@ -1577,7 +1626,7 @@
                         </div>
                     </details>
 
-                    <details class="feature-item" data-platforms="macos,visionpro">
+                    <details class="feature-item" data-platforms="macos,visionpro,ios">
                         <summary><div class="summary-inner">
                             <span class="feature-title">Monthly Cost Breakdown <span class="feature-teaser">— full history with token-level detail</span></span>
                         </div>                        </summary>
@@ -1587,7 +1636,7 @@
                         </div>
                     </details>
 
-                    <details class="feature-item" data-platforms="macos,visionpro">
+                    <details class="feature-item" data-platforms="macos,visionpro,ios">
                         <summary><div class="summary-inner">
                             <span class="feature-title">Per-Model Cost View <span class="feature-teaser">— Opus, Sonnet, Haiku at a glance</span></span>
                         </div>                        </summary>
@@ -1597,7 +1646,7 @@
                         </div>
                     </details>
 
-                    <details class="feature-item" data-platforms="macos,visionpro">
+                    <details class="feature-item" data-platforms="macos,visionpro,ios">
                         <summary><div class="summary-inner">
                             <span class="feature-title">Per-API-Key Filtering <span class="feature-teaser">— isolate costs by project, bot, or team</span></span>
                         </div>                        </summary>
@@ -1607,7 +1656,7 @@
                         </div>
                     </details>
 
-                    <details class="feature-item" data-platforms="macos,visionpro">
+                    <details class="feature-item" data-platforms="macos,visionpro,ios">
                         <summary><div class="summary-inner">
                             <span class="feature-title">Workspace Overview <span class="feature-teaser">— compare costs across environments</span></span>
                         </div>                        </summary>
@@ -1627,7 +1676,7 @@
                         </div>
                     </details>
 
-                    <details class="feature-item" data-platforms="macos,visionpro">
+                    <details class="feature-item" data-platforms="macos,visionpro,ios">
                         <summary><div class="summary-inner">
                             <span class="feature-title">Spend Alerts &amp; Limit Tracking <span class="feature-teaser">— get notified before you overspend</span></span>
                         </div>                        </summary>
@@ -1637,7 +1686,7 @@
                         </div>
                     </details>
 
-                    <details class="feature-item" data-platforms="macos,visionpro">
+                    <details class="feature-item" data-platforms="macos,visionpro,ios">
                         <summary><div class="summary-inner">
                             <span class="feature-title">12-Currency Support <span class="feature-teaser">— USD, EUR, GBP, JPY, and 8 more</span></span>
                         </div>                        </summary>
@@ -1657,13 +1706,23 @@
                         </div>
                     </details>
 
-                    <details class="feature-item" data-platforms="macos,visionpro">
+                    <details class="feature-item" data-platforms="macos,visionpro,ios">
                         <summary><div class="summary-inner">
                             <span class="feature-title">CSV Export <span class="feature-teaser">— tab-specific, currency-aware reports</span></span>
                         </div>                        </summary>
                         <div class="feature-body">
                             <p>Export cost data from any tab with one click. Each tab produces a <strong>tailored CSV format</strong>: Monthly exports include month, token type, tokens, and cost (plus per-key breakdown for Pro). Model exports list model, token type, tokens, and cost. Intraday exports include API key, model, token type, tokens, and estimated cost.</p>
                             <p>All amounts are exported in your selected currency with proper decimal formatting. A grand total row is appended at the bottom for easy accounting.</p>
+                        </div>
+                    </details>
+
+                    <details class="feature-item" data-platforms="ios">
+                        <summary><div class="summary-inner">
+                            <span class="feature-title">Dashboard Widgets <span class="feature-teaser">— Home Screen &amp; Lock Screen cost at a glance</span></span>
+                        </div>                        </summary>
+                        <div class="feature-body">
+                            <p>Add a <strong>Home Screen or Lock Screen widget</strong> to see your current month's API cost without opening the app. Choose from multiple widget sizes to fit your Home Screen layout.</p>
+                            <p>Widgets update automatically and are included in the <strong>free tier</strong> — no Pro subscription required. Available on iPhone and iPad.</p>
                         </div>
                     </details>
 
@@ -1687,7 +1746,7 @@
                         </div>
                     </details>
 
-                    <details class="feature-item" data-platforms="macos,visionpro">
+                    <details class="feature-item" data-platforms="macos,visionpro,ios">
                         <summary><div class="summary-inner">
                             <span class="feature-title">Security &amp; Privacy <span class="feature-teaser">— Keychain storage, no telemetry, zero dependencies</span></span>
                         </div>                        </summary>
@@ -1803,6 +1862,13 @@
         <button type="button" class="vh-close" id="vh-close" aria-label="Dismiss Vision Pro hint"><span aria-hidden="true">✕</span></button>
     </div>
 
+    <!-- iPhone auto-detection hint pill (shown only when we auto-switch to iOS view) -->
+    <div class="vision-detected-hint" id="ios-hint" role="status" aria-live="polite" hidden>
+        <span class="vh-icon" aria-hidden="true">📱</span>
+        <span class="vh-text">iPhone detected — showing the <strong>iOS</strong> version. <a href="?platform=macos" id="ih-switch-macos">Switch to macOS</a></span>
+        <button type="button" class="vh-close" id="ih-close" aria-label="Dismiss iPhone hint"><span aria-hidden="true">✕</span></button>
+    </div>
+
     <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Screenshot fullscreen view">
         <button type="button" class="lightbox-close" id="lightbox-close" aria-label="Close fullscreen view"><span aria-hidden="true">✕</span></button>
         <img id="lightbox-img" src="" alt="">
@@ -1870,12 +1936,30 @@
         },
         ios: {
             label: 'iOS',
-            available: false,
+            available: true,
             tagline: "Know exactly what your Claude API costs — on the go, on iPhone and iPad.",
-            lede: "A native iOS and iPadOS app that connects to the <strong>Anthropic Admin API</strong> and shows your organization's Claude API usage and costs. In development — follow the repository for updates.",
-            cta: null,
-            requirements: 'iOS and iPadOS support is in development. Follow the repository for updates.',
-            screenshots: []
+            lede: "A native iPhone and iPad app that connects to the <strong>Anthropic Admin API</strong> and shows your organization's Claude API usage and costs — broken down by <strong>month</strong>, <strong>model</strong>, <strong>workspace</strong>, and <strong>API key</strong>. Built with Swift and SwiftUI on Apple system frameworks. Includes <strong>Home Screen and Lock Screen widgets</strong> for at-a-glance cost tracking. Your Admin API key is stored securely in the iOS Keychain.",
+            hero: {
+                src: 'screenshots/ios/Intraday.png',
+                full: 'screenshots/ios/Intraday.png',
+                alt: "AI Token Usage Tracker on iPhone — Intraday tab showing today's API costs per key in near real-time with per-model breakdown",
+                title: 'Intraday on iOS',
+                caption: "Today's API costs per key in near real-time — with per-model breakdown and color-coded cost distribution bars. Requires Pro."
+            },
+            cta: {
+                href: 'https://apps.apple.com/app/ai-token-usage-tracker/id6760191068',
+                img: 'Download_on_the_App_Store.svg',
+                alt: 'Download on the App Store',
+                hint: 'Requires iOS 26 or later · Liquid Glass · Free 7-day trial'
+            },
+            requirements: '<strong>iOS 26</strong> or later on iPhone, or <strong>iPadOS 26</strong> or later on iPad. Requires an <strong>Anthropic Admin API key</strong>, which you can generate in the Anthropic Console under Organization Settings (requires organization admin access).',
+            screenshots: [
+                { src: 'screenshots/ios/Monat.png', full: 'screenshots/ios/Monat.png', alt: 'AI Token Usage Tracker on iPhone — Monthly cost breakdown with paginated month cards, color-coded distribution bars, and token categories', title: 'By Month', caption: "Paginated month cards with finalized costs from Anthropic's Cost API. Each card shows total spend, a proportional cost bar, and per-category stats. Pro users can expand each month for a per-API-key breakdown." },
+                { src: 'screenshots/ios/Models.png', full: 'screenshots/ios/Models.png', alt: 'AI Token Usage Tracker on iPhone — Per-model cost breakdown showing Claude Opus and Sonnet with cost categories', title: 'By Model', caption: 'Every Claude model used, sorted by version and tier. Each card shows total cost and a color-coded 4-category breakdown (Input, Cache Write, Cache Read, Output). Requires Pro.' },
+                { src: 'screenshots/ios/Widget.png', full: 'screenshots/ios/Widget.png', alt: 'AI Token Usage Tracker — Home Screen and Lock Screen widgets showing current month API cost', title: 'Dashboard Widgets', caption: 'Home Screen and Lock Screen widgets for at-a-glance tracking of your current month API cost — always visible, no app launch required.' },
+                { src: 'screenshots/ios/Settings1.png', full: 'screenshots/ios/Settings1.png', alt: 'AI Token Usage Tracker on iPhone — Settings panel showing Admin API key configuration and API key filter', title: 'Settings — API & Display', caption: 'Configure your Admin API key (stored securely in the iOS Keychain), filter costs by specific API keys, and choose which tabs to display.' },
+                { src: 'screenshots/ios/Settings2.png', full: 'screenshots/ios/Settings2.png', alt: 'AI Token Usage Tracker on iPhone — Settings panel showing spend limit configuration and notification thresholds', title: 'Settings — Spend Limits', caption: 'Set a monthly spend limit with a visual budget bar and configure notification thresholds for spend alerts.' }
+            ]
         }
     };
 
@@ -1967,8 +2051,10 @@
                 const allowed = (el.getAttribute('data-platforms') || '').split(',').map(function(s){return s.trim();});
                 el.hidden = !allowed.includes(platform);
             });
-            const callout = document.getElementById('vision-callout');
-            if (callout) callout.classList.toggle('active', platform === 'visionpro');
+            const visionCallout = document.getElementById('vision-callout');
+            if (visionCallout) visionCallout.classList.toggle('active', platform === 'visionpro');
+            const iosCallout = document.getElementById('ios-callout');
+            if (iosCallout) iosCallout.classList.toggle('active', platform === 'ios');
         }
 
         function updateTabsUI(platform) {
@@ -2103,6 +2189,34 @@
             setTimeout(hide, 10000);
         }
 
+        function uaLooksLikeIPhone() {
+            var ua = (navigator.userAgent || '');
+            // Match iPhone and iPod Touch (smartphone form factors).
+            // iPadOS in desktop mode sends a Macintosh UA, so it intentionally falls through to macOS.
+            return /iPhone|iPod/.test(ua);
+        }
+
+        function showIosHint() {
+            var hint = document.getElementById('ios-hint');
+            if (!hint) return;
+            try {
+                if (sessionStorage.getItem('iosHintDismissed') === '1') return;
+            } catch (_) { /* ignore */ }
+            hint.hidden = false;
+            void hint.offsetWidth;
+            hint.classList.add('visible');
+            var close = document.getElementById('ih-close');
+            var hide = function() {
+                hint.classList.remove('visible');
+                try { sessionStorage.setItem('iosHintDismissed', '1'); } catch (_) { /* ignore */ }
+                setTimeout(function(){ hint.hidden = true; }, 400);
+            };
+            if (close) close.addEventListener('click', hide);
+            setTimeout(function() {
+                if (hint.classList.contains('visible')) hide();
+            }, 9000);
+        }
+
         function showVisionHint() {
             var hint = document.getElementById('vision-hint');
             if (!hint) return;
@@ -2135,19 +2249,25 @@
                 showVisionWelcome();
             }
         } else {
-            // Paint macOS default immediately, then upgrade to Vision Pro
-            // once UA / WebXR detection resolves (so we don't block paint).
+            // Paint macOS default immediately, then upgrade to the right platform.
             applyPlatform(DEFAULT);
-            if (uaLooksLikeVisionPro()) {
-                document.documentElement.classList.add('visionos-device');
+            if (uaLooksLikeIPhone()) {
+                // Smartphone detected — switch to iOS tab immediately (synchronous, no WebXR needed).
+                applyPlatform('ios');
+                showIosHint();
+            } else {
+                // Not an iPhone — check for Vision Pro via UA / WebXR.
+                if (uaLooksLikeVisionPro()) {
+                    document.documentElement.classList.add('visionos-device');
+                }
+                detectVisionPro().then(function(isVision) {
+                    if (!isVision) return;
+                    document.documentElement.classList.add('visionos-device');
+                    applyPlatform('visionpro');
+                    showVisionHint();
+                    showVisionWelcome();
+                });
             }
-            detectVisionPro().then(function(isVision) {
-                if (!isVision) return;
-                document.documentElement.classList.add('visionos-device');
-                applyPlatform('visionpro');
-                showVisionHint();
-                showVisionWelcome();
-            });
         }
     })();
     </script>
